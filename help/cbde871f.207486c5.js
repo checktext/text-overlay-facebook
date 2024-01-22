@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[305],{359:function(e){e.exports=JSON.parse('{"permalink":"/help/blog/page/2","page":2,"postsPerPage":10,"totalPages":5,"totalCount":46,"previousPage":"/help/blog","nextPage":"/help/blog/page/3","blogDescription":"AhaChat Blog!"}')}}]);

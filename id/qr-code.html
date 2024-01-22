@@ -1,0 +1,591 @@
+﻿ <!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<link rel="alternate" hreflang="en" href="https://ahachat.com/en/qr-code">
+<link rel="alternate" hreflang="vi" href="https://ahachat.com/qr-code">
+<link rel="alternate" hreflang="x-default" href="https://ahachat.com/qr-code">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="csrf-token" content="eVM1XmtpEf3iDeOfOw7RV2R2D5FHNLEMisD24dKo">
+<title>QR Code Generator: Trình Tạo Mã QR Online 100% Miễn Phí</title>
+<meta name="description" content="QR Code Generator - Trình tạo mã QR trực tuyến miễn phí với đầy đủ tất cả tính năng phổ biến. Trải nghiệm ngay để thấy sự khác biệt so với các công cụ khác!">
+<meta name="Keywords" content="qr code, generate qr code, make qr code, create qr code, link to qr code">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="shortcut icon" type="image/png" href="../img/favicon-v2.ico" class="shortcut-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="../img/chatbot-icon-57x57-v2.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/chatbot-icon-72x72-v2.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/chatbot-icon-114x114-v2.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../img/chatbot-icon-144x144-v2.png">
+<link href="../css2?family=Montserrat:wght@400;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="../npm/%40simonwep/pickr/dist/themes/classic.min.css"> 
+<link rel="stylesheet" href="../npm/%40simonwep/pickr/dist/themes/monolith.min.css"> 
+<link rel="stylesheet" href="../npm/%40simonwep/pickr/dist/themes/nano.min.css"> 
+<link rel="stylesheet" href="../libs/plugins/qr-code/index.css">
+<style>
+            body {
+                padding-top: 50px;
+                font-family: Montserrat,sans-serif;
+            }
+
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+              -moz-appearance: textfield;
+            }
+            .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+            }
+            .container-1 {
+                margin: 50px auto 0;
+            }
+            .container-faq {
+              margin-top: 50px;
+              max-width: 767px;
+            }
+            .container-faq p{
+              color: #7d7d7d;
+            }
+            .container-form {
+                max-width: 500px;
+                margin: auto;
+                margin-top: 50px;
+            }
+            .navbar-inverse {
+                background-color: white;
+                border-color: #ff5a5f;
+            }
+            .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+                background-color: #ff5a5f;
+                color: #fff;
+            }
+            .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+                background-color: transparent;
+                color: #333;
+            }
+            .navbar-inverse .navbar-brand {
+                color: #ff5a5f;
+            }
+            .navbar-right {
+              padding: 10px 0;
+            }
+            .app-slogan {
+              font-size: 10px;
+              color: #888;
+            }
+            .btn-create-bot {
+              height: 30px;
+              padding: 5px 15px!important;
+              margin: 10px;
+              border-radius: 50px;
+              background-color: white;
+              color: #2196f3!important;
+              box-shadow: 0 0 5px 0 #2196f3;
+              font-weight: bold;
+              border: 0;
+            }
+            .blue {
+                color: #2293da;
+            }
+            .help-container .ic {
+                background-color: #ff5a5f;
+                color: white;
+                width: 50px;
+                height: 50px;
+                display: block;
+                margin: auto;
+                border-radius: 50px;
+            }
+            .help-container .ic i{
+                font-size: 20px;
+                margin-top: 13px
+            }
+            @media  only screen and (min-width: 992px) {
+                .help-container .col-md-4 {
+                    border-right: 1px solid #ddd;
+                    height: 200px;
+                }
+                .help-container .col-md-4:last-child {
+                    border-right: 0;
+                }
+            }
+            .faq-container {
+              max-width: 767px;
+            }
+            .faq-container h1 {
+              margin-bottom: 40px;
+            }
+            .faq-container ul {
+              padding: 0;
+            }
+            .faq-container li {
+              list-style: none;
+              margin-bottom: 30px;
+            }
+            .faq-container li h4 {
+              font-size: 24px;
+              margin-bottom: 5px;
+            }
+            .faq-container li span {
+              color: #636363;
+            }
+            .c-info {
+              margin: 50px 0;
+            }
+            .footer {
+              margin-bottom: 20px;
+              color: #636363;
+            }
+            @media  only screen and (max-width: 767px) {
+              .navbar-header {
+                float: left;
+                width: 100%;
+                margin-top: 5px;
+              }
+              .navbar-right {
+                margin: 0;
+                width: 100%;
+                margin-top: 50px;
+              }
+              .navbar-right .dropdown {
+                float: left;
+              }
+              .navbar-right .dropdown .divider{
+                display: none;
+              }
+              .container-1 {
+                margin-top: 150px;
+              }
+            }
+            .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+              background: transparent;
+              color: #080808;
+            }
+
+
+            #preview {
+              position: relative;
+              display: inline-block;
+              padding: 25px;
+            }
+
+            #screenshot {
+              display: flex;
+              flex-direction: column;
+              padding: 10px;
+            }
+
+            #qrcodeCanvas {
+              padding: 15px;
+              border: 5px solid #3b5998;
+              border-radius: 10%;
+            }
+
+            .arcodeText {
+              text-align: center;
+              display: block;
+              font-weight: bold;
+              margin: 10px 0 0;
+              color: #3b5998;
+            }
+
+            .pickr {
+              display: inline-block;
+              margin-left: 5px;
+            }
+
+            .btn-download {
+              background-color: #0075ff;
+            }
+            .btn-download:hover, .btn-download:focus {
+              background-color: #257ade;
+            }
+            .qr-frame {
+              width: 100%;
+              border: 0;
+              outline: 0;
+            }
+        </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" style="padding: 12px 15px;" href="qr-code.html">
+<img src="../img/LOGO_EXPORT_02.png" style="height: 25px" alt="chatbot">
+<span class="app-slogan">Tăng 500% doanh số với tính năng chốt đơn tự động</span>
+</a>
+</div>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown" id="myDropdown">
+<a class="dropdown-toggle" onclick="toggleDropdown()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-left: 0;">
+Produk kami <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<li><a href="../help/docs.html" target="_blank">Dokumen Tutorial</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../tutorials.html" target="_blank">Video Tutorial</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../help/blog.html" target="_blank">Blog</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../tra-cuu-so-dien-thoai.html" target="_blank">Tra cứu số điện thoại</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../icon-facebook.html" target="_blank">Icon Facebook</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../text-overlay-facebook.html" target="_blank">Check text overlay</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../facebook-text.html" target="_blank">Teks Facebook</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../download-video-facebook.html" target="_blank">Unduh Video Facebook</a></li>
+<li style="display: none" role="separator" class="divider"></li>
+<li style="display: none"><a href="../thue-invoice.html" target="_blank">Cho thuê TKQC</a></li>
+</ul>
+</li>
+<li>
+<a class="btn btn-primary pull-right btn-create-bot" href="../index-2.htm?ref=icon" target="_blank">Buat bot</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="container" style="margin-top: 70px">
+<h1 class="text-center" style="margin-bottom: 40px;">QR Code Generator: Trình Tạo Mã QR Online 100% Miễn Phí</h1>
+<section class="container">
+<div class="row">
+<form class="col-md-8" id="form">
+<button type="button" class="accordion accordion--open">Main Options</button>
+<div class="panel panel--open">
+<label for="form-data">Data</label>
+<input node="data" node-change-event="oninput" id="form-data" type="text" value="https://ahachat.com">
+<label for="form-image-file">Image File</label>
+<div class="buttons-container">
+<input node="image" node-data-field="files" id="form-image-file" type="file">
+<button type="button" id="button-cancel">Cancel</button>
+</div>
+<label for="form-width">Width</label>
+<div>
+<input node="width" id="form-width" type="number" min="100" max="10000" value="300">
+</div>
+<label for="form-height">Height</label>
+<div>
+<input node="height" id="form-height" type="number" min="100" max="10000" value="300">
+</div>
+<label for="form-height">Margin</label>
+<div>
+<input node="margin" id="form-margin" type="number" min="0" max="10000" value="0">
+</div>
+</div>
+<button type="button" class="accordion">Dots Options</button>
+<div class="panel">
+<label for="form-dots-type">Dots Style</label>
+<div>
+<select node="dotsOptions.type" id="form-dots-type">
+<option value="square">Square</option>
+<option value="dots">Dots</option>
+<option value="rounded">Rounded</option>
+<option value="extra-rounded" selected="">Extra rounded</option>
+<option value="classy">Classy</option>
+<option value="classy-rounded">Classy rounded</option>
+</select>
+</div>
+<label>Color Type</label>
+<div class="space-between-container">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="dotsOptionsHelper.colorType.single" id="form-dots-color-type-single" type="radio" name="dots-color-type" checked="">
+<label for="form-dots-color-type-single">Single color</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="dotsOptionsHelper.colorType.gradient" id="form-dots-color-type-gradient" type="radio" name="dots-color-type">
+<label for="form-dots-color-type-gradient">Color gradient</label>
+</div>
+</div>
+<label class="dotsOptionsHelper.colorType.single" for="form-dots-color">Dots Color</label>
+<div class="dotsOptionsHelper.colorType.single">
+<input node="dotsOptions.color" id="form-dots-color" type="color" value="#6a1a4c">
+</div>
+<label class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Gradient Type</label>
+<div class="dotsOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="dotsOptionsHelper.gradient.linear" id="form-dots-gradient-type-linear" type="radio" name="dots-gradient-type" checked="">
+<label for="form-dots-gradient-type-linear">Linear</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="dotsOptionsHelper.gradient.radial" id="form-dots-gradient-type-radial" type="radio" name="dots-gradient-type">
+<label for="form-dots-gradient-type-radial">Radial</label>
+</div>
+</div>
+<label class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Dots Gradient</label>
+<div class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="dotsOptionsHelper.gradient.color1" type="color" value="#6a1a4c">
+<input node="dotsOptionsHelper.gradient.color2" type="color" value="#6a1a4c">
+</div>
+<label class="dotsOptionsHelper.colorType.gradient" for="form-dots-gradient-rotation" style="visibility: hidden; height: 0">Rotation</label>
+<div class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="dotsOptionsHelper.gradient.rotation" id="form-dots-gradient-rotation" type="number" min="0" max="360" value="0">
+</div>
+</div>
+<button type="button" class="accordion">Corners Square Options</button>
+<div class="panel">
+<label for="form-corners-square-type">Corners Square Style</label>
+<div>
+<select node="cornersSquareOptions.type" id="form-corners-square-type">
+<option value="">None</option>
+<option value="square">Square</option>
+<option value="dot">Dot</option>
+<option value="extra-rounded" selected="">Extra rounded</option>
+</select>
+</div>
+<label>Color Type</label>
+<div class="space-between-container">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersSquareOptionsHelper.colorType.single" id="form-corners-square-color-type-single" type="radio" name="corners-square-color-type" checked="">
+<label for="form-corners-square-color-type-single">Single color</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersSquareOptionsHelper.colorType.gradient" id="form-corners-square-color-type-gradient" type="radio" name="corners-square-color-type">
+<label for="form-corners-square-color-type-gradient">Color gradient</label>
+</div>
+</div>
+<label class="cornersSquareOptionsHelper.colorType.single" for="form-corners-square-color">Corners Square Color</label>
+<div class="cornersSquareOptionsHelper.colorType.single buttons-container">
+<input node="cornersSquareOptions.color" id="form-corners-square-color" type="color" value="#000000">
+<button type="button" id="button-clear-corners-square-color">Clear</button>
+</div>
+<label class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Gradient Type</label>
+<div class="cornersSquareOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersSquareOptionsHelper.gradient.linear" id="form-corners-square-gradient-type-linear" type="radio" name="corners-square-gradient-type" checked="">
+<label for="form-corners-square-gradient-type-linear">Linear</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersSquareOptionsHelper.gradient.radial" id="form-corners-square-gradient-type-radial" type="radio" name="corners-square-gradient-type">
+<label for="form-corners-square-gradient-type-radial">Radial</label>
+</div>
+</div>
+<label class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Dots Gradient</label>
+<div class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="cornersSquareOptionsHelper.gradient.color1" type="color" value="#000000">
+<input node="cornersSquareOptionsHelper.gradient.color2" type="color" value="#000000">
+</div>
+<label class="cornersSquareOptionsHelper.colorType.gradient" for="form-corners-square-gradient-rotation" style="visibility: hidden; height: 0">Rotation</label>
+<div class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="cornersSquareOptionsHelper.gradient.rotation" id="form-corners-square-gradient-rotation" type="number" min="0" max="360" value="0">
+</div>
+</div>
+<button type="button" class="accordion">Corners Dot Options</button>
+<div class="panel">
+<label for="form-corners-dot-type">Corners Dot Style</label>
+<div>
+<select node="cornersDotOptions.type" id="form-corners-dot-type">
+<option value="" selected="">None</option>
+<option value="square">Square</option>
+<option value="dot">Dot</option>
+</select>
+</div>
+<label>Color Type</label>
+<div class="space-between-container">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersDotOptionsHelper.colorType.single" id="form-corners-dot-color-type-single" type="radio" name="corners-dot-color-type" checked="">
+<label for="form-corners-dot-color-type-single">Single color</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersDotOptionsHelper.colorType.gradient" id="form-corners-dot-color-type-gradient" type="radio" name="corners-dot-color-type">
+<label for="form-corners-dot-color-type-gradient">Color gradient</label>
+</div>
+</div>
+<label class="cornersDotOptionsHelper.colorType.single" for="form-corners-dot-color">Corners Dot Color</label>
+<div class="cornersDotOptionsHelper.colorType.single buttons-container">
+<input node="cornersDotOptions.color" id="form-corners-dot-color" type="color" value="#000000">
+<button type="button" id="button-clear-corners-dot-color">Clear</button>
+</div>
+<label class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Gradient Type</label>
+<div class="cornersDotOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersDotOptionsHelper.gradient.linear" id="form-corners-dot-gradient-type-linear" type="radio" name="corners-dot-gradient-type" checked="">
+<label for="form-corners-dot-gradient-type-linear">Linear</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="cornersDotOptionsHelper.gradient.radial" id="form-corners-dot-gradient-type-radial" type="radio" name="corners-dot-gradient-type">
+<label for="form-corners-dot-gradient-type-radial">Radial</label>
+</div>
+</div>
+<label class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Dots Gradient</label>
+<div class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="cornersDotOptionsHelper.gradient.color1" type="color" value="#000000">
+<input node="cornersDotOptionsHelper.gradient.color2" type="color" value="#000000">
+</div>
+<label class="cornersDotOptionsHelper.colorType.gradient" for="form-corners-dot-gradient-rotation" style="visibility: hidden; height: 0">Rotation</label>
+<div class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="cornersDotOptionsHelper.gradient.rotation" id="form-corners-dot-gradient-rotation" type="number" min="0" max="360" value="0">
+</div>
+</div>
+<button type="button" class="accordion">Background Options</button>
+<div class="panel">
+<label>Color Type</label>
+<div class="space-between-container">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="backgroundOptionsHelper.colorType.single" id="form-background-color-type-single" type="radio" name="background-color-type" checked="">
+<label for="form-background-color-type-single">Single color</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="backgroundOptionsHelper.colorType.gradient" id="form-background-color-type-gradient" type="radio" name="background-color-type">
+<label for="form-background-color-type-gradient">Color gradient</label>
+</div>
+</div>
+<label class="backgroundOptionsHelper.colorType.single" for="form-background-color">Background Color</label>
+<div class="backgroundOptionsHelper.colorType.single">
+<input node="backgroundOptions.color" id="form-background-color" type="color" value="#ffffff">
+</div>
+<label class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Gradient Type</label>
+<div class="backgroundOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="backgroundOptionsHelper.gradient.linear" id="form-background-gradient-type-linear" type="radio" name="background-gradient-type" checked="">
+<label for="form-background-gradient-type-linear">Linear</label>
+</div>
+<div style="flex-grow: 1">
+<input node-data-field="checked" node="backgroundOptionsHelper.gradient.radial" id="form-background-gradient-type-radial" type="radio" name="background-gradient-type">
+<label for="form-background-gradient-type-radial">Radial</label>
+</div>
+</div>
+<label class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Background Gradient</label>
+<div class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="backgroundOptionsHelper.gradient.color1" type="color" value="#ffffff">
+<input node="backgroundOptionsHelper.gradient.color2" type="color" value="#ffffff">
+</div>
+<label class="backgroundOptionsHelper.colorType.gradient" for="form-background-gradient-rotation" style="visibility: hidden; height: 0">Rotation</label>
+<div class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+<input node="backgroundOptionsHelper.gradient.rotation" id="form-background-gradient-rotation" type="number" min="0" max="360" value="0">
+</div>
+</div>
+<button type="button" class="accordion">Image Options</button>
+<div class="panel">
+<label for="form-hide-background-dots">Hide Background Dots</label>
+<div>
+<input node="imageOptions.hideBackgroundDots" node-data-field="checked" id="form-hide-background-dots" type="checkbox" checked="">
+</div>
+<label for="form-image-size">Image Size</label>
+<div>
+<input node="imageOptions.imageSize" id="form-image-size" type="number" min="0" max="1" step="0.1" value="0.4">
+</div>
+<label for="form-image-margin">Margin</label>
+<div>
+<input node="imageOptions.margin" id="form-image-margin" type="number" min="0" max="10000" value="0">
+</div>
+</div>
+<button type="button" class="accordion">QR Options</button>
+<div class="panel">
+<label for="form-qr-type-number">Type Number</label>
+<div>
+<input node="qrOptions.typeNumber" id="form-qr-type-number" type="number" min="0" max="40" value="0">
+</div>
+<label for="form-qr-mode">Mode</label>
+<div>
+<select node="qrOptions.mode" id="form-qr-mode">
+<option value="Numeric">Numeric</option>
+<option value="Alphanumeric">Alphanumeric</option>
+<option value="Byte" selected="">Byte</option>
+<option value="Kanji">Kanji</option>
+</select>
+</div>
+<label for="form-qr-error-correction-level">Error Correction Level</label>
+<div>
+<select node="qrOptions.errorCorrectionLevel" id="form-qr-error-correction-level">
+<option value="L">L</option>
+<option value="M">M</option>
+<option value="Q" selected="">Q</option>
+<option value="H">H</option>
+</select>
+</div>
+</div>
+<div class="options-export-group">
+<a class="button" id="export-options">Export Options as JSON</a>
+</div>
+</form>
+<div class="col-md-4 qr-code-container">
+<div style="width: 300px">
+<div class="qr-code" id="qr-code-generated"></div>
+<div class="qr-download-group">
+<button id="qr-download">Download</button>
+<label class="hide" for="qr-extension">Extension</label>
+<select id="qr-extension">
+<option value="png" selected="">PNG</option>
+<option value="jpeg">JPEG</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="container container-faq">
+<h2 class="text-center">QR Code là gì?</h2>
+<p>Mã QR (Quick Response) là mã vạch hai chiều hay còn gọi là mã phản hồi nhanh - dùng để mã hóa các thông tin (tối đa lên đến vài trăm ký tự) thành một hình pixel đen trắng. Người dùng có thể giải mã (đọc) các QR code này bằng Điện thoại thông minh thông qua các ứng dụng có sẵn trên app store của iOs hay Android…</p>
+<h2>Cách tạo mã QR code
+<p>
+Để tạo mã QR code khá đơn giản, đầu tiên cần xác định mục đích tạo QR code để lựa chọn template phù hợp được liệt kê sẵn ở phía trên. AhaChat cung cấp khá nhiều tính năng khi tạo QR code: SMS, Email, Vcard, Coupon, Web… hay đơn giản chỉ là một đoạn văn bản bình thường.
+<br>Tiếp theo bạn cần điền các thông tin được yêu cầu tương ứng với mỗi template, sau cùng bấm vào nút <strong>Download</strong> để tải về.
+</p>
+<h2>Một số câu hỏi thường gặp khi tạo mã QR code
+</h2></h2><h4 style="margin-top: 15px;">1. Công cụ tạo mã QR tại AhaChat có miễn phí?</h4>
+<p>ĐÚNG, nó hoàn toàn miễn phí và sẽ mãi mãi như vậy.</p>
+<h4>2. Kích thước của mã QR code được khuyến nghị là bao nhiêu?</h4>
+<p>Không có con số cụ thể, nhưng bạn có thể chỉnh kích thước tối thiểu của QR code là <strong>2cm x 2cm</strong> và đảm bảo nó có thể quét trên bất kỳ thiết bị hay ứng dụng nào.</p>
+<h4>3. Làm sao để chèn logo công ty vào mã QR code</h4>
+<p>Chỉ cần chuẩn bị sẵn logo doanh nghiệp của bạn và upload lên trong lúc tạo mã QR.</p>
+<h4>4. Tôi có thể đo lường số lần quét của mã QR được không?</h4>
+<p>Có thể đo lường số lần quét đối với mã QR động, bạn cần đăng nhập vào tài khoản để thống kê các số liệu muốn biết.</p>
+<h4>5. Nên sử dụng ứng dụng nào để quét mã QR?</h4>
+<p>Vấn đề này không quá quan trọng, bạn có thể sử dụng bất kỳ ứng dụng nào sinh ra để đọc QR code. Trong trường hợp bạn cần một cái tên cụ thể, có thể xem qua ứng dụng iCheck hoặc Barcode Scanner.</p>
+<p>
+AhaChat is a technology company that provides a free chatbot solution on the Facebook platform. In addition, we also develop many other useful free applications such as:
+<a href="../tra-cuu-so-dien-thoai.html" target="_blank">Get phone number from Facebook</a>,
+<a href="../icon-facebook.html" target="_blank">Icon Facebook</a>,
+<a href="../download-video-facebook.html" target="_blank">download Facebook Video</a>,
+<a href="../facebook-text.html" target="_blank">change Facebook font style</a>,
+<a href="../text-overlay-facebook.html" target="_blank">check text overlay</a>,
+<a href="https://ahachat.com/qr-code">generate qr code</a> ...
+Try to enjoy our chatbot tool without any cost!
+</p>
+<br>
+<br>
+</div>
+<script src="../ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="../ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../papnkukn/qrcode-svg/master/dist/qrcode.min.js"></script>
+
+<script src="../npm/%40simonwep/pickr/dist/pickr.min.js"></script>
+<script src="../npm/%40simonwep/pickr/dist/pickr.es5.min.js"></script>
+<script src="../dist/html2canvas.js"></script>
+<script src="../libs/plugins/qr-code/index.js"></script>
+<script>
+          function toTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+          }
+
+          $(function () {
+            $('[data-toggle="popover"]').popover({
+              html: true
+            })
+
+            $(document).on('click', function (e) {
+                $('[data-toggle="popover"],[data-original-title]').each(function () {
+                    //the 'is' for buttons that trigger popups
+                    //the 'has' for icons within a button that triggers a popup
+                    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                        (($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
+                    }
+                });
+            });
+          })
+        </script>
+</body>
+</html>

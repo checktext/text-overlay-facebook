@@ -1,0 +1,2 @@
+function setCookie(cname,cvalue,exdays){const d=new Date();d.setTime(d.getTime()+(exdays*24*60*60*1000));let expires="expires="+d.toUTCString();document.cookie=cname+"="+cvalue+";"+expires+";path=/";}
+setTimeout(function(){const params=new Proxy(new URLSearchParams(window.location.search),{get:(searchParams,prop)=>searchParams.get(prop),});if(params.ybai){const buttons=document.getElementsByClassName('ahachat-btn');for(const button of buttons){const url=new URL(button.href);url.searchParams.set('ybai',params.ybai);button.setAttribute('href',url.href);}}},1000)

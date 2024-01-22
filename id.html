@@ -1,0 +1,2188 @@
+﻿ <!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="id" href="id.html">
+<link rel="alternate" hreflang="vi" href="index.htm">
+<link rel="alternate" hreflang="x-default" href="index.htm">
+<meta name="revisit-after" content="1 days">
+<meta http-equiv="content-language" content="id">
+<meta name="csrf-token" content="aWNzVKl97YpNp7FWCmlzmjQ3diQcBHrzlWbfmR9t">
+<title>AhaChat - AhaChat - Buat Messenger, Instagram, WhatsApp, Google Business Message, dan Zalo - GRATIS</title>
+<meta name="description" content="Otomatiskan penjualan, pemasaran, dan customer support di semua saluran secara gratis.">
+<meta property="og:title" content="AhaChat - AhaChat - Buat Messenger, Instagram, WhatsApp, Google Business Message, dan Zalo - GRATIS">
+<meta property="og:description" content="Otomatiskan penjualan, pemasaran, dan customer support di semua saluran secara gratis.">
+<meta name="web1s" content="eOHY9Es3Vgj7GloabPvQ">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="shortcut icon" type="image/png" href="img/favicon-v2.ico" class="shortcut-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="img/chatbot-icon-57x57-v2.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/chatbot-icon-72x72-v2.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/chatbot-icon-114x114-v2.png">
+<link rel="apple-touch-icon" sizes="144x144" href="img/chatbot-icon-144x144-v2.png">
+<link rel="stylesheet" href="css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" href="libs/plugins/animate.min.css">
+
+<link rel="stylesheet" href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="libs/bower_components/font-awesome/css/font-awesome.min.css">
+
+<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="libs/plugins/moment/moment.min.js"></script>
+<script src="libs/plugins/moment/locale/vi.js"></script>
+<style>
+        body {
+          font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+          font-weight: 400;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+        .app-language {
+          display: none;
+        }
+        .header-templates {
+          display: none!important;
+        }
+        .bg-grd {
+          position: relative;
+        }
+        .bg-grd:before {
+          background: #665fee;
+          background: -moz-linear-gradient(45deg, #665fee 0%, #27c2de 100%);
+          background: -webkit-linear-gradient(45deg, #665fee 0%, #27c2de 100%);
+          background: -o-linear-gradient(45deg, #665fee 0%, #27c2de 100%);
+          background: linear-gradient(45deg, #665fee 0%, #27c2de 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#665fee',endColorstr='#27c2de',GradientType=1);
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+        .bg-grd:after {
+          content: "";
+          position: absolute;
+          bottom: -100px;
+          left: -50px;
+          height: 200px;
+          width: 130%;
+          background-color: #fff;
+          -webkit-transform: rotate(-4deg);
+          -ms-transform: rotate(-4deg);
+          transform: rotate(-4deg);
+        }
+        .homepage-primary .bg-grd-2 {
+          padding-bottom: 100px;
+        }
+        .subtitle {
+          font-size: 20px;
+          line-height: 34px;
+          font-weight: 600;
+          text-align: left;
+          color: #fff;
+          margin-bottom: 24px;
+          letter-spacing: -0.05px;
+        }
+        .title {
+          font-size: 48px;
+          line-height: 56px;
+          margin-bottom: 24px;
+          font-weight: 800;
+          color: #fff;
+        }
+        .description {
+          font-size: 20px;
+          line-height: 34px;
+          margin-bottom: 24px;
+          color: #fff;
+        }
+        .homepage-logo-right {
+          width: 320px;
+          margin: auto;
+        }
+        @media  only screen and (min-width: 560px) {
+          .homepage-logo-right.homepage-logo-en {
+            width: 450px;
+          }
+        }
+        .yt-video-container {
+           position: relative;
+           padding-bottom: 180%;
+           height: 0;
+           overflow: hidden;
+        }
+        .container-wrapper {
+          position: relative;
+        }
+        .get-started {
+          display: flex;
+          gap: 12px;
+        }
+        .btn-1 {
+          width: 240px;
+          background-color: #208ef0;
+          border: 1px solid #46b8da;
+          padding: 12px;
+        }
+        .btn-2 {
+          width: 240px;
+          background-color: #3bbfa6;
+          border-color: #3ed86e;
+          padding: 12px;
+        }
+        .bot-icons {
+          display: flex;
+          gap: 20px;
+          margin-top: 30px;
+        }
+        .bot-icons img {
+          width: 48px;
+        }
+        .bot-icons img:last-child {
+          padding: 4px;
+          background-color: white;
+          border-radius: 10px;
+        }
+        .customers-special-list {
+        	margin-top: 70px;
+        	margin-bottom: 120px;
+        }
+        .customers-special-list-container {
+        	width: 1150px;
+        	margin: auto;
+        }
+        .customer-s-container {
+        	width: auto;
+        	text-align: center;
+        	margin: 0 10px;
+        }
+        .customer-s-container img {
+        	width: auto;
+        	height: 50px;
+        	-webkit-filter: grayscale(100%);
+        	/* Safari 6.0 - 9.0 */
+        	filter: grayscale(100%);
+        }
+        .customer-s-container:nth-child(1), .customer-s-container:nth-child(4), .customer-s-container:nth-child(5), .customer-s-container:nth-child(6) {
+        	opacity: 0.4;
+        }
+        @media  all and (max-width: 1110px) {
+        	.customers-special-list-container {
+        		width: 100%;
+        	}
+        	.customer-s-container {
+        		width: 50%;
+        		text-align: center;
+        		margin: 30px 0;
+        	}
+        }
+
+        .features-container {
+          display: flex;
+          flex-wrap: wrap;
+          margin-right: -12px;
+          margin-left: -12px;
+          -webkit-box-pack: center !important;
+          justify-content: center !important;
+        }
+
+        .container__title {
+          font-size: 42px;
+          line-height: 50px;
+          margin-bottom: 64px;
+          text-align: center;
+          font-weight: bold;
+          color: rgb(42, 54, 67);
+        }
+        .container__des {
+          font-size: 16px;
+          line-height: 28px;
+          color: rgb(49, 63, 78);
+        }
+        .features-container__item {
+          text-align: center;
+          padding: 0px 24px;
+          margin-bottom: 80px;
+        }
+        .features-container__item img {
+          height: 56px;
+          width: 56px;
+          object-fit: contain;
+          margin: auto auto 16px;
+        }
+
+        .features-container__item h3 {
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 20px;
+          margin-bottom: 8px;
+          color: rgb(49, 63, 78);
+        }
+
+        .features-container__item p {
+          font-size: 16px;
+          line-height: 28px;
+          color: rgb(98, 112, 127);
+        }
+
+        @media (min-width: 768px){
+          .features-container .container__title {
+            flex: 0 0 100%;
+            max-width: 100%;
+          }
+          .features-container__item {
+            flex: 0 0 33.3333%;
+            max-width: 33.3333%;
+          }
+        }
+
+        @media (min-width: 1200px){
+          .features-container__item img {
+            margin: auto auto 32px;
+            height: 80px;
+            width: 80px;
+          }
+          .features-container__item h3 {
+            font-size: 24px;
+            line-height: 28px;
+            margin-bottom: 16px;
+          }
+        }
+
+        @media (min-width: 1200px){
+          .container-flex-center {
+            display: flex;
+            flex-wrap: wrap;
+            -webkit-box-align: center !important;
+            align-items: center !important;
+            padding: 100px 0;
+          }
+        }
+
+        .info-container {
+          background-color: #008bff;
+          background-image: url(img/whatsapp/background.png);
+          position: relative;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        .solugen {
+          font-size: 36px;
+          line-height: 48px;
+          margin-bottom: 40px;
+          color: white;
+        }
+
+        .seo-profile {
+          color: white;
+        }
+        .seo-avatar img {
+          width: 100px;
+          height: 100px;
+          border-radius: 100px;
+        }
+        .seo-profile label {
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 24px;
+          margin-bottom: 8px;
+          color: rgb(255, 255, 255);
+        }
+        .seo-profile p {
+          font-size: 14px;
+          line-height: 24px;
+        }
+
+        .see-pricing-container {
+          text-align: center;
+          padding: 100px 0;
+        }
+        .see-pricing-container img {
+          margin: auto;
+        }
+        .see-pricing-container p {
+          margin-bottom: 32px;
+          text-align: center;
+          font-size: 20px;
+          line-height: 34px;
+        }
+
+        .questions {
+          max-width: 600px;
+          margin: auto;
+        }
+        .question-about {
+        	cursor: pointer;
+        	display: inline-block;
+        	border-bottom: 1px solid #ddd;
+        	padding: 5px 0 5px;
+        	width: 100%;
+        	-webkit-transition: all 0.5s ease;
+        	transition: all 0.5s ease;
+        }
+        .questions .question-about .question-about-title {
+        	display: inline-block;
+        	margin-bottom: 0;
+        	width: 100%;
+        }
+        .questions .question-about .question-about-title .icon {
+        	display: block;
+        	float: left;
+        	padding: 0px 2px;
+        	border-radius: 50%;
+        	border: 1px solid #8a8a8a;
+        	-webkit-transition: all 0.3s ease;
+        	transition: all 0.3s ease;
+        }
+        .questions .question-about .question-about-title .icon i.fa {
+        	color: #8a8a8a;
+        }
+        .questions .question-about .question-about-title .question-about-content {
+        	display: block;
+        	float: left;
+        	font-size: 18px;
+        	margin-top: 4px;
+        	margin-left: 10px;
+        	width: 80%;
+        }
+        @media  all and (min-width: 767px) {
+          .questions .question-about .question-about-title .question-about-content {
+            white-space: nowrap;
+          }
+        }
+        .questions .answer-about {
+        	display: none;
+        	float: left;
+        	font-weight: 100;
+        	height: 0;
+        	overflow: hidden;
+        	-webkit-transition: all 0.3s ease;
+        	 transition: all 0.3s ease;
+        }
+        .questions .question-about:last-child {
+        	border-bottom: 0;
+        }
+        .questions .question-about.show-answer .icon {
+        	color: #f64f02;
+        	border: 1px solid #f64f02;
+        }
+        .questions .question-about.show-answer .icon i.fa {
+        	color: #f64f02;
+        }
+        @-webkit-keyframes animateWord {
+        		0% {
+        				opacity: 0
+        		}
+
+        		2% {
+        				opacity: 0;
+        				-webkit-transform: translateY(-10px)
+        		}
+
+        		5% {
+        				opacity: 1;
+        				-webkit-transform: translateY(0)
+        		}
+
+        		17% {
+        				opacity: 1;
+        				-webkit-transform: translateY(0)
+        		}
+
+        		20% {
+        				opacity: 0;
+        				-webkit-transform: translateY(10px)
+        		}
+
+        		80% {
+        				opacity: 0
+        		}
+
+        		to {
+        				opacity: 0
+        		}
+        }
+
+        @-webkit-keyframes animateWordLast {
+        		0% {
+        				opacity: 0
+        		}
+
+        		2% {
+        				opacity: 0;
+        				-webkit-transform: translateY(-10px)
+        		}
+
+        		5% {
+        				opacity: 1;
+        				-webkit-transform: translateY(0)
+        		}
+
+        		to {
+        				opacity: 1
+        		}
+        }
+        .title-strong {
+          font-size: 52px;
+          text-align: left;
+          line-height: 66px;
+          margin-bottom: 10px;
+          color: #fff;
+          font-weight: 600;
+        }
+        .slide-text {
+        	position: relative;
+        	font-size: 60px;
+        	color: #fff;
+        	font-weight: 600;
+        	height: 80px;
+        	padding: 0;
+        	margin: 10px 0 30px;
+        	display: block;
+          white-space: nowrap;
+        }
+        .slide-text .slide-text-item {
+        		animation: animateWord 9s cubic-bezier(.25,.46,.45,.94) 0s 1;
+        		-ms-animation: animateWord 9s cubic-bezier(.25,.46,.45,.94) 0s 1;
+        		-webkit-animation: animateWord 9s cubic-bezier(.25,.46,.45,.94) 0s 1;
+        		animation-delay: 0s;
+        		-webkit-animation-delay: 0s;
+        		-webkit-animation-iteration-count: infinite;
+        		animation-iteration-count: infinite;
+        		line-height: 1;
+        		opacity: 0;
+        		overflow: hidden;
+        		position: absolute;
+        		top: 0;
+        		height: 80px;
+        }
+        @media  all and (max-width: 767px) {
+          .slide-text {
+            white-space: inherit;
+            height: 130px !important;
+          }
+          .slide-text-item {
+            height: 130px !important;
+          }
+        }
+
+        .slide-text .slide-text-item:nth-child(2) {
+        		animation-delay: 1.5s;
+        		-webkit-animation-delay: 1.5s
+        }
+
+        .slide-text .slide-text-item:nth-child(3) {
+        		animation-delay: 3s;
+        		-webkit-animation-delay: 3s
+        }
+
+        .slide-text .slide-text-item:nth-child(4) {
+        		animation-delay: 4.5s;
+        		-webkit-animation-delay: 4.5s
+        }
+
+        .slide-text .slide-text-item:nth-child(5) {
+        		animation-delay: 6s;
+        		-webkit-animation-delay: 6s
+        }
+
+        .slide-text .slide-text-item:nth-child(6) {
+        		animation-delay: 7.5s;
+        		-webkit-animation-delay: 7.5s
+        }
+
+        .slide-text .slide-text-item.last {
+        		--tw-text-opacity: 1;
+        		-webkit-animation: animateWordLast 18s linear 0s 1;
+        		animation: animateWordLast 18s linear 0s 1;
+        		color: rgba(107,114,128,var(--tw-text-opacity));
+        		opacity: 0;
+        		overflow: hidden;
+        		position: absolute
+        }
+        </style>
+<script>
+var LoginHelper = function() {
+
+    this.findGetParameter = (parameterName) => {
+        var result = null,
+            tmp = [];
+        var items = location.search.substr(1).split("&");
+        for (var index = 0; index < items.length; index++) {
+            tmp = items[index].split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        }
+        return result;
+    }
+
+    this.getUtmParams = (getBy) => {
+        let utm = {
+            'utm_campaign': this.findGetParameter('utm_campaign'),
+            'utm_medium': this.findGetParameter('utm_medium'),
+            'utm_source': this.findGetParameter('utm_source'),
+        }
+
+        if (Object.values(utm).filter(function(el) { return el;}).length !== 3) {
+            return '';
+        }
+
+        if (getBy === 'obj') {
+            return utm
+        }
+
+        return '?' + (new URLSearchParams(utm).toString());
+    }
+
+  this.loginFacebookUrl =
+    "https://www.facebook.com/v3.0/dialog/oauth?client_id=" +
+    "170005996917513" +
+    "&redirect_uri=" + encodeURIComponent("https://ahachat.com" + "/social/auth/facebook") +
+    "&scope=email,public_profile,pages_manage_ads,pages_manage_metadata,pages_read_engagement,pages_read_user_content,pages_manage_posts,pages_manage_engagement,pages_messaging,page_events,instagram_basic,instagram_manage_messages,instagram_manage_comments,ads_management,ads_read&response_type=code&auth_type=rerequest"
+
+  this.loginForBusinessUrl = "https://www.facebook.com/v15.0/dialog/oauth?app_id=170005996917513&auth_type=rerequest&client_id=170005996917513&config_id=297887983248163&override_default_response_type=true&response_type=code&redirect_uri=" + encodeURIComponent("https://ahachat.com" + "/social/auth/facebook");
+
+  this.state = {
+    locale: 'id',
+  };
+
+  this.init = () => {
+    // Save ref
+          let ref = null;
+        if (ref) {
+      this.setCookie('ref_code', ref, 30);
+    }
+
+    // Append ref to login url
+    let savedRef = this.getCookie('ref_code');
+    if (savedRef) {
+      this.state.ref_code = savedRef;
+    }
+  }
+
+  this.setCookie = (name, value, days) => {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  this.getCookie = (name) => {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  this.checkLoginStatus = () => {
+    if (this.getCookie('token')) {
+      window.location.replace('/bots' + this.getUtmParams());
+      return;
+    }
+
+    // FB.getLoginStatus((response) => {
+    //   if (response.status === "connected") {
+    //     this.checkRequiredPermissions(response.authResponse.accessToken);
+    //   } else {
+    //     this.loginByFacebook();
+    //   }
+    // });  bug fb
+    this.loginByFacebook();
+  }
+
+  this.checkRequiredPermissions = (token) => {
+    FB.api("/me/permissions", (response) => {
+      let key, result;
+      let check = true;
+      for (key in response.data) {
+        result = response.data[key];
+        if (
+          result.status != "granted"
+        ) {
+          check = false;
+          break;
+        }
+      }
+
+      if (check) {
+        this.login(token);
+      } else {
+        this.loginByFacebook();
+      }
+    });
+  }
+
+  this.loginByFacebook = () => {
+    window.localStorage.setItem("loginByFacebook", true);
+
+          var redirect = null
+    
+    if (
+      redirect
+    ) {
+        this.state.redirect_url = redirect;
+    }
+
+    var utm = this.getUtmParams('obj')
+
+    if (utm) {
+        this.state.utm = utm;
+    }
+
+    // Append ybai to login url
+    const ybai = this.getCookie('ybai');
+    if (ybai) {
+      this.state.ybai = ybai;
+    }
+
+    window.location.replace(this.loginFacebookUrl + "&state=" + encodeURIComponent(JSON.stringify(this.state)));
+  }
+
+  this.login = (token) => {
+    let data = { access_token: token };
+    this.loadingButton(true);
+    $.post("/api/login-facebook", data, (response) => {
+      this.loadingButton(false);
+        window.localStorage.setItem("loginByFacebook", true);
+        this.saveCookie(response.data);
+        window.location.href = '/bots' + this.getUtmParams()
+      })
+      .fail((errors) => {
+        this.loadingButton(false);
+        this.showNotification();
+      });
+  },
+
+  this.loadingButton = (isLoading) => {
+    if (isLoading) {
+      $('.btn-login-ahachat').attr('disabled', 'disabled')
+      $('#login-processing').show()
+    } else {
+      $('.btn-login-ahachat').removeAttr('disabled', 'disabled')
+      $('#login-processing').hide()
+    }
+  }
+
+  this.saveCookie = (data) => {
+    this.setCookie("token", data.token);
+    this.setCookie("user_info", JSON.stringify(data.user_info));
+    setTimeout(() => {
+      if (window.Echo && window.Echo.connector) {
+        window.Echo.connector.options.auth.headers['Authorization'] = 'Bearer ' + data.token;
+      }
+    }, 100);
+  },
+
+  this.showNotification = () => {
+    $.toast({
+      heading: 'homepage.login.fail',
+      text: 'homepage.login.fail_text',
+      showHideTransition: 'fade',
+      icon: 'error',
+      position: 'top-right'
+    })
+  }
+};
+var loginHelper = new LoginHelper()
+loginHelper.init()
+</script>
+
+<script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", {origin:"https://app.cal.com"});
+
+        // Important: Make sure to add `data-cal-link="ahachat/30min"` attribute to the element you want to open Cal on click
+        Cal("ui", {"styles":{"branding":{"brandColor":"#000000"}}});
+        </script>
+
+</head>
+<body>
+<div class="whatsapp-component">
+<div class="banner">
+<div class="bg-grd">
+<header class="header">
+<div class="main-site-header site-inner-content cf">
+<a href="id.html" class="cursor-pointer">
+<img alt="chatbot" class="logo" src="img/LOGO_EXPORT.png">
+<img alt="chatbot" class="logo logo-color" src="img/LOGO_EXPORT_02.png">
+</a>
+<div class="main-site-nav">
+<a class="signin-link cursor-pointer" onclick="loginHelper.checkLoginStatus()">Sign in</a>
+<a href="id/pricing.html">
+<span>Harga</span>
+</a>
+<a target="_blank" href="id/templates.html" class="header-templates">Template</a>
+<a target="_blank" href="id/tutorials.html">Tutorial</a>
+
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Produk kami
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownProduct">
+<li>
+<a target="_blank" href="https://docs.ahachat.com">Dokumen Tutorial</a>
+</li>
+<li>
+<a target="_blank" href="id/tutorials.html">Video Tutorial</a>
+</li>
+<li>
+<a target="_blank" href="https://ahachat.com/blog">Blog</a>
+</li>
+<li>
+<a target="_blank" href="id/icon-facebook.html">Icon Facebook</a>
+</li>
+<li>
+<a target="_blank" href="id/download-video-facebook.html">Unduh Video Facebook</a>
+</li>
+<li>
+<a target="_blank" href="id/text-overlay-facebook.html">Check text overlay</a>
+</li>
+<li>
+<a target="_blank" href="id/facebook-text.html">Teks Facebook</a>
+</li>
+<li>
+<a target="_blank" href="id/qr-code.html">Pembuat QR Code</a>
+</li>
+<li style="display: none">
+<a target="_blank" href="id/thue-invoice.html">Cho thuê TKQC</a>
+</li>
+</ul>
+</div>
+<a target="_blank" href="id.html">Whatsapp</a>
+<div class="dropdown dropdown-language show-sm">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;ID
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+<li onclick="headerComponent.setLanguage('en')">
+<img src="img/en_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;English
+</li>
+<li onclick="headerComponent.setLanguage('id')">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Indonesia
+</li>
+<li onclick="headerComponent.setLanguage('vi')">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Vietnamese
+</li>
+</ul>
+</div>
+</div>
+<div class="app-sign-in-2">
+<div class="dropdown dropdown-language">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;ID
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+<li onclick="headerComponent.setLanguage('en')">
+<img src="img/en_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;English
+</li>
+<li onclick="headerComponent.setLanguage('id')">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Indonesia
+</li>
+<li onclick="headerComponent.setLanguage('vi')">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Vietnamese
+</li>
+</ul>
+</div>
+<a type="button" class="btn btn-info btn-flat btn-login-ahachat" onclick="loginHelper.checkLoginStatus()"><i class="fa fa-facebook-square"></i>&nbsp;&nbsp;Sign in</a>
+</div>
+<div class="mobile-menu js-main-site-nav" onclick="headerComponent.toggleMenuHeader()">
+<div class="hamburger"></div>
+</div>
+</div>
+</header>
+<script>
+var HeaderComponent = function() {
+  this.language = window.localStorage.getItem('ahachat-locale')
+
+  this.toggleMenuHeader = () => {
+    $('body').toggleClass('js-main-menu-open');
+  }
+
+  this.setLanguage = (language) => {
+    this.language = language;
+    window.localStorage.setItem('ahachat-locale', this.language);
+
+    // redirect
+    if (this.language === 'en') {
+      window.location.href = '/en'
+    } else if (this.language === 'id') {
+      window.location.href = '/id'
+    } else {
+      window.location.href = '/'
+    }
+  }
+}
+$(document).ready(function() {
+  window.headerComponent = new HeaderComponent()
+})
+</script>
+<style>
+.pricing-component header.header .main-site-header .logo-text,
+.ladi-wraper header.header .main-site-header .logo-text,
+.about-component header.header .main-site-header .logo-text,
+.carees-social-component header.header .main-site-header .logo-text,
+.video-tutorials-component header.header .main-site-header .logo-text,
+.bot-templates-component header.header .main-site-header .logo-text,
+.affiliate header.header .main-site-header .logo-text,
+.invoice-component header.header .main-site-header .logo-text {
+	 color: #333;
+}
+
+ .pricing-component header.header .main-site-header .app-sign-in a,
+ .ladi-wraper header.header .main-site-header .app-sign-in a,
+ .about-component header.header .main-site-header .app-sign-in a,
+ .carees-social-component header.header .main-site-header .app-sign-in a,
+ .video-tutorials-component header.header .main-site-header .app-sign-in a,
+ .bot-templates-component header.header .main-site-header .app-sign-in a,
+ .affiliate header.header .main-site-header .app-sign-in a,
+ .invoice-component header.header .main-site-header .app-sign-in a,
+
+ .pricing-component header.header .main-site-nav a,
+ .ladi-wraper header.header .main-site-nav a,
+ .about-component header.header .main-site-nav a,
+ .carees-social-component header.header .main-site-nav a,
+ .video-tutorials-component header.header .main-site-nav a,
+ .bot-templates-component header.header .main-site-nav a,
+ .affiliate header.header .main-site-nav a,
+ .invoice-component header.header .main-site-nav a,
+
+ .pricing-component header.header .main-site-nav .dropdown .btn,
+ .ladi-wraper header.header .main-site-nav .dropdown .btn,
+ .about-component header.header .main-site-nav .dropdown .btn,
+ .carees-social-component header.header .main-site-nav .dropdown .btn,
+ .video-tutorials-component header.header .main-site-nav .dropdown .btn,
+ .bot-templates-component header.header .main-site-nav .dropdown .btn,
+ .affiliate header.header .main-site-nav .dropdown .btn,
+ .invoice-component header.header .main-site-nav .dropdown .btn {
+	 color: #337ab7;
+}
+ header.header {
+	 margin-bottom: 50px;
+}
+ header.header .font-new {
+	 text-indent: 5px;
+	 font-size: 12px;
+}
+.show-sm {
+  display: none !important;
+}
+ .carees-social-component header.header, .video-tutorials-component header.header {
+	 margin-bottom: 0;
+}
+ .main-site-header {
+	 text-align: center;
+	 position: relative;
+	 max-width: 1340px;
+	 margin: 0 auto;
+}
+ .main-site-header .dropdown {
+	 display: inline-block;
+}
+ .main-site-header .dropdown .btn {
+	 background: transparent;
+	 color: white;
+	 border: none;
+	 padding: 0px 25px 3px;
+}
+ .main-site-header .dropdown .btn:focus {
+	 border: 0;
+	 outline: none;
+	 box-shadow: none;
+   background-color: transparent;
+   color: white;
+}
+ .main-site-header .dropdown .dropdown-menu {
+	 margin-top: -20px;
+}
+ .main-site-header .dropdown .dropdown-menu li a {
+	 padding: 10px;
+	 color: #337ab7;
+	 display: block;
+}
+ .main-site-header .logo {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 left: 60px;
+	 width: 150px;
+}
+ .main-site-header .logo-color {
+	 display: none;
+}
+ .main-site-header .logo img {
+	 width: 120px;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header {
+		 height: 100px;
+	}
+	 .main-site-header .dropdown {
+		 display: block;
+		 line-height: 0;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	}
+	 .main-site-header .dropdown .btn {
+		 padding: 20px 0;
+		 color: white !important;
+	}
+	 .main-site-header .dropdown .dropdown-menu {
+		 margin-top: -2px;
+		 width: 100%;
+	}
+	 .main-site-header .dropdown .dropdown-menu li a {
+		 color: #337ab7 !important;
+	}
+  .show-sm {
+    display: block !important;
+  }
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .logo {
+		 left: 15px;
+		 top: 45px;
+	}
+}
+ @media  screen and (max-width: 600px) {
+	 .main-site-header .logo {
+		 left: 20px;
+	}
+}
+ .main-site-header .hamburger, .main-site-header .hamburger:before, .main-site-header .hamburger:after {
+	 width: 17px;
+	 height: 3px;
+	 background: rgba(41, 70, 97, 0.6);
+	 border-radius: 1px;
+	 -webkit-transition: all 0.3s ease;
+	 transition: all 0.3s ease;
+}
+ .main-site-header .hamburger {
+	 margin: 4px 9px;
+	 position: relative;
+	 display: inline-block;
+}
+ .main-site-header .hamburger:before, .main-site-header .hamburger:after {
+	 content: '';
+	 display: block;
+	 right: 0;
+	 position: absolute;
+}
+ .main-site-header .hamburger:before {
+	 top: -6px;
+}
+ .main-site-header .hamburger:after {
+	 top: 6px;
+}
+ .main-site-header .mobile-menu {
+	 display: none;
+	 color: #fff;
+	 padding: 9px 0;
+	 height: 30px;
+	 cursor: pointer;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+	 z-index: 401;
+	 position: absolute;
+	 top: 30px;
+	 right: 60px;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .mobile-menu {
+		 display: block;
+		 right: 45px;
+	}
+	 .main-site-header .logo-text {
+		 left: 75px;
+	}
+}
+ @media  screen and (max-width: 768px) {
+	 .main-site-header .mobile-menu {
+		 right: 20px;
+		 top: 24px;
+	}
+	 .main-site-header .logo-text {
+		 top: 43px;
+		 left: 75px;
+	}
+}
+ .main-site-header .mobile-menu:hover {
+	 color: #fff;
+}
+ .main-site-header .mobile-menu:hover .hamburger, .main-site-header .mobile-menu:hover .hamburger:before, .main-site-header .mobile-menu:hover .hamburger:after {
+	 background: #294661;
+}
+ .main-site-header .main-site-nav {
+	 display: inline-block;
+	 line-height: 90px;
+}
+ .main-site-header .main-site-nav .main-site-nav-extended {
+	 display: none;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .main-site-nav {
+		 height: 100%;
+		 overflow-y: auto;
+		 -webkit-overflow-scrolling: touch;
+		 z-index: 400;
+		 background: #e6692f;
+		 padding: 45px;
+		 padding-top: 90px;
+		 width: 350px;
+		 text-align: left;
+		 -webkit-transform: translateX(350px);
+		 transform: translateX(350px);
+		 opacity: 0;
+		 visibility: hidden;
+		 position: fixed;
+		 top: 0;
+		 right: 0;
+	}
+	 .main-site-header .main-site-nav .main-site-nav-extended {
+		 display: block;
+	}
+}
+ @media  screen and (max-width: 768px) {
+	 .main-site-header .main-site-nav {
+		 padding: 90px 20px 0 20px;
+	}
+}
+ @media  screen and (max-width: 600px) {
+	 .main-site-header .main-site-nav {
+		 width: 250px;
+		 -webkit-transform: translateX(250px);
+		 transform: translateX(250px);
+	}
+}
+ .main-site-header .main-site-nav.main-site-nav-closing {
+	 -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+ .main-site-nav a {
+	 display: inline-block;
+	 padding: 0 25px;
+	 color: white;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+}
+ .main-site-nav a:hover {
+	 color: #fff;
+}
+ .app-sign-in-2 {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 right: 50px;
+   z-index: 1;
+}
+.dropdown-language img {
+  width: 30px;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu {
+  padding: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu li {
+  cursor: pointer;
+  padding: 4px 12px;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu li:hover {
+  background-color: #eee;
+}
+ .app-sign-in-2 .btn-login-ahachat {
+	 border-radius: 30px;
+	 background-color: #208ef0;
+   color: white;
+}
+.app-sign-in-2 .btn-login-ahachat:hover {
+  color: white;
+}
+ .pricing-component .main-site-header .logo-color,
+ .ladi-wraper .main-site-header .logo-color,
+ .about-component .main-site-header .logo-color,
+ .carees-social-component .main-site-header .logo-color,
+ .video-tutorials-component .main-site-header .logo-color,
+ .bot-templates-component .main-site-header .logo-color,
+ .affiliate .main-site-header .logo-color,
+ .invoice-component .main-site-header .logo-color {
+	 display: inline;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-nav a {
+		 color: #fff !important;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		 padding: 20px 0;
+		 display: block;
+		 line-height: normal;
+	}
+	 .main-site-nav a:hover {
+		 color: #fff;
+	}
+	 .main-site-header .app-sign-in-2 {
+		 display: none;
+	}
+}
+ .main-site-header .main-site-nav-link-outside {
+	 color: #fff;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+}
+ .main-site-header .main-site-nav-link-outside:hover {
+	 color: #fff;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .main-site-nav-link-outside {
+		 color: #fff;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		 padding: 20px 0;
+		 display: block;
+		 line-height: normal;
+	}
+	 .main-site-header .main-site-nav-link-outside:hover {
+		 color: #fff;
+	}
+}
+ .main-site-header .app-sign-in {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 right: 180px;
+}
+ .main-site-header .app-sign-in .icon-flag {
+	 width: 22px;
+}
+ @media  screen and (min-width: 1024px) {
+	 .main-site-nav a.signin-link {
+		 display: none;
+	}
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .app-sign-in {
+		 display: none;
+	}
+}
+ .main-site-header .app-sign-in a {
+	 color: #fff;
+}
+ .js-main-menu-open .mobile-menu {
+	 color: #fff;
+	 position: fixed;
+	 border-radius: 2px;
+}
+ .js-main-menu-open .mobile-menu .hamburger {
+	 background: none;
+}
+ .js-main-menu-open .mobile-menu .hamburger:before, .js-main-menu-open .mobile-menu .hamburger:after {
+	 top: 0;
+	 background: #fff;
+	 -webkit-transform: rotate(-45deg);
+	 transform: rotate(-45deg);
+}
+ .js-main-menu-open .mobile-menu .hamburger:after {
+	 -webkit-transform: rotate(45deg);
+	 transform: rotate(45deg);
+}
+ .js-main-menu-open .mobile-menu:hover {
+	 color: #fff;
+}
+ .js-main-menu-open .mobile-menu:hover .hamburger {
+	 background: none;
+}
+ .js-main-menu-open .mobile-menu:hover .hamburger:before, .js-main-menu-open .mobile-menu:hover .hamburger:after {
+	 background: #fff;
+}
+ .js-main-menu-open .main-site-nav {
+	 -webkit-transform: translateX(0);
+	 transform: translateX(0);
+	 opacity: 1;
+	 visibility: visible;
+	 -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
+<div class="row">
+<div class="container" style="margin-bottom: 200px;">
+<div class="col-md-6" style="margin-top: 40px; padding-right: 50px;">
+<h1 class="title-strong">
+CHATBOT MARKETING
+<span class="slide-text">
+<span class="slide-text-item">WhatsApp Business API</span>
+<span class="slide-text-item">Facebook Messenger</span>
+<span class="slide-text-item">Instagram DM</span>
+<span class="slide-text-item">Google Business Message</span>
+</span>
+</h1>
+<h2 class="description">Wujudkan bisnis Anda di platform messaging terbesar di dunia, yang secara resmi didukung oleh WhatsApp, Messenger, Instagram, dan Google dengan Alat Pemasaran Chatbot</h2>
+<div class="get-started">
+<a type="button" class="btn btn-info btn-flat btn-1" data-cal-link="ahachat/30min">
+Jadwal Demo
+</a>
+<a type="button" class="btn btn-info btn-flat btn-2" onclick="loginHelper.checkLoginStatus()">
+Mulai
+</a>
+</div>
+<div class="bot-icons">
+<img src="img/messenger_2.svg">
+<img src="img/whatsapp_logo.svg">
+<img src="img/instagram_logo.png">
+<img src="img/google_logo.svg">
+</div>
+</div>
+<div class="col-md-6" style="margin-top: 25px;">
+<div class="homepage-logo-right homepage-logo-en">
+<img src="img/mobi-chatbot-id.png" class="img-responsive">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 customers-special-list">
+<div class="customers-special-list-container">
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/1.jpg" class="img-responsive">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/2.jpg" class="img-responsive">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/3.jpg" class="img-responsive">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/4.jpg" class="img-responsive">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/5.jpg" class="img-responsive">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/6.jpg" class="img-responsive">
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">Sebagai partner resmi Facebook dan Google</h2>
+<div class="feature-description">Kami bangga menemani kesuksesan ratusan ribu pelanggan</div>
+</div>
+<div class="container">
+<div class="col-md-6 partner">
+<div class="text-center">
+<a href="https://www.facebook.com/business/partner-directory/search?solution_type=messaging&ref=fmp_nav_bar&id=4405847059459330&section=overview" target="_blank">
+<img src="img/facebook_partner.png" class="img-responsive" alt="chatbot">
+</a>
+<div class="title">Mitra Facebook Messaging di Vietnam</div>
+<hr>
+<div class="feature-description">Mengatasi standar paling ketat, AhaChat resmi menjadi mitra Facebook di Vietnam. Kami percaya bahwa, dengan pengalaman kami, AhaChat akan menemani pelanggan untuk menguatkan reputasi mereka dan menjadi jembatan promosi produk yang paling solid di lebih dari 75 juta pengguna Facebook.</div>
+</div>
+</div>
+<div class="col-md-6 partner">
+<div class="text-center">
+<a href="https://businessmessages.google/partners/" target="_blank">
+<img src="img/google-partner-01.png" class="img-responsive" style="padding: 10px" alt="chatbot">
+</a>
+<div class="title">Mitra Teknologi dari Google Business Message</div>
+<hr>
+<div class="feature-description">Menjadi "salah satu mitra pertama" Google Business Message di Asia Tenggara, AhaChat membantu bisnis dan pelaku bisnis menerapkan kampanye pemasaran & periklanan dengan cepat di platform Google Ads dan Maps yang dikombinasikan dengan Chatbot. Cepat, efektif, dapat mengoptimalkan anggaran, membantu tingkatkan kesadaran brand, dan menjangkau jutaan calon pelanggan setiap hari</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+.feature-de {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.partner {
+    margin-bottom: 50px;
+}
+.partner .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #505050;
+    margin-top: 25px;
+}
+.partner img {
+    height: 80px;
+    display: inline;
+}
+.feature-title {
+    color: rgba(0,0,0,.75);
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 600;
+    margin: 0 0 10px
+}
+.feature-description {
+    color: rgba(0,0,0,.55);
+    font-size: 17px;
+    line-height: 24px;
+    margin: 0 0 10px
+}
+</style>
+</div>
+<div class="container" style="margin-top: 50px">
+<div class="features-container">
+<h2 class="container__title">
+Bangun bisnis Anda di WhatsApp bersama AhaChat
+</h2>
+<div class="features-container__item">
+<img src="img/whatsapp/feature_1.svg" class="img-responsive">
+<h3>Berikan konten yang berharga</h3>
+<p>Bagikan dan terima teks, gambar, lokasi, atau dokumen khusus untuk kebutuhan bisnis dan pelanggan Anda.</p>
+</div>
+<div class="features-container__item">
+<img src="img/whatsapp/feature_2.svg" class="img-responsive">
+<h3>Hubungkan nomor apa pun</h3>
+<p>Daftarkan nomor apa pun sebagai WhatsApp Bisnis Anda—nomor handphone atau jaringan telepon tetap (PSTN).</p>
+</div>
+<div class="features-container__item">
+<img src="img/whatsapp/feature_3.svg" class="img-responsive">
+<h3>Otomatiskan notifikasi</h3>
+<p>Kirim notifikasi otomatis ke pelanggan Anda, seperti konfirmasi pesanan, pengingat janji temu, dan lainnya.</p>
+</div>
+<div class="features-container__item">
+<img src="img/whatsapp/feature_4.svg" class="img-responsive">
+<h3>Kirimkan 2FA dan OTP</h3>
+<p>Manfaatkan enkripsi end-to-end untuk autentikasi dua faktor yang dikirim melalui WhatsApp.</p>
+</div>
+<div class="features-container__item">
+<img src="img/whatsapp/feature_5.svg" class="img-responsive">
+<h3>Percakapan berbasis AI</h3>
+<p>Tidak hanya sekedar notifikasi, bangun hubungan pelanggan yang lebih baik menggunakan teknologi Percakapan berbasis AI milik AhaChat.</p>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="embedso-widget" data-code="1ed7622e-b65f-6234-8b6c-42010a940002"></div>
+<script src="video_preview/sdk.js" type="application/javascript" async=""></script>
+</div>
+<div class="container container-flex-center">
+<div class="col-md-6">
+<img src="img/whatsapp/earth.svg" class="img-responsive">
+</div>
+<div class="col-md-6">
+<h2 class="container__title" style="text-align:left; margin-bottom: 20px">Menjadi bisnis yang terverifikasi</h2>
+<p class="container__des">Buat profil bisnis resmi di WhatsApp dan langsung hubungkan bisnis Anda ke jutaan pelanggan. Tingkatkan kepercayaan dan loyalitas pelanggan dengan mengirimkan pesan bermerek, langsung di aplikasi messaging yang mereka sukai.</p>
+</div>
+</div>
+<div class="container container-flex-center">
+<div class="col-md-6">
+<h2 class="container__title" style="text-align:left; margin-bottom: 20px">Bekerja sama dengan asisten virtual</h2>
+<p class="container__des">Integrasikan chatbot pintar ke dalam akun WhatsApp Business Anda untuk menjawab FAQ lebih cepat, memindahkan pekerjaan dari tim customer support, dan memberikan pengalaman pelanggan yang lancar dengan mudah.</p>
+</div>
+<div class="col-md-6">
+<img src="img/whatsapp/wa-4.png" class="img-responsive">
+</div>
+</div>
+<div class="container container-flex-center">
+<div class="col-md-6">
+<img src="img/whatsapp/sa.png" class="img-responsive">
+</div>
+<div class="col-md-6">
+<h2 class="container__title" style="text-align:left; margin-bottom: 20px">Mempersingkat waktu untuk dukungan pelanggan Anda</h2>
+<p class="container__des">Biarkan tim customer support Anda mengelola satu atau bahkan beberapa nomor WhatsApp untuk melayani jutaan pelanggan melalui dashboard yang terpusat.</p>
+</div>
+</div>
+<div class="container container-flex-center">
+<div class="col-md-6">
+<h2 class="container__title" style="text-align:left; margin-bottom: 20px">Kelola WhatsApp Business API Anda dengan mudah</h2>
+<p class="container__des">Kelola akun WhatsApp Business Anda dalam dashboard yang mudah digunakan. Mulai dari mendaftarkan nomor WhatsApp Anda hingga broadcast template pesan Anda, hanya semudah tunjuk dan klik.</p>
+</div>
+<div class="col-md-6">
+<img src="img/whatsapp/wa-2.svg" class="img-responsive">
+</div>
+</div>
+<div class="container-flex-center info-container">
+<div class="col-md-6 col-md-offset-3">
+<div class="solugen">“Kami ada di sini untuk membangun hubungan yang bermakna antara bisnis dan pelanggan.”</div>
+<div class="seo-info">
+<div class="seo-avatar">
+<img class="img-responsive" src="img/peoples/ty_nguyen.about.jpg">
+</div>
+<div class="seo-profile">
+<label>Ty Nguyen</label>
+<p>CEO of AhaChat</p>
+</div>
+</div>
+</div>
+</div>
+<div class="container see-pricing-container text-center">
+<img src="img/whatsapp/cta.svg" class="img-responsive">
+<h2 class="container__title" style="margin-bottom: 20px">Semua Fitur tanpa label harga</h2>
+<p>Selamanya gratis. Sesederhana itu.</p>
+</div>
+<div class="container" style="margin-bottom: 100px">
+<h2 class="container__title" style="margin-bottom: 20px">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+<div class="questions">
+<div class="question-about" onclick="toggleAnswer('#question0')" id="question0">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Mengapa AhaChat menyediakan layanan gratis?</span>
+</h5>
+<div class="answer-about">Model bisnis kami tidak didasarkan pada jumlah pelanggan atau fitur. Pendapatan kami berasal dari bisnis yang ingin menghapus nama merek AhaChat ($49/bulan). Jadi, Anda dapat menggunakan AhaChat secara gratis.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question1')" id="question1">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Berapa banyak bot yang diizinkan untuk dibuat dalam AhaChat?</span>
+</h5>
+<div class="answer-about">Tak terbatas. Anda dapat membuat bot/halaman sebanyak yang Anda suka, dari halaman utama hingga halaman sekunder.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question2')" id="question2">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Apakah ada batasan dalam fitur gratis?</span>
+</h5>
+<div class="answer-about">Tidak ada. Jika dibandingkan dengan platform bot lain, Anda akan menemukan bahwa AhaChat tidak hanya memiliki fitur lengkap tetapi juga mudah digunakan.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question3')" id="question3">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Apakah kami akan kehilangan pelanggan saat beralih ke AhaChat?</span>
+</h5>
+<div class="answer-about">Tidak. Kabar baiknya bahwa tidak hanya pelanggan lama tetapi juga pelanggan yang telah masuk ke halaman Anda sebelumnya semuanya akan dikonversi ke AhaChat.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question4')" id="question4">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Bisakah kita mengatur timer untuk mengaktifkan bot?</span>
+</h5>
+<div class="answer-about">Ya, Anda dapat menjadwalkan untuk mengaktifkan bot Anda saat tidak ada perwakilan customer service, kapan pun. Selain itu, mengaktifkan/menonaktifkan bot tidak memengaruhi pengumpulan data untuk campaign pemasaran selanjutnya.</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div class="row homepage-feature support-team">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title" style="margin-bottom: 20px;">Customer Support selalu siap membantu Anda</h2>
+<div class="col-xs-12" style="height: 80px;">
+<div class="support-team-list">
+<img src="img/peoples/ty_nguyen.jpg" style="right: 280px; z-index: 100 - 0">
+<img src="img/peoples/duc_nguyen.jpg" style="right: 245px; z-index: 100 - 1">
+<img src="img/peoples/linh_truong.jpg" style="right: 210px; z-index: 100 - 2">
+<img src="img/peoples/tuan_vu.jpg" style="right: 175px; z-index: 100 - 3">
+<img src="img/peoples/phuong_nguyen.jpg" style="right: 140px; z-index: 100 - 4">
+<img src="img/peoples/long_vo.jpg" style="right: 105px; z-index: 100 - 5">
+<img src="img/peoples/trang_dang.jpg" style="right: 70px; z-index: 100 - 6">
+<img src="img/peoples/yen_tran.jpg" style="right: 35px; z-index: 100 - 7">
+<img src="img/peoples/supportor_1.jpg" style="right: 0px; z-index: 100 - 8">
+</div>
+</div>
+<div class="feature-description">Tim support kami bekerja sepanjang waktu untuk membantu Anda kapan pun Anda memiliki pertanyaan.<br>Kirimkan pesan kepada kami dan kami akan menghubungi Anda kembali.</div>
+<a class="btn btn-info btn-flat btn-chat-me" href="https://messenger.com/t/ahachatter?ref=hotro" target="_blank">
+Chat dengan kami
+</a>
+</div>
+<div class="col-xs-12 col-lg-8 col-lg-offset-2">
+<div class="team-overview row">
+<div class="col-md-4 text-center">
+<h1>24/7</h1>
+<h4>selalu tersedia</h4>
+</div>
+<div class="col-md-4 text-center">
+<h1>5 minute</h1>
+<h4>rata-rata waktu respons dalam live chat</h4>
+</div>
+<div class="col-md-4 text-center">
+<h1>97%</h1>
+<h4>tingkat kepuasan</h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+.support-team .feature-de {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.support-team .feature-title {
+  color: rgba(0,0,0,0.75);
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.support-team .feature-description {
+  color: rgba(0,0,0,0.55);
+  font-size: 17px;
+  line-height: 24px;
+  margin: 0 0 10px;
+}
+.support-team .support-team-list {
+  position: relative;
+  width: 330px;
+  margin: auto;
+  height: 50px;
+  margin-bottom: -20px;
+}
+.support-team .support-team-list img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: #fff;
+}
+.btn-chat-me {
+  background-color: #ee4e35;
+  border: 0;
+  border-radius: 50px;
+  padding: 12px 30px;
+  margin-top: 10px;
+}
+.btn-chat-me:hover {
+  background-color: #f3573f;
+}
+.support-team .team-overview > div:nth-child(2), .team-overview > div:nth-child(3) {
+  border-left: 1px solid #ddd;
+}
+.support-team .team-overview h1 {
+  color: #ee4e35;
+  margin-top: 0;
+  font-weight: bold;
+}
+</style>
+</div>
+<div class="container" style="margin-top: 50px; margin-bottom: 50px">
+<style>
+.banner-free {
+  background: #665fee;
+  background: -moz-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  background: -webkit-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  background: -o-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  background: linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#665fee',endColorstr='#27c2de',GradientType=1 );
+  padding: 20px 20px 40px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  margin: 15px auto;
+}
+.banner-free p {
+  font-size: 16px;
+}
+.banner-free .btn {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 10px 30px;
+  margin-top: 16px;
+  transition: all .4s ease;
+  font-size: 16px;
+  color: white;
+}
+.banner-free .btn:hover {
+  background-color: white;
+  color: #3ca1e3;
+}
+</style>
+<div class="banner-free">
+<h1>Hanya perlu 5 menit untuk membuat chatbot pertama Anda</h1>
+<p>Fitur dan pelanggan tidak terbatas</p>
+<a class="btn" onclick="loginHelper.checkLoginStatus()">Coba gratis sekarang</a>
+</div>
+</div>
+<footer class="page-footer font-small unique-color-dark">
+<div class="footer-container">
+<div class="container text-center text-md-left mt-5">
+<div class="row mt-3">
+<div class="col-md-5 col-lg-5 col-lg-offset-1 mx-auto">
+<img src="img/LOGO_EXPORT_02.png" class="logo">
+<h4 class="color-darkgrey" style="color: white"><b>AhaChat Co.,Ltd</b></h4>
+<div id="dirrect-countdown-1s"></div>
+<div id="dirrect-code-1s"></div>
+<script data-no-optimize="1">
+                      //nowprocket
+                      var dirrectSiteCode = "q6cgaNwH5c"
+                    </script>
+<script src="site.js"></script>
+<p class="color-darkgrey">
+Email: <a href="cdn-cgi/l/email-protection.html#1e6a6770796b677b705e7f767f7d767f6a307d7173" style="text-decoration: underline;"><span class="__cf_email__" data-cfemail="16626f7871636f737856777e77757e77623875797b">[email&#160;protected]</span></a>&nbsp;&nbsp; - &nbsp;&nbsp;Website: <a href="index.htm" style="text-decoration: underline;">https://ahachat.com</a><br>
+Hotline: 0912543223 (8:00 – 22:00 Senin sampai Minggu)<br>
+Enterprise Registration Certificate: 0401907490<br>
+Date of Issue: 21/06/2018. Place of Issue: Danang DPI<br>
+Alamat: 248 Dien Hong Street, Hoa Xuan Ward, Cam Le District, Da Nang City
+</p>
+<p class="color-darkgrey no-break"><b>Kantor Cabang</b> <br>
+<i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Lantai 2, 12/9 Cinema, 22 Quang Trung, Vinh City, Nghe An - (+84)9125 43223
+<br> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Lantai 8, Union Building, 224 Dien Bien Phu, Ward 7, District 3, HCMC - (+84)8357 08333
+<br> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Lantai 22, Building N09B2, Thanh Thai Street, Dich Vong, Cau Giay, Hanoi - (+84)3866 31778
+</p>
+<div class="social-links"><a href="https://www.facebook.com/ahachatter" target="_blank" class="social-link facebook-link"><i class="fa fa-facebook"></i></a> <a href="https://www.youtube.com/playlist?list=PLPPV8v125zxQkue8hpGi2V_zBEs-HkzZP" target="_blank" class="social-link youtube-link"><i class="fa fa-youtube-play"></i></a></div>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">PERUSAHAAN</h4>
+<p><a href="about.html" target="_blank">Tentang Kami</a></p>
+<p><a href="pricing.html" target="_blank">Harga</a></p>
+<p><a href="careers/social-media-manager.html" target="_blank">Karir</a></p>
+<p><a href="https://drive.google.com/open?id=1QN-gLQvHE5fb8d60PjuzgLyuCbxTJYOs" target="_blank">Brand Kits</a></p>
+<div class="mobile-apps">
+<a href="https://apps.apple.com/sa/app/ahachat-chatbot-marketing/id1560826927" target="_blank">
+<img src="img/app-store.png" alt="chatbot">
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.ahachat" target="_blank">
+<img src="img/play-store.png" alt="chatbot">
+</a>
+</div>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">PRODUK KAMI</h4>
+<p><a href="https://help.ahachat.com/" target="_blank">Panduan Memulai</a></p>
+<p><a class="cursor-pointer" data-toggle="modal" data-target="#modal-compare">Bandingkan AhaChat</a></p>
+<p><a href="https://messenger.com/t/ahachatter?ref=ask" target="_blank">Hubungi Kami</a></p>
+<p><a href="https://fb.com/groups/ahachat" target="_blank">Komunitas</a></p>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">SYARAT & KETENTUAN</h4>
+<p><a href="terms-of-service/en.html" target="_blank">Ketentuan Layanan</a></p>
+<p><a href="privacy-policy/en.html" target="_blank">Keamanan & Privasi</a></p>
+<p><a href="payment-policy/index.htm" target="_blank">Kebijakan Pembayaran</a></p>
+<div class="fb-partner" style="margin-bottom: 10px;"><a href="http://online.gov.vn/Home/WebDetails/88008" target="_blank"><img src="img/bo-cong-thuong.png" class="img-responsive" alt="chatbot"></a></div>
+<div class="fb-partner" style="margin-bottom: 10px;"><a href="https://www.facebook.com/business/partner-directory/search?solution_type=messaging&ref=fmp_nav_bar&id=4405847059459330&section=overview" target="_blank"><img src="img/facebook_partner.png" class="img-responsive" alt="chatbot"></a></div>
+</div>
+</div>
+<div class="row color-darkgrey copyright mt20 mb20">
+<div class="col-xs-12 col-md-3 col-md-offset-1 text-left"><b><a href="https://status.ahachat.com/" target="_blank">System Status</a></b></div>
+<div class="col-xs-12 col-md-4 text-center">© 2021 AhaChat Co.,Ltd</div>
+<div class="col-xs-12 col-md-3 text-right">Made in Vietnam</div>
+</div>
+</div>
+</div>
+<div id="modal-compare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+<div role="document" class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+<h4 id="myModalLabel" class="modal-title bold">SO SÁNH NỀN TẢNG KHÁC</h4>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-xs-12">
+<h2 class="mt0 mb0">Rẻ Hơn Đến 10 Lần</h2>
+<div class="mb10"></div>
+Chatfuel và Manychat tính phí cho bạn dựa trên số lượng khách hàng của mỗi page. Nghĩa là dù bạn không gửi tin nhắn marketing đến những khách hàng này thì bạn vẫn bị tính tiền.
+<div class="mb10"></div>
+Tại AhaChat, chúng tôi làm điều ngược lại là không tính phí dựa trên số lượng khách hàng và cũng không tính phí theo từng page riêng rẽ, mà chỉ tính cho số lượng cuộc trò chuyện bot gửi đi từ tất cả các page cộng lại (nhiều tin nhắn qua lại giữa bot và khách hàng vẫn chỉ tính là 1 cuộc trò chuyện).
+<div class="mb10"></div>
+Điều đó có nghĩa là nếu bạn có 2 page sử dụng Manychat/Chatfuel, page thứ nhất có 1,000 khách hàng và page thứ 2 có 25,000 khách hàng thì số tiền bạn phải trả lên đến $15 + $145 = $160 mỗi tháng. Còn nếu sử dụng AhaChat (giả sử 1 tháng bạn có 4 cuộc trò chuyện với khách hàng thì 100,000 cuộc trò chuyện tương ứng 25,000 khách hàng) thì số tiền bạn chỉ phải trả là $15 mỗi tháng.
+<h2 class="mb0">Free Không Giới Hạn Tính Năng</h2>
+<div class="mb10"></div>
+Ở Chatfuel, nếu số lượng khách hàng của bạn vượt quá 1,000 hay 5,000 thì bot sẽ ngừng hoạt động. Thêm vào đó, phiên bản Free sẽ không thể quản lý danh sách khách hàng.
+<div class="mb10"></div>
+Ở Manychat, bạn sẽ bị giới hạn số lượng Thẻ, Chăm Sóc và Công Cụ Tăng Trưởng khi sử dụng phiên bản Free.
+<div class="mb10"></div>
+Ở AhaChat, bạn không bị giới hạn số lượng tính năng sử dụng ở phiên bản Free. Thêm vào đó, chúng tôi còn hỗ trợ những tính năng độc quyền là Chatbot Viral, Coupon, Lucky Spin, Web Form, Vip Card để giúp tăng trưởng khách hàng tiềm năng nhanh chóng.
+</div>
+<div class="row">
+<div class="col-xs-12">
+<div class="col-xs-12">
+<div class="table-responsive">
+<table class="pricing-table bold">
+<tbody>
+<tr>
+<td>
+<div style="margin-top: 20px;"></div>
+Giá &amp; Tính Năng
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td>
+<div class="logo-compare-modal"><img src="img/chatbot-icon-57x57-v2.png" alt="Ahachat"></div>
+AhaChat
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td>
+<div class="logo-compare-modal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEUgjvD///9cks4ajvIAhe8AiO8Ahu8okvAQivAAg+8Hie/0+v7c6/zC3Pr4/P5aktBRofJ+t/VsrfTv9v51lLigx/fn8v3P4/tysPSIu/Vep/OlyffX6PyWw/dJnvLY6fy01Pk0lvG92Pmtz/iGuvZjqfORwPZvr/Sx0vj2no24AAAF8UlEQVR4nO2d20LqOhBAg0nayEUKiCCVSwWB///CTUE8eiTQZma0E2c9+WKbRZqkmSRT9di/i5n+o+o7HTOur+60ihl9J4bcEUP+iCF/xJA/YsgfMeSPGPJHDPkjhvwRQ/6IIX/EkD9iyB8x5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjyRwz589OGWjvnbPuAPfyhNf29f8zwoGaNcWk2HGzn4zwfj7eb3azQibGO1PNHDEs5nT2vXkatb3S6r9uZSg6aVDcnN9TOuLd197vbZ55WU2UsSUGoDZ1Rm8l1uzPdeWEIapLUUFs7raj3Lvms0SuS0FAnaf5Qx+/I68I43GJQGWqzeK2td2Qyu8csEZGhtmkvzK9kmRm8MtEYOrcO9yvppRarLBSG2gzqt7//M0+QikVg2Fa1+k8fTwucasQ3NFMMv5IxSo+DbaiTwB70Ei8KYeBANnTpE55gq/WQwZ9UXEObwbuYrwwMtEyohnaH7HdgDFXENEwG+IKt1hqoiGiYbCgEW63VfUMMLUkNlqxBimiG7SGVILAtYhm6BZ3goUcFDBpIhjrFHia+Mgsf+pEME9SB/gIquJA4hmZFLNjqtn/V0FV+2R5N1ptdtijStCiy4SDvVa37URFaSgxDraoVcj1MTWLdRxoO59rWqFl+I9JYMgkPUGEYmgrzwYd8YS5GfbVum2J+oyrHgKgGgmGFZ/RpejXce5CcXfuV3hJA8RAMbeeW3/B2gNCZ7MX37ylolgg3tPkNwW1SqYTaDC/+VD1gjBhsqNPrfsvqUTNnL8QHttDAItjwRtQirxVr+RbjQZjkQw1vVOGuZh9hiy9PahfWBE8lBBraq28z9WvAqU9rjK8YMVOg4fXBfhFQA1p/KD7Dpr7nC8IM22PUGjyWKD09qB2EONvxejBDc2Hd+kzopO401exixEpLYIbuzS+4D56Yl/GQPdrqE8ww8S+hPQEiD+Z1Aw6TfgAztP4qXIB6aMRlYJDhlXfuPeRlGRWQofU+pA80O0dCABkm3vDTPDjogA7EUGf+KkQtJAiIoZ37DPNIDBPvvDxtTCsE1qGvGb7gjWZwAIa68FXhAHdXEwyAoX80DA9QEwAw9M4ruk16SCGG3vG+ST0pyND4YtW7JjVDiGHii5MGLzGQAOlpPIJNeqFREEPvYNGsjgZi6FvX7kVThzOP4T4WQ+fbADVuzsypBGDo2z+zbdRgQWH4HL3hJnrD+OswnnYYfV/qHQ/XsYyHf+CdpvAYRvNe6p1bdGKpQ/8+mibFEmnm+MNGDRckcZpGDRcSa7tC/PFSf8x72qSGCFq38HWmjWqIJGtPvcYscSui9cNlk7oakjVgyE4TdEjW8UdwQ4fWlEn2YnTAhqY7x9oURbKfBlyHZfwAuvv5DMmeKKihduU4BNzB/nExin1t0Nc2835Z0CmEMyR7Eyewkv13VhNykuQMyf7SFWgO/PkoI+A00BmSPcJziOF5j/B7ky6gwwbJPm/IFPjTPu/3i/3yWe6Le/UBy9xf9uqfqHdk4xsU5y064R2NXVyYr8AaI8WZmfCu1JMXBdQYKc49hS5cXDz3dGIa3hgpzq6FNUNtdleO+eXBIyPB+cOguZM2C9/5wxOT0GR1BGdIt7VHQ23vr54hPdIJ3P1PcA64ZiZL3TbptsKR7lFg68Y/yz22uirOWeOycYWz3AeyXzT88pwuXVqV4u15v6xkdyAPHYLY5FQIHi6Y5MV4CE9TK7lNqhJ9fpo/kGPoD+SJosv1BROUfG31oMi5N29Szr0/kDcRPfclxpn8RucvXerm5S9VmDlo543MQav+QB5hFX8uaBV/Pu/ysrHnZFcq+rz6x0tH/m2E48Uj/77Fkci/UXK6Q+TfmTnd5Oa3gi5njcS5uXzvCft+H9/sasf2za5fQwz5I4b8EUP+iCF/xJA/YsgfMeSPGPJHDPkjhvwRQ/6IIX/EkD9iyB8x5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjy52DYd5UTWXDE9dVj/y5m+o//AH9RWvsTjMLmAAAAAElFTkSuQmCC" alt="Ahachat"></div>
+Chatfuel
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td></td>
+<td>
+<div class="logo-compare-modal"><img src="assets/img/logo.png" alt="Ahachat"></div>
+Manychat
+<div style="margin-bottom: 15px;"></div>
+</td>
+</tr>
+<tr>
+<td>
+25,000 subscribes x 1 page
+</td>
+<td>$15/tháng</td>
+<td>$180/tháng</td>
+<td></td>
+<td>$145/tháng</td>
+</tr>
+<tr>
+<td>
+5,000 subscribes x 5 pages
+</td>
+<td>$15/tháng</td>
+<td>$220/tháng</td>
+<td></td>
+<td>$180/tháng</td>
+</tr>
+<tr>
+<td>
+Chatbot Viral
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Lucky Spin
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Coupons
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Web Form
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Vip Card
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<style>
+footer > .footer-container img.logo {
+  width: 130px;
+  margin-bottom: 25px;
+}
+footer > .footer-container {
+  color: white;
+  z-index: 1;
+  background-color: #1c2331 !important;
+  position: relative;
+}
+footer .cursor-pointer {
+  cursor: pointer;
+}
+footer.page-footer > .footer-container {
+  padding-top: 40px;
+}
+footer > .footer-container .unique-color-dark {
+  background-color: #1c2331 !important;
+}
+footer > .footer-container .font-weight-bold {
+  font-weight: 700 !important;
+}
+footer > .footer-container .text-uppercase {
+  text-transform: uppercase !important;
+}
+footer > .footer-container .color-darkgrey.no-break {
+  word-break: normal;
+  white-space: nowrap;
+}
+footer > .footer-container .mx-auto {
+  text-align: left;
+  margin-bottom: 40px;
+}
+footer > .footer-container a {
+  color: darkgrey;
+}
+footer > .footer-container .social-links .social-link {
+  display: inline-block;
+  color: rgba(41, 70, 97, .2);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+  background-color: #3d4b63;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-top: 6px;
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+footer > .footer-container .social-links .social-link.facebook-link:hover {
+  background-color: #1e67e2;
+}
+footer > .footer-container .social-links .social-link.youtube-link:hover {
+  background-color: #f62b00;
+}
+footer > .footer-container .color-darkgrey {
+  color: darkgrey;
+}
+ footer > .footer-container .fb-partner img {
+  width: 100%;
+  max-width: 200px;
+}
+footer > .footer-container .mobile-apps {
+  display: flex;
+  margin-top: 15px;
+}
+footer .mobile-apps img {
+  width: 100px;
+  margin-right: 10px;
+}
+footer #modal-compare .bold {
+  font-weight: bold;
+}
+footer #modal-compare .logo-compare-modal img {
+  width: 25px;
+}
+footer #modal-compare {
+	color: #333;
+}
+footer #modal-compare .pricing-table {
+	min-width: 800px;
+	margin: 50px auto;
+	margin-bottom: 0;
+	background: 0 0;
+	border: none;
+	text-align: left;
+	width: 100%;
+	border-collapse: initial;
+	color: #495259;
+	border-spacing: 0;
+}
+footer  #modal-compare .pricing-table tr:last-child td {
+	border-bottom: none;
+}
+footer  #modal-compare .pricing-table td {
+	height: 50px;
+	border-bottom: 1px solid #e9eef2;
+	font-size: 14px;
+	color: #495259;
+	padding: 0;
+}
+footer  #modal-compare .pricing-table td:nth-child(n+2) {
+	text-align: center;
+}
+footer  #modal-compare .pricing-table td:nth-child(3) {
+	background-color: #e9f9f1;
+}
+footer  #modal-compare .pricing-table p:last-child {
+	margin-bottom: 20px;
+}
+@media  all and (max-width: 992px) {
+  footer > .footer-container .copyright div {
+    text-align: left !important;
+  }
+  footer > .footer-container .color-darkgrey.no-break {
+    white-space: inherit;
+  }
+}
+</style>
+</div>
+<div class="gift-2 hide">
+<i class="fa fa-remove" onclick="hideGift()"></i>
+<div class="gift-2-container">
+<h3>Ramadan Penawaran Spesial</h3>
+<h1>Sale besar-besaran Diskon hingga 100%</h1>
+<div class="countdown-picker row">
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time0"></div>
+<div class="countdown-label">Tanggal</div>
+</div>
+</div>
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time1"></div>
+<div class="countdown-label">Jam</div>
+</div>
+</div>
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time2"></div>
+<div class="countdown-label">Menit</div>
+</div>
+</div>
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time3"></div>
+<div class="countdown-label">Kedua</div>
+</div>
+</div>
+</div>
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+<div id="countdown"></div>
+<script>
+var CountDown = function(time, repeatDate) {
+  this.time = time
+  this.repeatDate = repeatDate
+
+  this.start = () => {
+    $('#countdown').countdown(this.getMainEndTime(), (event) => {
+      let time = event.strftime('%D:%H:%M:%S');
+      time = time.split(':')
+      $('#time0').html(time[0])
+      $('#time1').html(time[1])
+      $('#time2').html(time[2])
+      $('#time3').html(time[3])
+    }).on('finish.countdown', () => {
+      if (this.repeatDate > 0) {
+        this.start();
+      } else {
+        // finish
+      }
+    });
+  },
+
+  this.getMainEndTime = () => {
+    if (this.repeatDate > 0 && moment(new Date()).isAfter(moment(this.time))) {
+      let endTimeToNow = moment(new Date()).diff(moment(this.time), 'days');
+      let add = Math.floor(endTimeToNow/this.repeatDate)*parseInt(this.repeatDate) + parseInt(this.repeatDate);
+      return moment(this.time).add(add, 'days').format('YYYY-MM-DD HH:mm');
+    }
+    return this.time;
+  }
+}
+
+$(document).ready(function() {
+  var countDown = new CountDown('2023-11-21 14:00:00', 3)
+  countDown.start()
+})
+</script>
+<a class="btn-get-gift" href="https://wa.me/6281882821402?text=hi" target="_blank">
+Mari Bicara
+</a>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+  window.hideGift = function() {
+    $('.gift-2').remove()
+  }
+})
+</script>
+<style lang="css">
+.gift-2 {
+  position: fixed;
+  z-index: 111;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 346px;
+  display: flex;
+  align-items: center;
+  background-color: #0f0f1dc9;
+  margin: 15px;
+  justify-content: center;
+  background: url(img/gift-banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: #333;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.gift-2 .fa-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 11111;
+}
+.gift-2 h2,.gift-2 h1 {
+  margin-top: 0;
+  color: black;
+}
+.gift-2 h1 {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+.gift-2 .countdown-time {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+.gift-2 .gift-2-container {
+  position: relative;
+  text-align: center;
+  padding: 16px;
+}
+.gift-2 .gift-2-container h3 {
+  font-size: 16px;
+}
+.gift-2 .btn-get-gift {
+  display: block;
+  margin: 10px auto;
+  width: 280px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  background: #2969b9;
+}
+.gift-2 .btn-get-gift:hover {
+  background-image: linear-gradient(90deg, #528fdc 0%, #88b7ef 60%);
+}
+.gift-2 .view-demo-link {
+  color: #3867a2;
+  text-align: center;
+}
+</style>
+<style>
+.ic-wa {
+    z-index: 99999;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex !important;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: fixed;
+    bottom: 13px;
+    right: 23px;
+    pointer-events: none
+}
+
+.ic-wa.show {
+    pointer-events: auto
+}
+
+.ic-wa img {
+    z-index: 2;
+    position: relative;
+    display: block;
+    height: 73px;
+    width: 73px;
+    min-width: 73px
+}
+
+.ic-wa span {
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: #25d366;
+    font-size: 12px;
+    line-height: 14px;
+    margin-left: -10px;
+    border-radius: 0 20px 20px 0;
+    color: #FFF;
+    transition: all .3s ease;
+    opacity: 0;
+    font-size: 0;
+    padding: 8px 0;
+    max-width: 0
+}
+
+.ic-wa:hover {
+    color: #FFF;
+    text-decoration: none!important
+}
+
+.ic-wa:hover span {
+    font-size: 12px;
+    padding: 8px 12px;
+    opacity: 1;
+    max-width: 110px;
+    text-decoration: none!important
+}
+
+@media (max-width: 767px) {
+    .ic-wa--alt {
+        right:23px;
+        bottom: 13px
+    }
+
+    .ic-wa:hover span {
+        display: none;
+        opacity: 0
+    }
+}
+
+@media (max-width: 767px) {
+    .ic-wa--alt {
+        right:23px;
+        bottom: 13px
+    }
+
+    .ic-wa:hover span {
+        display: none;
+        opacity: 0
+    }
+}
+
+.cta-waba {
+    pointer-events: none
+}
+
+.cta-waba.show {
+    pointer-events: auto
+}
+</style>
+<a class="ic-wa cta-waba show" href="https://wa.me/6281882821402?text=hi" target="_blank" rel="noreferrer">
+<img src="img/whatsapp_logo.svg" width="64" height="64" alt="WhatsApp">
+<span><b>WhatsApp Sales</b></span>
+</a>
+<script>
+      function toggleAnswer(target) {
+        $('.question-about').not(target).removeClass('show-answer');
+        $('.question-about').not(target).children('.answer-about').css('height', 0);
+        $(target).toggleClass('show-answer');
+        if ($(target).hasClass('show-answer')) {
+          $($(target).find('.answer-about')[0]).show().css('height', ($(target).find('.answer-about')[0].scrollHeight));
+        } else {
+          $($(target).find('.answer-about')[0]).css('height', 0);
+        }
+      }
+      </script>
+</body>
+</html>

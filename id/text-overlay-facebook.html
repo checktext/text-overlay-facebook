@@ -1,0 +1,587 @@
+﻿ <html>
+<head lang="id">
+<title>Facebook Text Overlay Tool: FB Ads checker &amp; 20% Text Rule</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="alternate" hreflang="en" href="../en/text-overlay-facebook.html">
+<link rel="alternate" hreflang="vi" href="../text-overlay-facebook.html">
+<link rel="alternate" hreflang="x-default" href="../text-overlay-facebook.html">
+
+<link rel="shortcut icon" type="image/png" href="../img/favicon-v2.ico" class="shortcut-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="../img/chatbot-icon-57x57-v2.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/chatbot-icon-72x72-v2.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/chatbot-icon-114x114-v2.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../img/chatbot-icon-144x144-v2.png">
+<meta name="description" content="Công cụ này được thiết kế để giúp bạn nhanh chóng và dễ dàng xác định liệu hình ảnh của bạn có vượt qua các yêu cầu về tỷ lệ văn bản so với hình ảnh của Facebook (20% văn bản hoặc ít hơn) bằng cách sử dụng lưới 5x5 hay không.">
+<link rel="stylesheet" href="../ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+    a:focus, a:hover {
+        color: #23527c;
+        text-decoration: underline;
+    }
+    a:active, a:hover {
+        outline: 0;
+    }
+    a {
+        color: #337ab7;
+        text-decoration: none;
+    }
+    div{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+
+    body,html{
+    margin:0px;
+    padding:0px;
+    font-family: arial;
+    height:100%;
+    background-color: #edf0f5;
+    }
+
+    .header {
+    background-color: #415ea0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+
+    /***
+    -moz-box-shadow: 0px 3px 8px #000;
+    -webkit-box-shadow: 0px 3px 8px #000;
+    box-shadow: 0px 3px 8px #000;
+    ***/
+    }
+
+    .navbar-inverse {
+        background-color: white;
+        border-color: #ff5a5f;
+    }
+    .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+        background-color: #ff5a5f;
+        color: #fff;
+    }
+    .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+        background-color: transparent;
+        color: #333;
+    }
+    .navbar-inverse .navbar-brand {
+        color: #ff5a5f;
+    }
+
+    .btn-create-bot {
+      height: 30px;
+      padding: 5px 15px!important;
+      margin: 10px;
+      border-radius: 50px;
+      background-color: white;
+      color: #2196f3!important;
+      box-shadow: 0 0 5px 0 #2196f3;
+      font-weight: bold;
+      border: 0;
+    }
+    .app-slogan {
+      font-size: 10px;
+      color: #888;
+    }
+    @media  only screen and (max-width: 767px) {
+      .btn-create-bot {
+        margin: 0!important;
+      }
+    }
+    .navbar-right {
+      padding: 10px 0;
+    }
+    @media    only screen and (max-width: 767px) {
+      .navbar-header {
+        float: left;
+        width: 100%;
+        margin-top: 5px;
+      }
+      .navbar-right {
+        margin: 0;
+        width: 100%;
+        margin-top: 70px;
+      }
+      .navbar-right .dropdown {
+        float: left;
+      }
+      .navbar-right .dropdown .divider{
+        display: none;
+      }
+    }
+
+    .header h1{
+    color:#fff;
+    font-size:24px;
+    margin:0px;
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align: left;
+    font-weight: normal;
+    }
+
+    form{
+    padding:20px;
+    background-color: #e6e6e6;
+    border:1px solid #a5a5a5;
+    display: block;
+    width:400px;
+    }
+
+    .rightSide{
+    margin-left:20px;
+    margin-top:50px;
+    float:left;
+    /** border-left:1px solid #bdc7d8; **/
+    background-color: #edf0f5;
+    width: 300px;
+    }
+
+    .body{
+    margin-top:50px;
+    float:left;
+    width:600px;
+    }
+
+   .container-1{
+    background-color: #fff;
+    border-radius: 3px;
+    padding:15px;
+    margin-bottom:20px;
+    font-size:14px;
+    color:#4e4e4e;
+    }
+
+    .adslot{
+    margin-bottom: 20px;
+    }
+
+    .console {
+    font-weight: bold;
+    padding:20px;
+    font-size:14px;
+    color:#b6725b;
+    width:300px;
+
+    margin-bottom:20px;
+    }
+
+    .console .title{
+    color: #4e4e4e;
+    line-height: 30px;
+    border-bottom:1px solid #cecece;
+    margin-bottom:20px;
+    font-weight: normal;
+    }
+
+    .console span{
+    margin-bottom:20px;
+    }
+
+    /****
+    .console .message{
+    border:1px solid #ccc;
+    padding:10px;
+    font-size:16px;
+    background-color: #679741;
+    color:#fff;
+    }
+    ****/
+
+
+
+    .console li{
+    margin-bottom:20px;
+    }
+
+
+
+    .directions{
+    margin-top:10px;
+    margin-bottom:10px;
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    }
+
+    .squares { top: 0; left: 0; width: 100%; height: 100%; }
+    .squares .row { width: 100%; height: 20%; margin: 0;}
+    .squares .row .square { width: 20%; height: 100%; float: left; border: 1px #ccc solid;}
+
+    .square:hover{
+    background-color: rgba(255,0,0,0.3);
+    cursor: pointer;
+    cursor: hand;
+    }
+
+    .squares{
+    background-image: url(../400x400/ffffff/f64f02);
+    background-size: 100%;
+    width:400px;
+    height:400px;
+    background-repeat: no-repeat;
+    }
+
+    .selected{
+    background-color: rgba(255,0,0,0.6);
+    }
+
+
+    .console span{
+    display: block;
+    }
+
+    .featured{
+    color:#fff;
+    display: block;
+    background: linear-gradient(267deg,#7934f7,#755bf9 50%,#7282fb);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    }
+
+    .featured:hover{
+    background: linear-gradient(267deg,#7282fb,#755bf9 50%,#7934f7);
+    }
+
+    .featured .title{
+    font-weight: bold;
+    margin-bottom:10px;
+    font-size:18px;
+    }
+
+    .control-fileupload {
+        display: block;
+        border: 1px solid #233d63;
+        background: #ffffff;
+        color: #233d63;
+        border-radius: 4px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 10px 2px 10px;
+        overflow: hidden;
+        position: relative;
+        color: #999;
+        font-size: 14px;
+        font-weight: 400;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: relative;
+        z-index: 1;
+        margin-right: 90px;
+        margin-bottom: 0;
+        cursor: text;
+    }
+
+    input[type=file] {
+        display: block!important;
+        right: 1px;
+        top: 1px;
+        height: 34px;
+        opacity: 0;
+        width: 100%;
+        background: 0 0;
+        position: absolute;
+        overflow: hidden;
+        z-index: 2;
+    }
+    .control-fileupload:before {
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #fff;
+        text-shadow: 0 1px 1px rgba(255,255,255,.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f64f02;
+        background-repeat: repeat-x;
+        border-radius: 4px;
+        transition: color .2s ease;
+        content: 'Browse';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 3px;
+        right: 4px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .markdown {
+      color: #555;
+    }
+    .markdown p {
+      font-size: 14px;
+    }
+    .markdown img {
+      max-width: 100%;
+    }
+
+    </style>
+<script src="../jquery-latest.min.js"></script>
+
+<script async="" src="../gtag/js?id=G-R6G4HEXVN6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R6G4HEXVN6');
+</script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" style="padding: 12px 15px;" href="text-overlay-facebook.html">
+<img src="../img/LOGO_EXPORT_02.png" style="height: 25px" alt="chatbot">
+<span class="app-slogan">Tăng 500% doanh số với tính năng chốt đơn tự động</span>
+</a>
+</div>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown" id="myDropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" style="padding-left: 0;" role="button" aria-haspopup="true" aria-expanded="false">
+Produk kami
+&nbsp;<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<li>
+<a href="../help/docs.html" target="_blank">
+Dokumen Tutorial
+</a>
+</li>
+<li role="separator" class="divider"></li>
+<li>
+<a href="../tutorials.html" target="_blank">
+Video Tutorial
+</a>
+</li>
+<li role="separator" class="divider"></li>
+<li>
+<a href="../help/blog.html" target="_blank">
+Blog
+</a>
+</li>
+<li role="separator" class="divider"></li>
+<li><a href="../tra-cuu-so-dien-thoai.html" target="_blank">Tra cứu số điện thoại</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../icon-facebook.html" target="_blank">Icon Facebook</a></li>
+<li role="separator" class="divider"></li>
+<li>
+<a href="../download-video-facebook.html" target="_blank">
+Unduh Video Facebook
+</a>
+</li>
+<li role="separator" class="divider"></li>
+<li>
+<a href="../facebook-text.html" target="_blank">
+Teks Facebook
+</a>
+</li>
+<li role="separator" class="divider"></li>
+<li>
+<a href="/qr-code" target="_blank">
+QR code
+</a>
+</li>
+<li style="display: none" role="separator" class="divider"></li>
+<li style="display: none">
+<a href="../thue-invoice.html" target="_blank">
+Cho thuê TKQC
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="btn btn-primary pull-right btn-create-bot" href="../index-2.htm?ref=icon" target="_blank">
+Buat bot
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="container" style="margin-top: 100px">
+<div class="row">
+<div class="col-md-8">
+<h1 class="directions">
+Step 1 - Unggah Gambar Anda
+</h1>
+<div class="container-1">
+<div class="control-fileupload">
+<label for="myFile" class="text-left">
+Silakan pilih file di komputer Anda.
+</label>
+<input type="file" id="myFile" name="myFile">
+</div>
+</div>
+<h1 class="directions">
+Step 2 - Pilih semua kotak yang berisi teks
+</h1>
+<div class="container-1">
+<div style="position:relative;">
+<div class="squares">
+<div class="row">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div style="clear:both;"></div>
+</div>
+<div class="row">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div style="clear:both;"></div>
+</div>
+<div class="row">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div style="clear:both;"></div>
+</div>
+<div class="row">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div style="clear:both;"></div>
+</div>
+<div class="row">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div style="clear:both;"></div>
+</div>
+</div>
+</div>
+<div style="width: 100%; margin-top: 15px; font-size: 12px; color: #666;">
+<p style="margin-bottom: 0">
+Disclaimer: Tool ini memungkinkan Anda untuk melihat dengan tepat berapa persen teks yang menggunakan gambar atau iklan ukuran apa pun yang Anda unggah. Hasil sebenarnya mungkin berbeda saat menjalankan gambar di Facebook atau Instagram karena mereka menggunakan AI untuk mendeteksi teks. Sistem mereka dapat salah membaca teks pada produk atau bagian foto yang tidak Anda tambahkan dan akan menandainya karena menggunakan terlalu banyak teks. Untuk melihat apa yang dilihat Facebook, cukup unggah gambar Anda ke<a href="https://www.facebook.com/ads/tools/text_overlay" target="_blank">Facebook Overlay Tool</a> dan Anda dapat melihat hasilnya.
+</p>
+</div>
+
+</div>
+</div>
+<div class="col-md-4">
+<h3 class="directions">
+Step 3 - Hasil Anda
+</h3>
+<div class="console container-1">
+<span class="count"><b>0</b>
+kotak yang dipilih berisi teks
+</span>
+<span class="percent"><b>0%</b>
+gambar Anda berisi teks
+</span>
+<span class="message" style="display: none;"></span>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<section class="markdown"><p>Đã có một số nhầm lẫn xung quanh “quy tắc lớp phủ văn bản 20%” của Facebook, đây là hướng dẫn kiểm tra lượng văn bản được phép trên hình ảnh quảng cáo. Mặc dù nhiều nhà quảng cáo bày tỏ sự thất vọng của họ về những hạn chế đi kèm với quy tắc này, nhưng Facebook đã bác bỏ những tuyên bố rằng họ đang có kế hoạch loại bỏ nó hoàn toàn. Vậy “quy tắc 20%” là gì và nó có thể tác động như thế nào đến việc quảng cáo của bạn chạy trên Facebook và Instagram?</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="về-quy-tắc-20-lớp-phủ-văn-bản-của-facebook"></a>Về Quy tắc 20% lớp phủ văn bản của Facebook<a aria-hidden="true" tabindex="-1" class="hash-link" href="#về-quy-tắc-20-lớp-phủ-văn-bản-của-facebook" title="Direct link to heading">#</a></h2><p>Hãy quay lại từ đầu. Khi Facebook lần đầu tiên công bố giới thiệu quy tắc 20%, nó giải thích rằng các nhà quảng cáo Facebook được phép che hình ảnh quảng cáo của họ với không quá 20% văn bản. Với sự trợ giúp của công cụ, người dùng có thể xem họ có thể chiếm bao nhiêu dung lượng cho văn bản. Nếu văn bản chiếm nhiều hơn giới hạn 20%, thì quảng cáo sẽ đơn giản là không hoạt động và không được phép chạy.</p><p>Tuy nhiên, năm ngoái, Giám đốc Tiếp thị Sản phẩm của Facebook, Afsheen Ali, đã dành thời gian để cung cấp thêm một số thông tin về quy tắc 20% và bác bỏ một số tin đồn đã xảy ra vào thời điểm đó, rằng quy tắc này sẽ bị loại bỏ hoàn toàn do mức độ thất vọng của các nhà quảng cáo trên khắp thế giới.</p><p><em>"Nghiên cứu của chúng tôi đã chỉ ra rằng mọi người thích quảng cáo có ít văn bản hơn. Trước đây, nếu 20% diện tích của hình ảnh quảng cáo là văn bản, thì nó không được chấp thuận để chạy trên Facebook, Instagram hoặc Mạng liên kết. Chúng tôi đã nghe ý kiến ​​từ một số nhà quảng cáo rằng điều này có thể gây nhầm lẫn, vì không phải lúc nào cũng rõ ràng rằng một quảng cáo không đáp ứng các yêu cầu chính sách cho đến khi quảng cáo được gửi. Chúng tôi đang chuyển sang một giải pháp mới để cải thiện trải nghiệm này, cho phép các nhà quảng cáo linh hoạt hơn trong khi vẫn cho phép chúng tôi duy trì một trải nghiệm thú vị cho mọi người."</em></p><p><img src="../SjAi5FAxXVRumSFBT0b9QOQ0aY3ZQ5fFt0IIUJVJ7ndvl7ZnIMEvkuY9yf7zjcgrrT1m3ZdmPFhgPeV1209IrPzVGriuEUyX0TUnoxdgqK6nQvEnBQDa1LuhZql7WJd-EFrS_iTP" alt="Image for post"></p><p>Vậy Facebook đã thay đổi hướng dẫn cho quy tắc 20% theo cách nào? Ngày nay, nếu hình ảnh quảng cáo của bạn chứa hơn 20% văn bản, nó sẽ không còn bị từ chối thẳng thừng nữa. Tuy nhiên, nó sẽ gặp phải một giới hạn trong khả năng tiếp cận đối tượng của bạn, tùy thuộc vào xếp hạng mà quảng cáo của bạn nhận được từ Công cụ lớp phủ văn bản của Facebook. Các quy tắc tương tự này cũng áp dụng cho quảng cáo Instagram.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="công-cụ-lớp-phủ-văn-bản-của-facebook"></a>Công cụ lớp phủ văn bản của Facebook<a aria-hidden="true" tabindex="-1" class="hash-link" href="#công-cụ-lớp-phủ-văn-bản-của-facebook" title="Direct link to heading">#</a></h2><p>Tóm lại, nếu có một số văn bản mà bạn muốn đưa vào hình ảnh quảng cáo của mình, nhưng bạn không chắc chắn về việc phân phối của nó sẽ bị ảnh hưởng như thế nào, bạn có thể xem <a href="https://www.facebook.com/ads/tools/text_overlay" target="_blank" rel="noopener noreferrer">Công cụ Lớp phủ Văn bản của Facebook tại đây</a>. Nó siêu dễ sử dụng và sẽ cho bạn kết quả tức thì.</p><p>Tải lên hình ảnh với văn bản lớp phủ trên đó và xem Xếp hạng Văn bản Hình ảnh mà Facebook cung cấp cho bạn. Dưới đây là các xếp hạng khả thi mà quảng cáo của bạn có thể nhận được:</p><p><img src="../h0YxwgekxfqZWdv1Wej33gS9xHMZtxWd5Y5P8nD8BUuY5hGx__D4Sq27hD9tzDx5sIFBtxRDWn3-ZN9L6jTfjPW1QhiO_GLlQ33eTVK98w9vweglOdLHwiG9XSOnmEYaCSb2qiDR"></p><p>Với xếp hạng này, các nhà quảng cáo có thể hiểu ngay khả năng phạm vi tiếp cận của quảng cáo của họ sẽ bị hạn chế. Vì vậy, chúng tôi quyết định sử dụng công cụ này và thử nghiệm 4 phiên bản của hình ảnh quảng cáo được tạo nhanh:</p><p><img src="../CPsx8HsGekJkit1tOu3adglVNb5KmEeIdtGpv8o7wkg1iTkl94R1fy40VzJ1BXIuWBpGskZsbWjoJ8hmOa1NMOSMdOEFpGjR0wVGae5D13v8ZDeFywHZLB9KOPKgC198Edgz2Na3"></p><p>Như bạn có thể thấy, quảng cáo ở trên cùng sẽ chạy bình thường, trong khi những quảng cáo khác sẽ gặp một số hạn chế khi cố gắng tiếp cận đối tượng của họ vì có quá nhiều văn bản hình ảnh và/hoặc văn bản quá lớn. Nếu bạn chưa thử, chúng tôi khuyên bạn nên thử với Công cụ lớp phủ văn bản để bạn có thể bắt đầu hiểu loại hình ảnh quảng cáo nào sẽ có xếp hạng thấp và loại hình ảnh nào sẽ chạy trơn tru mà không gặp bất kỳ vấn đề gì. Khi bạn đã quen thuộc với quy trình này, bạn sẽ sẵn sàng phân phối một số quảng cáo chất lượng cao mà không gặp bất kỳ sự cố phân phối nào.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="tầm-quan-trọng-của-văn-bản-trên-hình-ảnh-quảng-cáo-facebook"></a>Tầm quan trọng của văn bản trên hình ảnh quảng cáo Facebook<a aria-hidden="true" tabindex="-1" class="hash-link" href="#tầm-quan-trọng-của-văn-bản-trên-hình-ảnh-quảng-cáo-facebook" title="Direct link to heading">#</a></h2><p>Bất chấp tất cả những điều này đều nói về việc giảm thiểu số lượng và kích thước văn bản trong quảng cáo hình ảnh của bạn, điều quan trọng cần nhớ là văn bản hình ảnh vẫn là một thành phần rất quan trọng của quảng cáo. Để thu hút sự chú ý của người dùng Facebook, các hình ảnh bắt mắt và đầy màu sắc thường được các nhà quảng cáo tận dụng trên nền tảng này.</p><p>Với mục đích xây dựng sự quan tâm ban đầu của người dùng đối với một hình ảnh hấp dẫn, nhiều nhà quảng cáo trên Facebook sẽ thêm Kêu gọi hành động vào ảnh thêm của họ, bao gồm các từ kích hoạt như “miễn phí”, “ưu đãi có giới hạn”, “đặc biệt ưu đãi”, “bây giờ”, “hôm nay ”, v.v. Về cơ bản, loại văn bản này có nhiều cơ hội được đọc hơn văn bản bài đăng thực tế đi kèm với hình ảnh quảng cáo.</p><p>Miễn là các nhà quảng cáo ở trong giới hạn sử dụng văn bản và không thêm bất kỳ bản sao không liên quan hoặc quá mức nào, thì tác động của chỉ một vài từ thực sự có thể đóng vai trò mạnh mẽ trong việc thuyết phục khách hàng hành động.</p><p>Tuy nhiên, một số người cho rằng giảm thiểu văn bản càng nhiều càng tốt và thậm chí loại trừ hoàn toàn văn bản hình ảnh quảng cáo là con đường tiếp theo. Mặc dù nhiều người sẽ không đồng ý, nhưng đó chắc chắn là một góc thú vị để xem xét. Một số nhà quảng cáo tin rằng mặc dù quảng cáo có một số văn bản phủ lên có thể trông đẹp mắt, nhưng văn bản như vậy sẽ ngay lập tức hiển thị chúng như một quảng cáo, khiến một số người dùng nhanh chóng tiếp tục, thay vì thưởng thức hình ảnh được sử dụng.</p><p>Một trong những lời khuyên vàng của Facebook đối với các nhà quảng cáo trên nền tảng của mình là luôn đảm bảo rằng hình ảnh quảng cáo trông không quá 'lạc lõng' giữa tất cả các nội dung khác trên Newsfeed của người dùng. Tạo cảm giác tự nhiên cho quảng cáo đôi khi có thể thuyết phục người xem dành nhiều thời gian hơn để xem quảng cáo, điều này có thể dẫn đến sự gia tăng mức độ tương tác của người dùng và do đó, tỷ lệ chuyển đổi cao hơn.</p><p>Tuy nhiên, điều quan trọng cần lưu ý là không có cách nào đúng hay sai để làm điều này. Miễn là bạn tuân thủ quy tắc 20% của Facebook, thì bạn sẽ có mọi cơ hội tạo ra một quảng cáo hoạt động hiệu quả mà khán giả của bạn sẽ ghi nhớ. Tất cả phụ thuộc vào chất lượng của quảng cáo bạn đã xuất bản.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="quy-tắc--ngoại-lệ"></a>Quy tắc &amp; Ngoại lệ<a aria-hidden="true" tabindex="-1" class="hash-link" href="#quy-tắc--ngoại-lệ" title="Direct link to heading">#</a></h2><p>Nên nhớ rằng các mục sau đây được coi là văn bản trên hình ảnh của bạn:</p><ul><li>Số</li><li>Biểu trưng dựa trên văn bản (bất kể kích thước)</li><li>Hình mờ</li></ul><p>Và đây là danh sách các trường hợp ngoại lệ không được tính trong quy tắc 20%:</p><ul><li>Đồ họa thông tin</li><li>Sách và bìa album</li><li>Hình ảnh sản phẩm (hình ảnh phải hiển thị toàn bộ sản phẩm)</li><li>Áp phích cho phim, lễ hội âm nhạc, sự kiện thể thao và chương trình giải trí</li><li>Văn bản pháp lý</li><li>Ảnh chụp màn hình ứng dụng</li><li>Thư pháp kinh doanh dựa trên văn bản</li></ul><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="4-mẹo-dùng-văn-bản-cho-hình-ảnh"></a>4 Mẹo dùng văn bản cho hình ảnh<a aria-hidden="true" tabindex="-1" class="hash-link" href="#4-mẹo-dùng-văn-bản-cho-hình-ảnh" title="Direct link to heading">#</a></h2><p>Dưới đây là một số mẹo mà bạn nên ghi nhớ khi xem xét lượng văn bản đi vào hình ảnh quảng cáo của bạn.</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="1-sử-dụng-sức-mạnh-của-hình-ảnh"></a>1. Sử dụng sức mạnh của hình ảnh<a aria-hidden="true" tabindex="-1" class="hash-link" href="#1-sử-dụng-sức-mạnh-của-hình-ảnh" title="Direct link to heading">#</a></h3><p>Cho dù đó là trực tuyến hay trực tiếp, tất cả chúng ta đều bắt gặp một bức ảnh thực sự nổi bật và bắt mắt. Đôi khi, một hình ảnh có thể có giá trị bằng cả nghìn từ, tự nó đủ sức truyền tải câu chuyện của nó đến người xem. Chính những hình ảnh tươi sáng, đầy màu sắc, ấn tượng, độc đáo và hấp dẫn sẽ khiến người xem phải dừng lại một chút để xem kỹ hơn. Vì vậy, đảm bảo rằng bức ảnh của bạn hấp dẫn đối với những người đang quét qua Bảng tin của họ là điều quan trọng.</p><p>Trên thực tế, khi bạn đăng quảng cáo hình ảnh của mình lên Facebook, hình ảnh chắc chắn sẽ là thứ đầu tiên mà người xem nhìn thấy. Điều này không có gì đáng ngạc nhiên khi chúng tôi cho rằng nghiên cứu được tiến hành trước đây đã chứng minh thành công rằng chúng ta có xu hướng chú ý đến hình ảnh và tiêu đề trên một trang trước, sau đó đọc các từ in đậm ngay sau đó trước khi đọc khối văn bản đi kèm lần cuối.</p><p>Vì vậy, nếu bạn muốn tăng cơ hội để người xem xem kỹ quảng cáo hình ảnh của mình và thậm chí có thể tương tác với nó hoặc thực hiện chuyển đổi, hãy đảm bảo rằng hình ảnh của bạn hoàn thiện mới!</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="2-bản-sao-mạnh-mẽ"></a>2. Bản sao mạnh mẽ<a aria-hidden="true" tabindex="-1" class="hash-link" href="#2-bản-sao-mạnh-mẽ" title="Direct link to heading">#</a></h3><p>Nếu có một số điều bạn muốn đối tượng mục tiêu của mình biết, nhưng bạn không muốn che hình ảnh của mình trong văn bản, luôn có bản sao phía trên quảng cáo hình ảnh thực tế! Điều này có vẻ hơi rõ ràng, nhưng hãy sử dụng khoảng 3/4 dòng văn bản phía trên hình ảnh của bạn để bao gồm chú thích mạnh mẽ sẽ cung cấp cho người xem thêm thông tin và có thể thuyết phục họ hành động. Nếu bạn chưa đưa CTA vào chính hình ảnh, hãy cân nhắc thêm CTA vào chú thích của bạn!</p><p>Bạn sẽ có nhiều không gian hơn và linh hoạt hơn để kể ngắn gọn câu chuyện bạn muốn kể, mặc dù đừng quên sức mạnh của hình ảnh… Chúng có thể có giá trị hơn một nghìn từ, vì vậy đừng lạm dụng nó!</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="3-tránh-văn-bản-thừa"></a>3. Tránh văn bản thừa<a aria-hidden="true" tabindex="-1" class="hash-link" href="#3-tránh-văn-bản-thừa" title="Direct link to heading">#</a></h3><p>Nếu bạn phải đưa văn bản vào hình ảnh của mình, hãy cân nhắc việc thử dùng ít từ hơn và/hoặc giảm kích thước phông chữ của văn bản. Tuy nhiên, hãy nhớ rằng việc đặt phông chữ quá nhỏ cũng có thể gây khó khăn cho người đọc.</p><p>Điều quan trọng nữa là hầu hết văn bản bạn sử dụng trong quảng cáo của mình phải nằm trong phần nội dung, thay vì trực tiếp trên hình ảnh của quảng cáo. Điều đó sẽ cung cấp cho quảng cáo của bạn một cái nhìn rõ ràng hơn và làm cho nó hấp dẫn hơn cho khán giả của bạn khi xem. Cũng cố gắng tránh dàn trải văn bản của bạn trên toàn bộ hình ảnh, chỉ giới hạn văn bản trong các phần nhất định của hình ảnh quảng cáo.</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="4-kích-thước-và-thông-số-kỹ-thuật"></a>4. Kích thước và thông số kỹ thuật<a aria-hidden="true" tabindex="-1" class="hash-link" href="#4-kích-thước-và-thông-số-kỹ-thuật" title="Direct link to heading">#</a></h3><ul><li>Kích thước hình ảnh được đề xuất: 1200 x 628 (1080 x 1080 cho hình ảnh 1: 1). Không có giới hạn kích thước tối đa.</li><li>Tỷ lệ hình ảnh: 9:16 đến 16: 9 (không liên quan đến liên kết), 1,9: 1 đến 1: 1 (nếu có liên kết).</li><li>Hình ảnh không quá 20% văn bản.</li><li>Loại tệp hình ảnh: .jpg hoặc .png (Lưu ý: GIFS động phải được tải lên dưới dạng quảng cáo video).</li><li>Văn bản: 125 ký tự (nếu không có liên kết).</li><li>Dòng tiêu đề: 25 ký tự (bất kỳ ký tự nào nữa sẽ bị cắt bớt).</li><li>Mô tả liên kết: 30 ký tự.</li></ul><p><img src="../pu2IKYixuETHfLRVW286nM2jzPmjY5YxVal1_VrfsdKHq-aW9DvuH-rMfh8KyZDVMlzg-Bnm9ALUxQ46IS3V0X6URYmQ3cR1Ed_fIFTAy2qLtmzoqsdjzIOtBHbzFho2z33hKwxG" alt="Image for post"></p><p>Bạn có bất kỳ câu hỏi nào liên quan đến quy tắc 20% của Facebook? Bạn muốn khởi chạy chiến dịch quảng cáo xã hội tiếp theo của mình với một số lời khuyên chuyên môn từ Đối tác tiếp thị của Facebook? Đừng ngần ngại <a href="https://messenger.com/t/ahachatter?ref=hotro" target="_blank" rel="noopener noreferrer">liên hệ với chúng tôi</a>, chúng tôi sẵn sàng trợ giúp! Tận hưởng công cụ chatbot miễn phí của chúng tôi mà không cần phải trả bất kỳ chi phí nào!</p><p>Xem thêm: Tổng hợp 9999+ <a href="../icon-facebook.html" target="_blank" rel="noopener noreferrer">icon facebook</a> giúp trang trí bài viết quảng cáo chuyên nghiệp hơn!</p></section>
+<p>
+AhaChat is a technology company that provides a free chatbot solution on the Facebook platform. In addition, we also develop many other useful free applications such as:
+<a href="../tra-cuu-so-dien-thoai.html" target="_blank">Get phone number from Facebook</a>,
+<a href="../icon-facebook.html" target="_blank">Icon Facebook</a>,
+<a href="../download-video-facebook.html" target="_blank">download Facebook Video</a>,
+<a href="../facebook-text.html" target="_blank">change Facebook font style</a>,
+<a href="../text-overlay-facebook.html" target="_blank">check text overlay</a>,
+<a href="https://ahachat.com/qr-code">generate qr code</a> ...
+Try to enjoy our chatbot tool without any cost!
+</p>
+</div>
+<script src="../libs/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+            count = 0;
+            $(".console .message").hide();
+
+            $(function() {
+              function resetCalc () {
+                count = 0;
+                $('.square').removeClass("selected");
+                $(".console .message").css('display', 'none');
+                $('.count').html('<b>0</b> ô vuông được chọn có chứa văn bản');
+                $('.percent').html('<b>0%</b> chứa văn bản trong hình ảnh');
+              };
+              $(".square").click(function() {
+              	if ($(this).hasClass('selected')){
+            	    $(this).removeClass("selected");
+            	    count = count-1;
+              	}else{
+              		$(this).addClass("selected");
+              		count = count+1;
+              	}
+
+              	percent = Math.round(100*(count/25));
+
+
+              	$(".console .count").hide();
+              	$(".console .percent").hide();
+              	$(".console .message").hide();
+
+              	if (count<6){
+                  message = "Selamat! Gambar Anda memenuhi batas teks Facebook/Instagram sebesar 20% teks atau kurang.";
+              		$(".console .message").css('color', 'green');
+              	}else{
+                  message = "Whoops! Sepertinya gambar Anda mengandung lebih dari 20% teks";
+              		$(".console .message").css('color', 'red');
+              	}
+
+
+              	$(".console .count b").html(count);
+              	$(".console .percent b").html(percent+"%");
+              	$(".console .message").html(message);
+
+              	$('.console .count').fadeIn('fast', function() {
+              		$('.console .percent').fadeIn('fast', function() {
+              			$('.console .message').fadeIn('slow', function() {
+              		        // Animation complete
+          		      });
+          	      });
+                });
+              });
+
+            	$('#myFile').change(function() {
+                resetCalc();
+                var files = $('#myFile').prop('files');
+                $('label').html($('#myFile').val().split('\\').pop());
+
+                if (files && files[0]) {
+
+                  var FR= new FileReader();
+
+                  FR.addEventListener("load", function(e) {
+                    var i = new Image();
+                    i.onload = function(){
+                      var widthSquare = $('.squares').width();
+                      var heightSquare = $('.squares').height();
+
+                      $('.squares').css({
+                        backgroundImage: 'url('+e.target.result+')',
+                        height: i.height * widthSquare/i.width,
+                        width: widthSquare
+                      })
+                    };
+                    i.src = e.target.result;
+                  });
+
+                  FR.readAsDataURL( files[0] );
+                }
+              });
+            });
+        </script>
+</body>
+</html>

@@ -1,0 +1,2010 @@
+﻿ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="csrf-token" content="FjJq8F0ZF85Ztaqe5iS3zqvC3DWiAiWGs9Fg0PJc">
+<title>Gấp đôi doanh số bán hàng với Chatbot Ads</title>
+<meta name="description" content="Công cụ giúp bạn chăm sóc khách hàng, chăm sóc đối tác tiềm năng để tạo ra đơn với chi phí tối ưu">
+<meta name="web1s" content="eOHY9Es3Vgj7GloabPvQ">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="shortcut icon" type="image/png" href="img/favicon-v2.ico" class="shortcut-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="img/chatbot-icon-57x57-v2.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/chatbot-icon-72x72-v2.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/chatbot-icon-114x114-v2.png">
+<link rel="apple-touch-icon" sizes="144x144" href="img/chatbot-icon-144x144-v2.png">
+<link rel="stylesheet" href="css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" href="libs/plugins/animate.min.css">
+
+<link rel="stylesheet" href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="libs/bower_components/font-awesome/css/font-awesome.min.css">
+
+<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="libs/plugins/moment/moment.min.js"></script>
+<script src="libs/plugins/moment/locale/vi.js"></script>
+<script>
+var LoginHelper = function() {
+
+    this.findGetParameter = (parameterName) => {
+        var result = null,
+            tmp = [];
+        var items = location.search.substr(1).split("&");
+        for (var index = 0; index < items.length; index++) {
+            tmp = items[index].split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        }
+        return result;
+    }
+
+    this.getUtmParams = (getBy) => {
+        let utm = {
+            'utm_campaign': this.findGetParameter('utm_campaign'),
+            'utm_medium': this.findGetParameter('utm_medium'),
+            'utm_source': this.findGetParameter('utm_source'),
+        }
+
+        if (Object.values(utm).filter(function(el) { return el;}).length !== 3) {
+            return '';
+        }
+
+        if (getBy === 'obj') {
+            return utm
+        }
+
+        return '?' + (new URLSearchParams(utm).toString());
+    }
+
+  this.loginFacebookUrl =
+    "https://www.facebook.com/v3.0/dialog/oauth?client_id=" +
+    "170005996917513" +
+    "&redirect_uri=" + encodeURIComponent("https://ahachat.com" + "/social/auth/facebook") +
+    "&scope=email,public_profile,pages_manage_ads,pages_manage_metadata,pages_read_engagement,pages_read_user_content,pages_manage_posts,pages_manage_engagement,pages_messaging,page_events,instagram_basic,instagram_manage_messages,instagram_manage_comments,ads_management,ads_read&response_type=code&auth_type=rerequest"
+
+  this.loginForBusinessUrl = "https://www.facebook.com/v15.0/dialog/oauth?app_id=170005996917513&auth_type=rerequest&client_id=170005996917513&config_id=297887983248163&override_default_response_type=true&response_type=code&redirect_uri=" + encodeURIComponent("https://ahachat.com" + "/social/auth/facebook");
+
+  this.state = {
+    locale: 'vn',
+  };
+
+  this.init = () => {
+    // Save ref
+          let ref = null;
+        if (ref) {
+      this.setCookie('ref_code', ref, 30);
+    }
+
+    // Append ref to login url
+    let savedRef = this.getCookie('ref_code');
+    if (savedRef) {
+      this.state.ref_code = savedRef;
+    }
+  }
+
+  this.setCookie = (name, value, days) => {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  this.getCookie = (name) => {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  this.checkLoginStatus = () => {
+    if (this.getCookie('token')) {
+      window.location.replace('/bots' + this.getUtmParams());
+      return;
+    }
+
+    // FB.getLoginStatus((response) => {
+    //   if (response.status === "connected") {
+    //     this.checkRequiredPermissions(response.authResponse.accessToken);
+    //   } else {
+    //     this.loginByFacebook();
+    //   }
+    // });  bug fb
+    this.loginByFacebook();
+  }
+
+  this.checkRequiredPermissions = (token) => {
+    FB.api("/me/permissions", (response) => {
+      let key, result;
+      let check = true;
+      for (key in response.data) {
+        result = response.data[key];
+        if (
+          result.status != "granted"
+        ) {
+          check = false;
+          break;
+        }
+      }
+
+      if (check) {
+        this.login(token);
+      } else {
+        this.loginByFacebook();
+      }
+    });
+  }
+
+  this.loginByFacebook = () => {
+    window.localStorage.setItem("loginByFacebook", true);
+
+          var redirect = null
+    
+    if (
+      redirect
+    ) {
+        this.state.redirect_url = redirect;
+    }
+
+    var utm = this.getUtmParams('obj')
+
+    if (utm) {
+        this.state.utm = utm;
+    }
+
+    // Append ybai to login url
+    const ybai = this.getCookie('ybai');
+    if (ybai) {
+      this.state.ybai = ybai;
+    }
+
+    window.location.replace(this.loginFacebookUrl + "&state=" + encodeURIComponent(JSON.stringify(this.state)));
+  }
+
+  this.login = (token) => {
+    let data = { access_token: token };
+    this.loadingButton(true);
+    $.post("/api/login-facebook", data, (response) => {
+      this.loadingButton(false);
+        window.localStorage.setItem("loginByFacebook", true);
+        this.saveCookie(response.data);
+        window.location.href = '/bots' + this.getUtmParams()
+      })
+      .fail((errors) => {
+        this.loadingButton(false);
+        this.showNotification();
+      });
+  },
+
+  this.loadingButton = (isLoading) => {
+    if (isLoading) {
+      $('.btn-login-ahachat').attr('disabled', 'disabled')
+      $('#login-processing').show()
+    } else {
+      $('.btn-login-ahachat').removeAttr('disabled', 'disabled')
+      $('#login-processing').hide()
+    }
+  }
+
+  this.saveCookie = (data) => {
+    this.setCookie("token", data.token);
+    this.setCookie("user_info", JSON.stringify(data.user_info));
+    setTimeout(() => {
+      if (window.Echo && window.Echo.connector) {
+        window.Echo.connector.options.auth.headers['Authorization'] = 'Bearer ' + data.token;
+      }
+    }, 100);
+  },
+
+  this.showNotification = () => {
+    $.toast({
+      heading: 'homepage.login.fail',
+      text: 'homepage.login.fail_text',
+      showHideTransition: 'fade',
+      icon: 'error',
+      position: 'top-right'
+    })
+  }
+};
+var loginHelper = new LoginHelper()
+loginHelper.init()
+</script>
+<style>
+        body {
+          font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+          font-weight: 400;
+          overflow-x: hidden;
+          overflow-y: auto;
+        }
+        .plus-component {
+        	 font-size: 18px;
+        }
+
+        .plus-component .header .btn-login-ahachat {
+           border-radius: 30px;
+           background-color: #208ef0;
+           color: white;
+           font-size: 14px!important;
+           padding: 6px 12px!important;
+         }
+         .plus-component .app-language {
+           display: none;
+         }
+
+         .plus-component .banner {
+        	 background-image: url('img/working1.jpeg');
+        	 background-repeat: no-repeat;
+        	 background-size: cover;
+        	 background-position: 50%;
+        	 background-attachment: fixed;
+        }
+         .plus-component .banner .banner-wrapper {
+        	 background-color: rgba(0, 0, 0, .5) !important;
+        	 display: flex;
+           flex-direction: column;
+        }
+         .plus-component .banner .banner-wrapper h1, .plus-component .banner .banner-wrapper h2 {
+        	 color: white;
+        }
+         .plus-component .banner .banner-wrapper h1 {
+        	 font-size: 50px;
+        	 font-weight: bold;
+        }
+         .plus-component .banner .banner-wrapper h2 {
+        	 margin: 30px 0;
+        	 font-size: 20px;
+        }
+         .plus-component .banner .banner-wrapper .btn-info {
+        	 border-radius: 4px;
+        	 font-size: 18px;
+        	 padding: 10px 40px;
+        	 border-radius: 30px;
+        }
+         .plus-component .banner .banner-wrapper .btn-success {
+        	 background-color: #388c69;
+        	 border-radius: 30px;
+        }
+         .plus-component .banner.banner-2 {
+        	 background-image: url('img/code.jpg');
+        }
+         .plus-component .banner.banner-2 .banner-wrapper {
+        	 height: 500px;
+           justify-content: center;
+           align-items: center;
+        }
+         .plus-component .banner.banner-2 h3 {
+        	 cursor: pointer;
+        }
+         .plus-component .banner.banner-2 h3 a, .plus-component .banner.banner-2 h3 i {
+        	 color: white;
+        }
+         .plus-component .banner.banner-2 h3 a {
+        	 text-decoration: underline;
+        }
+         .plus-component .sale .item {
+        	 box-shadow: 0 0 50px 0 #dfdfdf;
+        	 border-radius: 0px 30px 40px 40px !important;
+        	 padding: 30px 30px;
+        	 background: #fff;
+        	 transition: 0.5s;
+        	 cursor: pointer;
+        	 background: rgba(255, 255, 255, .95);
+        	 min-height: 380px;
+        }
+         .plus-component .sale .before-bg {
+        	 width: 80%;
+        	 height: 180px;
+        	 border-radius: 0px 40px 40px;
+        	 transform: skewY(8deg);
+        	 transform-origin: left top 0px;
+        	 bottom: -3px;
+        	 position: absolute;
+        	 z-index: -1;
+        }
+         .plus-component .sale .grdnt-cyan {
+        	 background-image: -webkit-linear-gradient(45deg, #2fb8ff 0, #9eecd9 51%, #2fb8ff 100%);
+        	 background-image: linear-gradient(45deg, #2fb8ff 0, #9eecd9 51%, #2fb8ff 100%);
+        }
+         .plus-component .sale .grdnt-blue {
+        	 background-image: -webkit-linear-gradient(90deg, #491eb8 0, #844ffc 51%, #491eb8 100%);
+        	 background-image: linear-gradient(90deg, #491eb8 0, #844ffc 51%, #491eb8 100%);
+        }
+         .plus-component .sale .grdnt-tranquil {
+        	 background-image: -webkit-linear-gradient(135deg, #fed192 0, #9946b2 51%, #fed192 100%);
+        	 background-image: linear-gradient(135deg, #fed192 0, #9946b2 51%, #fed192 100%);
+        }
+         .plus-component .title {
+        	 font-size: 40px;
+        	 font-weight: bold;
+        	 margin: 40px 0;
+        }
+         .plus-component .features {
+        	 padding: 50px 0;
+        }
+         .plus-component .features .col-md-3 {
+        	 margin-bottom: 30px;
+        }
+         .plus-component .features i {
+        	 display: block;
+        	 font-size: 100px;
+        	 margin-bottom: 10px;
+        }
+         .plus-component .features span {
+        	 font-size: 18px;
+        	 color: #777;
+        }
+         .plus-component .details .window {
+        	 padding: 8px;
+        	 border-radius: 5px;
+        	 background-color: #ddd;
+        }
+        .plus-component .details .btn-flat {
+          border-radius: 30px;
+          margin-top: 10px;
+       }
+         .plus-component .details .window img {
+        	 width: 100%;
+        }
+         .plus-component .details h3 {
+        	 font-size: 28px;
+        	 font-weight: bold;
+           margin-top: 0;
+        }
+         .plus-component .details ul {
+        	 padding: 0;
+        	 margin-top: 20px;
+        }
+         .plus-component .details ul li {
+        	 list-style: none;
+        	 color: #777;
+        	 margin-bottom: 10px;
+        	 font-size: 16px;
+        }
+         .plus-component .details ul li i {
+        	 color: green;
+        }
+         .plus-component .price .container .price-wrapper {
+        	 border-radius: 20px;
+        	 box-shadow: 0 0 10px #d8d8d8;
+        	 padding: 15px;
+        	 margin-bottom: 30px;
+        }
+         .plus-component .price .container .price-wrapper .price-title {
+        	 color: #777;
+        	 text-align: center;
+        }
+         .plus-component .price .container .price-wrapper .price-price {
+        	 color: #ff4f00;
+        	 text-align: center;
+        	 font-size: 30px;
+        	 font-weight: bold;
+        }
+         .plus-component .price .container .price-wrapper .price-info div {
+        	 margin-bottom: 8px;
+        }
+         .plus-component .price .container .price-wrapper .price-info div .fa-check {
+        	 color: #ff4f00;
+        }
+         .plus-component .price .container .price-wrapper .btn {
+        	 background-color: #30a0e1;
+        	 padding: 6px 23px;
+        	 color: white;
+        	 font-weight: bold;
+        	 font-size: 18px;
+        	 border-radius: 50px;
+        }
+         .plus-component .price .container .price-wrapper.price-wrapper-1 .price-price, .plus-component .price .container .price-wrapper.price-wrapper-1 .fa-check {
+        	 color: green !important;
+        }
+         .plus-component .price .container .price-wrapper.price-wrapper-1 .btn {
+        	 background-color: green;
+        	 color: white;
+        }
+         .plus-component .price .container .price-wrapper.price-wrapper-2 .price-price, .plus-component .price .container .price-wrapper.price-wrapper-2 .fa-check {
+        	 color: #539bf4 !important;
+        }
+         .plus-component .price .container .price-wrapper.price-wrapper-2 .btn {
+        	 background-color: #539bf4;
+        	 color: white;
+        }
+         .plus-component .price .container .price-wrapper.price-wrapper-3 .price-price, .plus-component .price .container .price-wrapper.price-wrapper-3 .fa-check {
+        	 color: #7a2fa1 !important;
+        }
+         .plus-component .price .container .price-wrapper.price-wrapper-3 .btn {
+        	 background-color: #7a2fa1;
+        	 color: white;
+        }
+         .plus-component .question .container {
+        	 max-width: 700px;
+        }
+         .plus-component .question .question-about {
+        	 cursor: pointer;
+        	 display: inline-block;
+        	 border-bottom: 1px solid #ddd;
+        	 padding: 5px 0 5px;
+        	 width: 100%;
+        	 -webkit-transition: all 0.5s ease;
+        	 transition: all 0.5s ease;
+        }
+         .plus-component .question .question-about .question-about-title {
+        	 display: inline-block;
+        	 margin-bottom: 0;
+        	 width: 100%;
+        }
+         .plus-component .question .question-about .question-about-title .icon {
+        	 display: block;
+        	 float: left;
+        	 padding: 0px 2px;
+        	 border-radius: 50%;
+        	 border: 1px solid #8a8a8a;
+        	 -webkit-transition: all 0.3s ease;
+        	 transition: all 0.3s ease;
+        }
+         .plus-component .question .question-about .question-about-title .icon i.fa {
+        	 color: #8a8a8a;
+        }
+         .plus-component .question .question-about .question-about-title .question-about-content {
+        	 display: block;
+        	 float: left;
+        	 font-size: 18px;
+        	 margin-top: 4px;
+        	 margin-left: 10px;
+        	 width: 80%;
+        }
+         .plus-component .question .answer-about {
+        	 display: none;
+        	 float: left;
+        	 font-weight: 100;
+        	 height: 0;
+        	 overflow: hidden;
+        	 -webkit-transition: all 0.3s ease;
+        	 transition: all 0.3s ease;
+        }
+         .plus-component .question .question-about:last-child {
+        	 border-bottom: 0;
+        }
+         .plus-component .question .question-about.show-answer .icon {
+        	 color: #f64f02;
+        	 border: 1px solid #f64f02;
+        }
+         .plus-component .question .question-about.show-answer .icon i.fa {
+        	 color: #f64f02;
+        }
+         .plus-component .yt-player-container .yt-player-preview {
+        	 position: relative;
+        	 padding-bottom: 56.25%;
+        	 padding-top: 30px;
+        	 height: 0;
+        	 overflow: hidden;
+        }
+         .plus-component .yt-player-container .yt-player-preview iframe {
+        	 position: absolute;
+        	 top: 0;
+        	 left: 0;
+        	 width: 100%;
+        	 height: 100%;
+        }
+        .plus-component .blog {
+          font-size: 16px;
+        }
+        .plus-component .blog img {
+          max-width: 100%;
+        }
+        .plus-component footer {
+          font-size: 14px;
+        }
+
+        .mt15 {
+          margin-top: 15px;
+        }
+        .nav>li>a:focus, .nav>li>a:hover {
+          background-color: transparent;
+        }
+
+        @media  only screen and (min-width: 1300px) {
+          .banner-wrapper .container {
+            width: 1280px;
+          }
+        }
+
+        </style>
+
+<script async="" src="gtag/js?id=G-R6G4HEXVN6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R6G4HEXVN6');
+</script>
+</head>
+<body>
+<div class="plus-component">
+<div class="banner">
+<div class="banner-wrapper">
+<header class="header">
+<div class="main-site-header site-inner-content cf">
+<a href="index.htm" class="cursor-pointer">
+<img alt="chatbot" class="logo" src="img/LOGO_EXPORT.png">
+<img alt="chatbot" class="logo logo-color" src="img/LOGO_EXPORT_02.png">
+</a>
+<div class="main-site-nav">
+<a class="signin-link cursor-pointer" onclick="loginHelper.checkLoginStatus()">Đăng nhập</a>
+<a href="pricing.html">
+<span>Bảng giá</span>
+</a>
+<a target="_blank" href="templates.html" class="header-templates">Bot mẫu</a>
+<a target="_blank" href="tutorials.html">Hướng dẫn</a>
+
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Sản phẩm
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownProduct">
+<li>
+<a target="_blank" href="help/docs.html">Tài Liệu Hướng Dẫn</a>
+</li>
+<li>
+<a target="_blank" href="tutorials.html">Video Hướng Dẫn</a>
+</li>
+<li>
+<a target="_blank" href="help/blog.html">Blog kiến thức</a>
+</li>
+<li>
+<a target="_blank" href="icon-facebook.html">Icon Facebook</a>
+</li>
+<li>
+<a target="_blank" href="download-video-facebook.html">Tải video từ Facebook</a>
+</li>
+<li>
+<a target="_blank" href="text-overlay-facebook.html">Check text overlay</a>
+</li>
+<li>
+<a target="_blank" href="facebook-text.html">Đổi font Facebook</a>
+</li>
+<li>
+<a target="_blank" href="/qr-code">Tạo mã QR</a>
+</li>
+<li>
+<a target="_blank" href="minigame.html">Tạo Minigame</a>
+</li>
+<li style="display: none">
+<a target="_blank" href="thue-invoice.html">Cho thuê TKQC</a>
+</li>
+</ul>
+</div>
+<a target="_blank" href="affiliate.html">Affiliate</a>
+<div class="dropdown dropdown-language show-sm">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;VI
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+<li onclick="headerComponent.setLanguage('en')">
+<img src="img/en_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;English
+</li>
+<li onclick="headerComponent.setLanguage('id')">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Indonesia
+</li>
+<li onclick="headerComponent.setLanguage('vi')">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Vietnamese
+</li>
+</ul>
+</div>
+</div>
+<div class="app-sign-in-2">
+<div class="dropdown dropdown-language">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;VI
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+<li onclick="headerComponent.setLanguage('en')">
+<img src="img/en_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;English
+</li>
+<li onclick="headerComponent.setLanguage('id')">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Indonesia
+</li>
+<li onclick="headerComponent.setLanguage('vi')">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Vietnamese
+</li>
+</ul>
+</div>
+<a type="button" class="btn btn-info btn-flat btn-login-ahachat" onclick="loginHelper.checkLoginStatus()"><i class="fa fa-facebook-square"></i>&nbsp;&nbsp;Đăng nhập</a>
+</div>
+<div class="mobile-menu js-main-site-nav" onclick="headerComponent.toggleMenuHeader()">
+<div class="hamburger"></div>
+</div>
+</div>
+</header>
+<script>
+var HeaderComponent = function() {
+  this.language = window.localStorage.getItem('ahachat-locale')
+
+  this.toggleMenuHeader = () => {
+    $('body').toggleClass('js-main-menu-open');
+  }
+
+  this.setLanguage = (language) => {
+    this.language = language;
+    window.localStorage.setItem('ahachat-locale', this.language);
+
+    // redirect
+    if (this.language === 'en') {
+      window.location.href = '/en'
+    } else if (this.language === 'id') {
+      window.location.href = '/id'
+    } else {
+      window.location.href = '/'
+    }
+  }
+}
+$(document).ready(function() {
+  window.headerComponent = new HeaderComponent()
+})
+</script>
+<style>
+.pricing-component header.header .main-site-header .logo-text,
+.ladi-wraper header.header .main-site-header .logo-text,
+.about-component header.header .main-site-header .logo-text,
+.carees-social-component header.header .main-site-header .logo-text,
+.video-tutorials-component header.header .main-site-header .logo-text,
+.bot-templates-component header.header .main-site-header .logo-text,
+.affiliate header.header .main-site-header .logo-text,
+.invoice-component header.header .main-site-header .logo-text {
+	 color: #333;
+}
+
+ .pricing-component header.header .main-site-header .app-sign-in a,
+ .ladi-wraper header.header .main-site-header .app-sign-in a,
+ .about-component header.header .main-site-header .app-sign-in a,
+ .carees-social-component header.header .main-site-header .app-sign-in a,
+ .video-tutorials-component header.header .main-site-header .app-sign-in a,
+ .bot-templates-component header.header .main-site-header .app-sign-in a,
+ .affiliate header.header .main-site-header .app-sign-in a,
+ .invoice-component header.header .main-site-header .app-sign-in a,
+
+ .pricing-component header.header .main-site-nav a,
+ .ladi-wraper header.header .main-site-nav a,
+ .about-component header.header .main-site-nav a,
+ .carees-social-component header.header .main-site-nav a,
+ .video-tutorials-component header.header .main-site-nav a,
+ .bot-templates-component header.header .main-site-nav a,
+ .affiliate header.header .main-site-nav a,
+ .invoice-component header.header .main-site-nav a,
+
+ .pricing-component header.header .main-site-nav .dropdown .btn,
+ .ladi-wraper header.header .main-site-nav .dropdown .btn,
+ .about-component header.header .main-site-nav .dropdown .btn,
+ .carees-social-component header.header .main-site-nav .dropdown .btn,
+ .video-tutorials-component header.header .main-site-nav .dropdown .btn,
+ .bot-templates-component header.header .main-site-nav .dropdown .btn,
+ .affiliate header.header .main-site-nav .dropdown .btn,
+ .invoice-component header.header .main-site-nav .dropdown .btn {
+	 color: #337ab7;
+}
+ header.header {
+	 margin-bottom: 50px;
+}
+ header.header .font-new {
+	 text-indent: 5px;
+	 font-size: 12px;
+}
+.show-sm {
+  display: none !important;
+}
+ .carees-social-component header.header, .video-tutorials-component header.header {
+	 margin-bottom: 0;
+}
+ .main-site-header {
+	 text-align: center;
+	 position: relative;
+	 max-width: 1340px;
+	 margin: 0 auto;
+}
+ .main-site-header .dropdown {
+	 display: inline-block;
+}
+ .main-site-header .dropdown .btn {
+	 background: transparent;
+	 color: white;
+	 border: none;
+	 padding: 0px 25px 3px;
+}
+ .main-site-header .dropdown .btn:focus {
+	 border: 0;
+	 outline: none;
+	 box-shadow: none;
+   background-color: transparent;
+   color: white;
+}
+ .main-site-header .dropdown .dropdown-menu {
+	 margin-top: -20px;
+}
+ .main-site-header .dropdown .dropdown-menu li a {
+	 padding: 10px;
+	 color: #337ab7;
+	 display: block;
+}
+ .main-site-header .logo {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 left: 60px;
+	 width: 150px;
+}
+ .main-site-header .logo-color {
+	 display: none;
+}
+ .main-site-header .logo img {
+	 width: 120px;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header {
+		 height: 100px;
+	}
+	 .main-site-header .dropdown {
+		 display: block;
+		 line-height: 0;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	}
+	 .main-site-header .dropdown .btn {
+		 padding: 20px 0;
+		 color: white !important;
+	}
+	 .main-site-header .dropdown .dropdown-menu {
+		 margin-top: -2px;
+		 width: 100%;
+	}
+	 .main-site-header .dropdown .dropdown-menu li a {
+		 color: #337ab7 !important;
+	}
+  .show-sm {
+    display: block !important;
+  }
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .logo {
+		 left: 15px;
+		 top: 45px;
+	}
+}
+ @media  screen and (max-width: 600px) {
+	 .main-site-header .logo {
+		 left: 20px;
+	}
+}
+ .main-site-header .hamburger, .main-site-header .hamburger:before, .main-site-header .hamburger:after {
+	 width: 17px;
+	 height: 3px;
+	 background: rgba(41, 70, 97, 0.6);
+	 border-radius: 1px;
+	 -webkit-transition: all 0.3s ease;
+	 transition: all 0.3s ease;
+}
+ .main-site-header .hamburger {
+	 margin: 4px 9px;
+	 position: relative;
+	 display: inline-block;
+}
+ .main-site-header .hamburger:before, .main-site-header .hamburger:after {
+	 content: '';
+	 display: block;
+	 right: 0;
+	 position: absolute;
+}
+ .main-site-header .hamburger:before {
+	 top: -6px;
+}
+ .main-site-header .hamburger:after {
+	 top: 6px;
+}
+ .main-site-header .mobile-menu {
+	 display: none;
+	 color: #fff;
+	 padding: 9px 0;
+	 height: 30px;
+	 cursor: pointer;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+	 z-index: 401;
+	 position: absolute;
+	 top: 30px;
+	 right: 60px;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .mobile-menu {
+		 display: block;
+		 right: 45px;
+	}
+	 .main-site-header .logo-text {
+		 left: 75px;
+	}
+}
+ @media  screen and (max-width: 768px) {
+	 .main-site-header .mobile-menu {
+		 right: 20px;
+		 top: 24px;
+	}
+	 .main-site-header .logo-text {
+		 top: 43px;
+		 left: 75px;
+	}
+}
+ .main-site-header .mobile-menu:hover {
+	 color: #fff;
+}
+ .main-site-header .mobile-menu:hover .hamburger, .main-site-header .mobile-menu:hover .hamburger:before, .main-site-header .mobile-menu:hover .hamburger:after {
+	 background: #294661;
+}
+ .main-site-header .main-site-nav {
+	 display: inline-block;
+	 line-height: 90px;
+}
+ .main-site-header .main-site-nav .main-site-nav-extended {
+	 display: none;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .main-site-nav {
+		 height: 100%;
+		 overflow-y: auto;
+		 -webkit-overflow-scrolling: touch;
+		 z-index: 400;
+		 background: #e6692f;
+		 padding: 45px;
+		 padding-top: 90px;
+		 width: 350px;
+		 text-align: left;
+		 -webkit-transform: translateX(350px);
+		 transform: translateX(350px);
+		 opacity: 0;
+		 visibility: hidden;
+		 position: fixed;
+		 top: 0;
+		 right: 0;
+	}
+	 .main-site-header .main-site-nav .main-site-nav-extended {
+		 display: block;
+	}
+}
+ @media  screen and (max-width: 768px) {
+	 .main-site-header .main-site-nav {
+		 padding: 90px 20px 0 20px;
+	}
+}
+ @media  screen and (max-width: 600px) {
+	 .main-site-header .main-site-nav {
+		 width: 250px;
+		 -webkit-transform: translateX(250px);
+		 transform: translateX(250px);
+	}
+}
+ .main-site-header .main-site-nav.main-site-nav-closing {
+	 -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+ .main-site-nav a {
+	 display: inline-block;
+	 padding: 0 25px;
+	 color: white;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+}
+ .main-site-nav a:hover {
+	 color: #fff;
+}
+ .app-sign-in-2 {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 right: 50px;
+   z-index: 1;
+}
+.dropdown-language img {
+  width: 30px;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu {
+  padding: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu li {
+  cursor: pointer;
+  padding: 4px 12px;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu li:hover {
+  background-color: #eee;
+}
+ .app-sign-in-2 .btn-login-ahachat {
+	 border-radius: 30px;
+	 background-color: #208ef0;
+   color: white;
+}
+.app-sign-in-2 .btn-login-ahachat:hover {
+  color: white;
+}
+ .pricing-component .main-site-header .logo-color,
+ .ladi-wraper .main-site-header .logo-color,
+ .about-component .main-site-header .logo-color,
+ .carees-social-component .main-site-header .logo-color,
+ .video-tutorials-component .main-site-header .logo-color,
+ .bot-templates-component .main-site-header .logo-color,
+ .affiliate .main-site-header .logo-color,
+ .invoice-component .main-site-header .logo-color {
+	 display: inline;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-nav a {
+		 color: #fff !important;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		 padding: 20px 0;
+		 display: block;
+		 line-height: normal;
+	}
+	 .main-site-nav a:hover {
+		 color: #fff;
+	}
+	 .main-site-header .app-sign-in-2 {
+		 display: none;
+	}
+}
+ .main-site-header .main-site-nav-link-outside {
+	 color: #fff;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+}
+ .main-site-header .main-site-nav-link-outside:hover {
+	 color: #fff;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .main-site-nav-link-outside {
+		 color: #fff;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		 padding: 20px 0;
+		 display: block;
+		 line-height: normal;
+	}
+	 .main-site-header .main-site-nav-link-outside:hover {
+		 color: #fff;
+	}
+}
+ .main-site-header .app-sign-in {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 right: 180px;
+}
+ .main-site-header .app-sign-in .icon-flag {
+	 width: 22px;
+}
+ @media  screen and (min-width: 1024px) {
+	 .main-site-nav a.signin-link {
+		 display: none;
+	}
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .app-sign-in {
+		 display: none;
+	}
+}
+ .main-site-header .app-sign-in a {
+	 color: #fff;
+}
+ .js-main-menu-open .mobile-menu {
+	 color: #fff;
+	 position: fixed;
+	 border-radius: 2px;
+}
+ .js-main-menu-open .mobile-menu .hamburger {
+	 background: none;
+}
+ .js-main-menu-open .mobile-menu .hamburger:before, .js-main-menu-open .mobile-menu .hamburger:after {
+	 top: 0;
+	 background: #fff;
+	 -webkit-transform: rotate(-45deg);
+	 transform: rotate(-45deg);
+}
+ .js-main-menu-open .mobile-menu .hamburger:after {
+	 -webkit-transform: rotate(45deg);
+	 transform: rotate(45deg);
+}
+ .js-main-menu-open .mobile-menu:hover {
+	 color: #fff;
+}
+ .js-main-menu-open .mobile-menu:hover .hamburger {
+	 background: none;
+}
+ .js-main-menu-open .mobile-menu:hover .hamburger:before, .js-main-menu-open .mobile-menu:hover .hamburger:after {
+	 background: #fff;
+}
+ .js-main-menu-open .main-site-nav {
+	 -webkit-transform: translateX(0);
+	 transform: translateX(0);
+	 opacity: 1;
+	 visibility: visible;
+	 -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
+<div class="container" style="margin-bottom: 100px;">
+<div class="col-md-6" style=" margin-top: 40px; padding-right: 50px;">
+<h1>Gấp đôi doanh số bán hàng với Chatbot Ads</h1>
+<h2>Công cụ giúp bạn chăm sóc khách hàng, chăm sóc đối tác tiềm năng để tạo ra đơn với chi phí tối ưu</h2>
+<a class="btn btn-info btn-flat" onclick="loginHelper.checkLoginStatus()">
+<i class="fa fa-facebook-square mr-5" style="margin-right: 4px;"></i>
+Đăng nhập
+</a>
+</div>
+<div class="col-md-6" style="margin-top: 25px;">
+<div class="embedso-widget" data-code="1ece7421-3dcf-6354-b6d5-42010a940002"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="features text-center" style="margin-top: 100px">
+<h2 class="title">Khó khăn của bạn là?</h2>
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<i class="fa fa-file-text-o" style="color: #368ecc"></i>
+<span>Tệp khách hàng cũ của page lên đến cả trăm nghìn, mà chưa biết cách khai thác.</span>
+</div>
+<div class="col-md-3">
+<i class="fa fa-dollar" style="color: #a65aeb"></i>
+<span>Tốn kém chi phí để tìm khách hàng mới, trong khi tệp khách cũ tiềm năng lại bỏ qua.</span>
+</div>
+<div class="col-md-3">
+<i class="fa fa-clock-o" style="color: #2b992b"></i>
+<span>Mất nhiều thời gian và công sức để truyền thông đến từng khách hàng.</span>
+</div>
+<div class="col-md-3">
+<i class="fa fa-calendar-times-o" style="color: #ddae59"></i>
+<span>Chưa có quy trình tương tác, chăm sóc khách hàng cũ đã từng mua hàng.</span>
+</div>
+</div>
+</div>
+</div>
+<div class="sale" style="margin-top: 100px">
+<h2 class="title text-center">GIẢI PHÁP GIÚP BẠN REMARKETING KHÁCH CŨ VÀ UPSALE</h2>
+<div class="container">
+<div class="row justify-content-md-center mt-5">
+<div class="col-md-3 col-sm-3">
+<div class="item text-center">
+<div>
+<img src="img/man-sending-message.png" class="img-responsive">
+<p>Gửi tin nhắn hàng loạt khách cũ đã từng inbox vào fanpage của bạn từ trước đến nay để chăm sóc và upsale
+</p>
+</div>
+</div>
+<div class="grdnt-tranquil before-bg"></div>
+</div>
+<div class="col-md-3 col-sm-3">
+<div class="item text-center">
+<div>
+<img src="img/man-sending-vieo.png" class="img-responsive">
+<p class="">Nội dung tin nhắn có thể chứa quảng cáo, khuyến mại, hình ảnh, link web,.. theo đúng chính sách của Facebook.</p>
+</div>
+</div>
+<div class="grdnt-blue before-bg"></div>
+</div>
+<div class="col-md-6 col-sm-6">
+<div class="item">
+<div>
+<p>
+Ngày nay, việc sử dụng mạng xã hội như Facebook, Instagram, TikTok như một phương tiện chủ đạo trong quá trình thực hiện brand marketing hay quảng cáo sản phẩm mới đã quá quen thuộc với các doanh nghiệp. </p>
+<p> Tuy nhiên, bí quyết để thành công không phải là khiến cho quảng cáo xuất hiện đến nhiều người mà làm thế nào để kết hợp quảng cáo nhằm tăng tương tác cũng như xây dựng mối quan hệ với khách hàng. Đó là lý do Messenger Ads ra đời và nhận được nhiều phản hồi tích cực từ phía các nhãn hàng. </p>
+<p>
+Với hơn 1,3 tỷ người sử dụng Facebook Messenger mỗi tháng, các doanh nghiệp đang sử dụng Messenger rất linh hoạt và hiệu quả trong chiến dịch marketing.</p>
+</div>
+</div>
+<div class="grdnt-cyan before-bg"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="details" style="margin-top: 200px" id="details">
+<h2 class="title text-center">AhaChat Ads CÓ GÌ?</h2>
+<div class="container">
+<div class="row">
+<div class="col-md-6 text-center">
+<div class="embedso-widget" data-code="1ec9bb0a-82dd-66d2-a657-42010a940002"></div>
+<a class="btn btn-primary btn-flat" href="help/docs/facebook-ads.html" target="_blank">
+Hướng dẫn sử dụng
+</a>
+</div>
+<div class="col-md-6">
+<h3>SPONSORED MESSAGES</h3>
+<p>Gửi tin nhắn tới toàn bộ khách hàng cũ trên fanpage một cách nhanh nhất.</p>
+<ul>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Lập lịch và soạn kịch bản gửi tin tới toàn bộ khách hàng cũ trên fanpage.</span>
+</li>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Giới thiệu sản phẩm, sự kiện đến với khách hàng nhanh chóng và tiện lợi.</span>
+</li>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Tiết kiệm nhân lực thực hiện các công việc truyền thông, chăm sóc khách hàng.</span>
+</li>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Bộ lọc đối tượng khách hàng, để phân loại khách và đưa ra kế hoạch re-marketing phù hợp.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container" style="margin-top: 100px;">
+<div class="row">
+<div class="col-md-6">
+<h3>CLICK TO MESSENGER</h3>
+<p>Chuyển mọi người vào cuộc trò chuyện trên Messenger chỉ với một lần nhấp chuột.</p>
+<ul>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Kết nối trực tiếp quảng cáo từ Facebook đến kịch bản trong bot AhaChat.</span>
+</li>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Công cụ giúp bạn rút ngắn thời gian chăm sóc khách hàng , đối tác.</span>
+</li>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Tuyền tải thông điệp chiến dịch marketing đến khách hàng nhanh và tiện lợi.</span>
+</li>
+<li>
+<i class="fa fa-check-circle"></i>
+<span>Phân loại đối tượng khách hàng, đưa vào phễu bán hàng tự động.</span>
+</li>
+</ul>
+</div>
+<div class="col-md-6 text-center">
+<div class="embedso-widget" data-code="1ec9bb10-ac1f-68a0-942a-42010a940002"></div>
+<a class="btn btn-primary btn-flat" href="help/docs/ads-json.html" target="_blank">
+Hướng dẫn sử dụng
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="price" style="margin-top: 150px;" id="price">
+<h2 class="title text-center">BẢNG GIÁ DỊCH VỤ</h2>
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<div class="price-wrapper">
+<div class="price-title">GÓI FREE</div>
+<div class="price-price">Miễn Phí</div>
+<hr>
+<div class="price-info">
+<div><i class="fa fa-check"></i>&nbsp;<b>2 chatbot</b></div>
+<div><i class="fa fa-check"></i>&nbsp;500 tin nhắn</div>
+<div><i class="fa fa-check"></i>&nbsp;Không giới hạn nhân viên</div>
+</div>
+<div class="text-center" style="margin: 15px 0 10px">
+<button class="btn" style="visibility: hidden">Mua ngay</button>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<div class="price-wrapper price-wrapper-1">
+<div class="price-title">GÓI 1 THÁNG</div>
+<div class="price-price">700,000</div>
+<hr>
+<div class="price-info">
+<div><i class="fa fa-check"></i>&nbsp;<b>Không giới hạn chatbot</b></div>
+<div><i class="fa fa-check"></i>&nbsp;100,000 tin nhắn</div>
+<div><i class="fa fa-check"></i>&nbsp;Không giới hạn nhân viên</div>
+</div>
+<div class="text-center" style="margin: 15px 0 10px">
+<a class="btn" href="https://messenger.com/t/ahachatter?ref=nangcap" target="_blank">Mua ngay</a>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<div class="price-wrapper price-wrapper-2">
+<div class="price-title">GÓI 3 THÁNG</div>
+<div class="price-price">1,500,000</div>
+<hr>
+<div class="price-info">
+<div><i class="fa fa-check"></i>&nbsp;<b>Không giới hạn chatbot</b></div>
+<div><i class="fa fa-check"></i>&nbsp;100,000 tin nhắn</div>
+<div><i class="fa fa-check"></i>&nbsp;Không giới hạn nhân viên</div>
+</div>
+<div class="text-center" style="margin: 15px 0 10px">
+<a class="btn" href="https://messenger.com/t/ahachatter?ref=nangcap" target="_blank">Mua ngay</a>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+<div class="price-wrapper price-wrapper-3">
+<div class="price-title">GÓI 1 NĂM</div>
+<div class="price-price">4,500,000</div>
+<hr>
+<div class="price-info">
+<div><i class="fa fa-check"></i>&nbsp;<b>Không giới hạn chatbot</b></div>
+<div><i class="fa fa-check"></i>&nbsp;100,000 tin nhắn</div>
+<div><i class="fa fa-check"></i>&nbsp;Không giới hạn nhân viên</div>
+</div>
+<div class="text-center" style="margin: 15px 0 10px">
+<a class="btn" href="https://messenger.com/t/ahachatter?ref=nangcap" target="_blank">Mua ngay</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="question" style="margin: 70px 0;">
+<div class="container">
+<h2 class="title text-center">Một số câu hỏi có thể gặp</h2>
+<div class="homepage-questions">
+<div class="question-about" onclick="toggleAnswer('#question1')" id="question1">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Page gửi nhiều tin nhắn có bị block gửi tin không?</span>
+</h5>
+<div class="answer-about">Sử dụng facebook ads là cách gửi tin quảng cáo hàng loạt an toàn tuyệt đối. Nhưng hãy chút ý nội dung bạn gửi tránh vi phạm chính sách của Facebook.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question2')" id="question2">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Spam tin nhắn, khách hàng báo cáo thì page/profile có bị khóa không?</span>
+</h5>
+<div class="answer-about">Bạn hãy truyền tải những thông điệp một cách khéo léo, và tốt cho người dùng, tránh spam khiến khách hàng khó chịu mà xảy ra những điều đáng tiếc.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question3')" id="question3">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Giới hạn gửi tin nhắn một ngày là bao nhiêu?</span>
+</h5>
+<div class="answer-about">Không giới hạn số lượng tin gửi trong ngày, bạn gửi bao nhiêu tùy ý, và facebook sẽ tự phân phối thời gian nhận tin của mỗi khách hàng.</div>
+</div>
+<div class="question-about" onclick="toggleAnswer('#question4')" id="question4">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Thời gian gửi mỗi tin là bao nhiêu lâu?</span>
+</h5>
+<div class="answer-about">Thời gian gửi một tin nhắn phụ thuộc vào thuật toán phân phối của facebook, thông thường từ 1 đến 5 ngày. Bạn nên phân loại tệp khách hàng trước khi gửi tin để đạt được hiệu quả cao nhất.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="call-btn">
+<div class="call-phone" style="top: 6px">
+<a href="tel:0912543223" target="_blank">
+0917.54.3223
+</a>
+</div>
+<div class="call-phone" style="top: 45px">
+<a href="tel:0917543223" target="_blank">
+0912.54.3223
+</a>
+</div>
+<div class="call-btn-fill"></div>
+<div class="call-btn-fill2"></div>
+<a href="tel:0917543223" target="_blank" class="call-phone-icon">
+<i class="fa fa-phone"></i>
+</a>
+</div>
+<style>
+.call-btn {
+	 position: fixed;
+	 bottom: 20px;
+	 left: 20px;
+	 font-size: 30px;
+	 color: #fff;
+	 width: 80px;
+	 height: 80px;
+	 border-radius: 50%;
+	 text-align: center;
+	 padding: 10px;
+	 z-index: 11;
+}
+ .call-btn .call-btn-fill {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 80px;
+	 height: 80px;
+	 border-radius: 50%;
+	 background-color: #e26161;
+	 -webkit-animuiion: phoneringfill 1.3s infinite;
+	 animation: phoneringfill 1.3s infinite;
+}
+ .call-btn .call-btn-fill2 {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 80px;
+	 height: 80px;
+	 border-radius: 50%;
+	 background-color: #e26161;
+	 -webkit-animuiion: phoneringfill2 1s infinite ease;
+	 animation: phoneringfill2 1s infinite ease;
+}
+ .call-btn a {
+	 color: white;
+	 text-decoration: none;
+}
+ .call-btn a.call-phone-icon {
+	 display: block;
+	 width: 60px;
+	 height: 60px;
+	 border-radius: 50%;
+	 background-color: #e83032;
+	 -webkit-animation: phonering 2s infinite ease-in-out;
+	 animation: phonering 2s infinite ease-in-out;
+	 line-height: 60px;
+}
+ .call-btn a.call-phone-icon i {
+	 color: white;
+}
+ .call-btn .call-phone {
+	 position: absolute;
+	 top: 14px;
+	 left: 25px;
+	 padding: 5px 10px;
+	 background: #e83032;
+	 font-size: 14px;
+	 border-radius: 20px;
+	 padding-left: 62px;
+}
+ @keyframes  phoneringfill {
+	 0% {
+		 transform: scale(0);
+		 opacity: 1;
+	}
+	 70% {
+		 transform: scale(1.5);
+	}
+	 100% {
+		 transform: scale(0.9);
+		 opacity: 0;
+	}
+}
+ @keyframes  phoneringfill2 {
+	 0% {
+		 transform: scale(1);
+	}
+	 50% {
+		 transform: scale(1.1);
+	}
+	 100% {
+		 transform: scale(1);
+	}
+}
+ @-webkit-keyframes phonering {
+	 0% {
+		 -webkit-transform: rotate(0);
+	}
+	 10% {
+		 -webkit-transform: rotate(-25deg);
+	}
+	 20% {
+		 -webkit-transform: rotate(25deg);
+	}
+	 30% {
+		 -webkit-transform: rotate(-25deg);
+	}
+	 40% {
+		 -webkit-transform: rotate(25deg);
+	}
+	 50% {
+		 -webkit-transform: rotate(0);
+	}
+	 100% {
+		 -webkit-transform: rotate(0);
+	}
+}
+ @media  only screen and (max-width: 992px) {
+	 .call-btn {
+		 display: none;
+	}
+}
+
+</style>
+<div class="fomo-component hide" style="display: none">
+<div class="fomo-image">
+<img alt="Avatar" class="fomo-avatar" onerror="this.src='/img/page_error.png'">
+</div>
+<div class="fomo-content">
+<p class="content-detail">
+</p>
+<h6 class="timestamp fomo-time">
+</h6>
+</div>
+<div class="fomo-close">
+<span onclick="fomoController.stopAll()"><i class="fa fa-times"></i></span>
+</div>
+</div>
+<script>
+var FomoController = function() {
+  this.locale = 'vi'
+  this.lang_texts = {
+    'vi': {
+      "user_sign_in": "user_name vừa tham gia tạo bot trên AhaChat",
+      "user_integrate_fanpage": "user_name vừa được tích hợp vào bot trên AhaChat"
+    },
+    'en': {
+      "user_sign_in": "user_name has just joined in creating bot on AhaChat",
+      "user_integrate_fanpage": "user_name has just been integrated into the bot on AhaChat"
+    }
+  }
+  this.show = null
+  this.fomoNotifications = null
+  this.currentIndex = 0
+  this.interval = null
+
+  this.getContentFormat = (data) => {
+    if (!data) {
+      return;
+    }
+
+    if (data.type === 'user_sign_in') {
+      let name = this.getNameByLocation(data.first_name.replace('+', ' '), data.last_name.replace('+', ' '), this.locale);
+      return this.getTextWithLang('user_sign_in', {user_name: name});
+    }
+
+    if (data.type === 'user_integrate_fanpage') {
+      return this.getTextWithLang('user_integrate_fanpage', {user_name: data.first_name});
+    }
+  }
+
+  this.getNameByLocation = (firstName, lastName, location) => {
+    if (typeof location !== 'string') {
+      location = 'vi';
+    }
+    if (location && (location === 'vi' || location === 'vn')) {
+      return firstName + ' ' + lastName;
+    }
+    return lastName + ' ' + firstName;
+  },
+
+
+  this.getTextWithLang = (key, params) => {
+    var text = this.lang_texts[this.locale][key]
+
+    if (!params) {
+      return text
+    }
+
+    for (var k in params) {
+        text = text.replace(new RegExp(k, "ig"), params[k]);
+    }
+
+    return text
+  }
+
+  this.setAvatar = (data) => {
+    $('.fomo-avatar').attr('src', data.avatar)
+  }
+
+  this.setCurrentContent = (data) => {
+    $('.content-detail').html(this.getContentFormat(data))
+  }
+
+  this.setCurrentTime = (data) => {
+    $('.fomo-time').html(moment(data.created_at).locale(this.locale).fromNow())
+  }
+
+  this.getFomoNotifications = (first) => {
+    if (first === false) {
+      clearInterval(this.interval);
+    }
+    $.get('/api/fomo-notifications', (response) => {
+      if (response.data && response.data.length == 0) {
+        return;
+      }
+      this.fomoNotifications = response.data;
+      if (first === true) {
+        this.start(-1);
+      } else {
+        this.start(0);
+      }
+    });
+  }
+
+  this.setCurrentNotification = (index) => {
+    if (!this.fomoNotifications) return
+    if (index === this.fomoNotifications.length) {
+      this.getFomoNotifications(false);
+    } else {
+      this.setAvatar(this.fomoNotifications[index]);
+      this.setCurrentContent(this.fomoNotifications[index]);
+      this.setCurrentTime(this.fomoNotifications[index]);
+      this.showNotify();
+    }
+    this.currentIndex += 1;
+  }
+
+  this.start = (currentInterval) => {
+    this.currentIndex = 0;
+    this.interval = setInterval(() => {
+      currentInterval += 1;
+      if (currentInterval === 0) {
+        this.setCurrentNotification(this.currentIndex);
+      }
+
+      if (currentInterval - 5 === 0) {
+        this.hideNotify();
+      }
+
+      if (currentInterval === 10) {
+        currentInterval = -1;
+      }
+    }, 1000);
+  }
+
+
+  this.showNotify = () => {
+    $('.fomo-component').removeClass('fadeOutLeft').addClass('animated fadeInLeft').show()
+  }
+
+  this.hideNotify = () => {
+    $('.fomo-component').removeClass('fadeInLeft').addClass('animated fadeOutLeft').hide()
+  }
+
+  this.stopAll = () => {
+    try {
+      clearInterval(this.interval);
+      $('.fomo-component').remove()
+    } catch (e) {
+      console.log(e);
+    }
+  }
+};
+
+$(document).ready(function() {
+  window.fomoController = new FomoController()
+  window.fomoController.getFomoNotifications(true)
+})
+
+</script>
+<style>
+.fomo-component {
+	 position: fixed;
+	 top: auto;
+	 right: auto;
+	 bottom: 15px;
+	 left: 15px;
+	 z-index: 1111;
+	 padding: 15px;
+	 border-radius: 50px;
+	 -webkit-box-shadow: 0 0 10px 0;
+	 box-shadow: 0 0 10px 0;
+	 background-color: white;
+	 width: 350px;
+	 display: table;
+   font-size: 14px;
+}
+ .fomo-component .fomo-image {
+	 display: table-cell;
+	 overflow: hidden;
+	 margin-right: 10px;
+	 vertical-align: middle;
+}
+ .fomo-component .fomo-image img {
+	 width: 50px;
+	 height: 50px;
+	 border-radius: 50%;
+}
+ .fomo-component .fomo-content {
+	 display: table-cell;
+	 vertical-align: middle;
+	 padding-left: 10px;
+}
+ .fomo-component .fomo-content h6 {
+	 color: #888;
+}
+ .fomo-component .fomo-close {
+	 display: table-cell;
+	 vertical-align: middle;
+	 padding-left: 10px;
+}
+ .fomo-component .fomo-close span {
+	 padding: 5px;
+	 cursor: pointer;
+}
+ .fomo-component .fomo-close span i.fa {
+	 color: #888;
+}
+ .fomo-component .fomo-close span:hover i.fa {
+	 color: #333;
+}
+ @media  all and (max-width: 767px) {
+	 .fomo-component {
+		 width: 90%;
+		 padding: 10px;
+	}
+}
+
+</style>
+<div class="chat-support">
+<a href="https://messenger.com/t/ahachatter?ref=plus" target="_blank">
+<img src="img/girl-helper.png" alt="chatbot">
+</a>
+</div>
+<style>
+  .chat-support {
+    position: fixed;
+    bottom: 97px;
+    right: 24px;
+    z-index: 11;
+    display: none;
+  }
+  @media  only screen and (max-width: 992px) {
+    .chat-support {
+      display: none;
+    }
+  }
+</style>
+<footer class="page-footer font-small unique-color-dark">
+<div class="footer-container">
+<div class="container text-center text-md-left mt-5">
+<div class="row mt-3">
+<div class="col-md-5 col-lg-5 col-lg-offset-1 mx-auto">
+<img src="img/LOGO_EXPORT_02.png" class="logo">
+<h4 class="color-darkgrey" style="color: white"><b>Công Ty TNHH AhaChat</b></h4>
+<div id="dirrect-countdown-1s"></div>
+<div id="dirrect-code-1s"></div>
+<script data-no-optimize="1">
+                      //nowprocket
+                      var dirrectSiteCode = "q6cgaNwH5c"
+                    </script>
+<script src="site.js"></script>
+<p class="color-darkgrey">
+Email: <a href="cdn-cgi/l/email-protection.html#8df9f4e3eaf8f4e8e3cdece5eceee5ecf9a3eee2e0" style="text-decoration: underline;"><span class="__cf_email__" data-cfemail="f3878a9d94868a969db3929b92909b9287dd909c9e">[email&#160;protected]</span></a>&nbsp;&nbsp; - &nbsp;&nbsp;Website: <a href="index.htm" style="text-decoration: underline;">https://ahachat.com</a><br>
+Hotline: 0912543223 - 0917543223<br>
+Số giấy chứng nhận đăng ký kinh doanh: 0401907490<br>
+Ngày cấp: 21/06/2018. Nơi cấp: Sở kế hoạch và đầu tư thành phố Đà Nẵng<br>
+Địa chỉ: Tòa nhà PVcomBank, số 02 đường 30/4, quận Hải Châu, Tp. Đà Nẵng
+</p>
+<p class="color-darkgrey no-break"><b>Chi nhánh (hiện tại tất cả nhân viên đang làm việc remote)</b> <br>
+<i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Tầng 2, Rạp 12/9, 22 Quang Trung, TP. Vinh, Nghệ An - 09125 43223
+<br> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Tầng 8, Toà nhà Liên hiệp, 224 Điện Biên Phủ, Phường 7, Quận 3, TP.HCM - 08357 08333
+<br> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;CT1-2 Khu đô thị Mễ Trì Hạ, Nam Từ Liêm, Hà Nội - 03866 31778
+</p>
+<div class="social-links"><a href="https://www.facebook.com/ahachatter" target="_blank" class="social-link facebook-link"><i class="fa fa-facebook"></i></a> <a href="https://www.youtube.com/playlist?list=PLPPV8v125zxQkue8hpGi2V_zBEs-HkzZP" target="_blank" class="social-link youtube-link"><i class="fa fa-youtube-play"></i></a></div>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">CÔNG TY</h4>
+<p><a href="about.html" target="_blank">Về chúng tôi</a></p>
+<p><a href="pricing.html" target="_blank">Giá cả</a></p>
+<p><a href="careers/social-media-manager.html" target="_blank">Tuyển dụng</a></p>
+<p><a href="https://drive.google.com/open?id=1QN-gLQvHE5fb8d60PjuzgLyuCbxTJYOs" target="_blank">Thương hiệu</a></p>
+<div class="mobile-apps">
+<a href="https://apps.apple.com/sa/app/ahachat-chatbot-marketing/id1560826927" target="_blank">
+<img src="img/app-store.png" alt="chatbot">
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.ahachat" target="_blank">
+<img src="img/play-store.png" alt="chatbot">
+</a>
+</div>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">SẢN PHẨM</h4>
+<p><a href="https://help.ahachat.com/" target="_blank">Hướng dẫn</a></p>
+<p><a class="cursor-pointer" data-toggle="modal" data-target="#modal-compare">So sánh</a></p>
+<p><a href="https://messenger.com/t/ahachatter?ref=ask" target="_blank">Liên hệ</a></p>
+<p><a href="https://fb.com/groups/ahachat" target="_blank">Cộng đồng</a></p>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">PHÁP LÝ</h4>
+<p><a href="terms-of-service/index.htm" target="_blank">Điều khoản sử dụng</a></p>
+<p><a href="privacy-policy/index.htm" target="_blank">Chính sách bảo mật</a></p>
+<p><a href="payment-policy/index.htm" target="_blank">Chính sách thanh toán</a></p>
+<div class="fb-partner" style="margin-bottom: 10px;"><a href="http://online.gov.vn/Home/WebDetails/88008" target="_blank"><img src="img/bo-cong-thuong.png" class="img-responsive" alt="chatbot"></a></div>
+<div class="fb-partner" style="margin-bottom: 10px;"><a href="https://www.facebook.com/business/partner-directory/search?solution_type=messaging&ref=fmp_nav_bar&id=4405847059459330&section=overview" target="_blank"><img src="img/facebook_partner.png" class="img-responsive" alt="chatbot"></a></div>
+</div>
+</div>
+<div class="row color-darkgrey copyright mt20 mb20">
+<div class="col-xs-12 col-md-3 col-md-offset-1 text-left"><b><a href="https://status.ahachat.com/" target="_blank">System Status</a></b></div>
+<div class="col-xs-12 col-md-4 text-center">© 2021 AhaChat Co.,Ltd</div>
+<div class="col-xs-12 col-md-3 text-right">Made in Vietnam</div>
+</div>
+</div>
+</div>
+<div id="modal-compare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+<div role="document" class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+<h4 id="myModalLabel" class="modal-title bold">SO SÁNH NỀN TẢNG KHÁC</h4>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-xs-12">
+<h2 class="mt0 mb0">Rẻ Hơn Đến 10 Lần</h2>
+<div class="mb10"></div>
+Chatfuel và Manychat tính phí cho bạn dựa trên số lượng khách hàng của mỗi page. Nghĩa là dù bạn không gửi tin nhắn marketing đến những khách hàng này thì bạn vẫn bị tính tiền.
+<div class="mb10"></div>
+Tại AhaChat, chúng tôi làm điều ngược lại là không tính phí dựa trên số lượng khách hàng và cũng không tính phí theo từng page riêng rẽ, mà chỉ tính cho số lượng cuộc trò chuyện bot gửi đi từ tất cả các page cộng lại (nhiều tin nhắn qua lại giữa bot và khách hàng vẫn chỉ tính là 1 cuộc trò chuyện).
+<div class="mb10"></div>
+Điều đó có nghĩa là nếu bạn có 2 page sử dụng Manychat/Chatfuel, page thứ nhất có 1,000 khách hàng và page thứ 2 có 25,000 khách hàng thì số tiền bạn phải trả lên đến $15 + $145 = $160 mỗi tháng. Còn nếu sử dụng AhaChat (giả sử 1 tháng bạn có 4 cuộc trò chuyện với khách hàng thì 100,000 cuộc trò chuyện tương ứng 25,000 khách hàng) thì số tiền bạn chỉ phải trả là $15 mỗi tháng.
+<h2 class="mb0">Free Không Giới Hạn Tính Năng</h2>
+<div class="mb10"></div>
+Ở Chatfuel, nếu số lượng khách hàng của bạn vượt quá 1,000 hay 5,000 thì bot sẽ ngừng hoạt động. Thêm vào đó, phiên bản Free sẽ không thể quản lý danh sách khách hàng.
+<div class="mb10"></div>
+Ở Manychat, bạn sẽ bị giới hạn số lượng Thẻ, Chăm Sóc và Công Cụ Tăng Trưởng khi sử dụng phiên bản Free.
+<div class="mb10"></div>
+Ở AhaChat, bạn không bị giới hạn số lượng tính năng sử dụng ở phiên bản Free. Thêm vào đó, chúng tôi còn hỗ trợ những tính năng độc quyền là Chatbot Viral, Coupon, Lucky Spin, Web Form, Vip Card để giúp tăng trưởng khách hàng tiềm năng nhanh chóng.
+</div>
+<div class="row">
+<div class="col-xs-12">
+<div class="col-xs-12">
+<div class="table-responsive">
+<table class="pricing-table bold">
+<tbody>
+<tr>
+<td>
+<div style="margin-top: 20px;"></div>
+Giá &amp; Tính Năng
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td>
+<div class="logo-compare-modal"><img src="img/chatbot-icon-57x57-v2.png" alt="Ahachat"></div>
+AhaChat
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td>
+<div class="logo-compare-modal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEUgjvD///9cks4ajvIAhe8AiO8Ahu8okvAQivAAg+8Hie/0+v7c6/zC3Pr4/P5aktBRofJ+t/VsrfTv9v51lLigx/fn8v3P4/tysPSIu/Vep/OlyffX6PyWw/dJnvLY6fy01Pk0lvG92Pmtz/iGuvZjqfORwPZvr/Sx0vj2no24AAAF8UlEQVR4nO2d20LqOhBAg0nayEUKiCCVSwWB///CTUE8eiTQZma0E2c9+WKbRZqkmSRT9di/i5n+o+o7HTOur+60ihl9J4bcEUP+iCF/xJA/YsgfMeSPGPJHDPkjhvwRQ/6IIX/EkD9iyB8x5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjyRwz589OGWjvnbPuAPfyhNf29f8zwoGaNcWk2HGzn4zwfj7eb3azQibGO1PNHDEs5nT2vXkatb3S6r9uZSg6aVDcnN9TOuLd197vbZ55WU2UsSUGoDZ1Rm8l1uzPdeWEIapLUUFs7raj3Lvms0SuS0FAnaf5Qx+/I68I43GJQGWqzeK2td2Qyu8csEZGhtmkvzK9kmRm8MtEYOrcO9yvppRarLBSG2gzqt7//M0+QikVg2Fa1+k8fTwucasQ3NFMMv5IxSo+DbaiTwB70Ei8KYeBANnTpE55gq/WQwZ9UXEObwbuYrwwMtEyohnaH7HdgDFXENEwG+IKt1hqoiGiYbCgEW63VfUMMLUkNlqxBimiG7SGVILAtYhm6BZ3goUcFDBpIhjrFHia+Mgsf+pEME9SB/gIquJA4hmZFLNjqtn/V0FV+2R5N1ptdtijStCiy4SDvVa37URFaSgxDraoVcj1MTWLdRxoO59rWqFl+I9JYMgkPUGEYmgrzwYd8YS5GfbVum2J+oyrHgKgGgmGFZ/RpejXce5CcXfuV3hJA8RAMbeeW3/B2gNCZ7MX37ylolgg3tPkNwW1SqYTaDC/+VD1gjBhsqNPrfsvqUTNnL8QHttDAItjwRtQirxVr+RbjQZjkQw1vVOGuZh9hiy9PahfWBE8lBBraq28z9WvAqU9rjK8YMVOg4fXBfhFQA1p/KD7Dpr7nC8IM22PUGjyWKD09qB2EONvxejBDc2Hd+kzopO401exixEpLYIbuzS+4D56Yl/GQPdrqE8ww8S+hPQEiD+Z1Aw6TfgAztP4qXIB6aMRlYJDhlXfuPeRlGRWQofU+pA80O0dCABkm3vDTPDjogA7EUGf+KkQtJAiIoZ37DPNIDBPvvDxtTCsE1qGvGb7gjWZwAIa68FXhAHdXEwyAoX80DA9QEwAw9M4ruk16SCGG3vG+ST0pyND4YtW7JjVDiGHii5MGLzGQAOlpPIJNeqFREEPvYNGsjgZi6FvX7kVThzOP4T4WQ+fbADVuzsypBGDo2z+zbdRgQWH4HL3hJnrD+OswnnYYfV/qHQ/XsYyHf+CdpvAYRvNe6p1bdGKpQ/8+mibFEmnm+MNGDRckcZpGDRcSa7tC/PFSf8x72qSGCFq38HWmjWqIJGtPvcYscSui9cNlk7oakjVgyE4TdEjW8UdwQ4fWlEn2YnTAhqY7x9oURbKfBlyHZfwAuvv5DMmeKKihduU4BNzB/nExin1t0Nc2835Z0CmEMyR7Eyewkv13VhNykuQMyf7SFWgO/PkoI+A00BmSPcJziOF5j/B7ky6gwwbJPm/IFPjTPu/3i/3yWe6Le/UBy9xf9uqfqHdk4xsU5y064R2NXVyYr8AaI8WZmfCu1JMXBdQYKc49hS5cXDz3dGIa3hgpzq6FNUNtdleO+eXBIyPB+cOguZM2C9/5wxOT0GR1BGdIt7VHQ23vr54hPdIJ3P1PcA64ZiZL3TbptsKR7lFg68Y/yz22uirOWeOycYWz3AeyXzT88pwuXVqV4u15v6xkdyAPHYLY5FQIHi6Y5MV4CE9TK7lNqhJ9fpo/kGPoD+SJosv1BROUfG31oMi5N29Szr0/kDcRPfclxpn8RucvXerm5S9VmDlo543MQav+QB5hFX8uaBV/Pu/ysrHnZFcq+rz6x0tH/m2E48Uj/77Fkci/UXK6Q+TfmTnd5Oa3gi5njcS5uXzvCft+H9/sasf2za5fQwz5I4b8EUP+iCF/xJA/YsgfMeSPGPJHDPkjhvwRQ/6IIX/EkD9iyB8x5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjy52DYd5UTWXDE9dVj/y5m+o//AH9RWvsTjMLmAAAAAElFTkSuQmCC" alt="Ahachat"></div>
+Chatfuel
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td></td>
+<td>
+<div class="logo-compare-modal"><img src="assets/img/logo.png" alt="Ahachat"></div>
+Manychat
+<div style="margin-bottom: 15px;"></div>
+</td>
+</tr>
+<tr>
+<td>
+25,000 subscribes x 1 page
+</td>
+<td>$15/tháng</td>
+<td>$180/tháng</td>
+<td></td>
+<td>$145/tháng</td>
+</tr>
+<tr>
+<td>
+5,000 subscribes x 5 pages
+</td>
+<td>$15/tháng</td>
+<td>$220/tháng</td>
+<td></td>
+<td>$180/tháng</td>
+</tr>
+<tr>
+<td>
+Chatbot Viral
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Lucky Spin
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Coupons
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Web Form
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Vip Card
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<style>
+footer > .footer-container img.logo {
+  width: 130px;
+  margin-bottom: 25px;
+}
+footer > .footer-container {
+  color: white;
+  z-index: 1;
+  background-color: #1c2331 !important;
+  position: relative;
+}
+footer .cursor-pointer {
+  cursor: pointer;
+}
+footer.page-footer > .footer-container {
+  padding-top: 40px;
+}
+footer > .footer-container .unique-color-dark {
+  background-color: #1c2331 !important;
+}
+footer > .footer-container .font-weight-bold {
+  font-weight: 700 !important;
+}
+footer > .footer-container .text-uppercase {
+  text-transform: uppercase !important;
+}
+footer > .footer-container .color-darkgrey.no-break {
+  word-break: normal;
+  white-space: nowrap;
+}
+footer > .footer-container .mx-auto {
+  text-align: left;
+  margin-bottom: 40px;
+}
+footer > .footer-container a {
+  color: darkgrey;
+}
+footer > .footer-container .social-links .social-link {
+  display: inline-block;
+  color: rgba(41, 70, 97, .2);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+  background-color: #3d4b63;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-top: 6px;
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+footer > .footer-container .social-links .social-link.facebook-link:hover {
+  background-color: #1e67e2;
+}
+footer > .footer-container .social-links .social-link.youtube-link:hover {
+  background-color: #f62b00;
+}
+footer > .footer-container .color-darkgrey {
+  color: darkgrey;
+}
+ footer > .footer-container .fb-partner img {
+  width: 100%;
+  max-width: 200px;
+}
+footer > .footer-container .mobile-apps {
+  display: flex;
+  margin-top: 15px;
+}
+footer .mobile-apps img {
+  width: 100px;
+  margin-right: 10px;
+}
+footer #modal-compare .bold {
+  font-weight: bold;
+}
+footer #modal-compare .logo-compare-modal img {
+  width: 25px;
+}
+footer #modal-compare {
+	color: #333;
+}
+footer #modal-compare .pricing-table {
+	min-width: 800px;
+	margin: 50px auto;
+	margin-bottom: 0;
+	background: 0 0;
+	border: none;
+	text-align: left;
+	width: 100%;
+	border-collapse: initial;
+	color: #495259;
+	border-spacing: 0;
+}
+footer  #modal-compare .pricing-table tr:last-child td {
+	border-bottom: none;
+}
+footer  #modal-compare .pricing-table td {
+	height: 50px;
+	border-bottom: 1px solid #e9eef2;
+	font-size: 14px;
+	color: #495259;
+	padding: 0;
+}
+footer  #modal-compare .pricing-table td:nth-child(n+2) {
+	text-align: center;
+}
+footer  #modal-compare .pricing-table td:nth-child(3) {
+	background-color: #e9f9f1;
+}
+footer  #modal-compare .pricing-table p:last-child {
+	margin-bottom: 20px;
+}
+@media  all and (max-width: 992px) {
+  footer > .footer-container .copyright div {
+    text-align: left !important;
+  }
+  footer > .footer-container .color-darkgrey.no-break {
+    white-space: inherit;
+  }
+}
+</style>
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="video_preview/sdk.js" type="application/javascript" async=""></script>
+<script>
+        $(document).ready(function() {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://ahachat.com/customer-chats/customer_chat_j1ccBTxD7w5b0f583b72af2.js';
+          script.id = 'ahachat-customer-chat';
+          document.getElementsByTagName('head')[0].appendChild(script);
+
+          $(window).scroll(function() {
+            if($(this).scrollTop() > 50){
+              $('.navbar-fixed-top').addClass('navbar-active')
+            } else {
+              $('.navbar-fixed-top').removeClass('navbar-active')
+            }
+          })
+
+          window.toggleAnswer = function (target) {
+            $('.question-about').not(target).removeClass('show-answer');
+            $('.question-about').not(target).children('.answer-about').css('height', 0);
+            $(target).toggleClass('show-answer');
+            if ($(target).hasClass('show-answer')) {
+              $($(target).find('.answer-about')[0]).show().css('height', ($(target).find('.answer-about')[0].scrollHeight));
+            } else {
+              $($(target).find('.answer-about')[0]).css('height', 0);
+            }
+          }
+          window.scrollToEl = function(id) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $('#' + id).offset().top - 100
+            }, 1000);
+            $('.navbar-collapse').removeClass('in')
+          }
+        })
+        </script>
+</div></body>
+</html>

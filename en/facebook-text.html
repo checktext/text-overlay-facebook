@@ -1,0 +1,1062 @@
+﻿ <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="alternate" hreflang="en" href="facebook-text.html">
+<link rel="alternate" hreflang="vi" href="../facebook-text.html">
+<link rel="alternate" hreflang="x-default" href="../facebook-text.html">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="csrf-token" content="FOWJOwx2r9gzvapDnV2a5lwa8wmDa0BH98KUWKWu">
+<title>Facebook Font Changer [a nice alternative to YayText]</title>
+<meta name="description" content="Free online Facebook font changer with more than 80 BEAUTIFUL, UNIQUE, UNIQUE fonts. Let&#039;s create a highlight in every stroke with AhaChat&#039;s Facebook Text Generator">
+<meta name="Keywords" content="text,chữ,văn bản,đặc biệt,unicode,symbol,post,story,status,bài viết,miễn phí,Facebook">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="shortcut icon" type="image/png" href="../img/favicon-v2.ico" class="shortcut-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="../img/chatbot-icon-57x57-v2.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/chatbot-icon-72x72-v2.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/chatbot-icon-114x114-v2.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../img/chatbot-icon-144x144-v2.png">
+<link rel="stylesheet" href="../ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+            body {
+                padding-top: 50px;
+            }
+            .starter-template {
+                padding: 40px 15px;
+                text-align: center;
+            }
+            .container-1 {
+                margin: 50px auto 0;
+            }
+            .container-form {
+                max-width: 500px;
+                margin: auto;
+                margin-top: 50px;
+            }
+            .navbar-inverse {
+                background-color: white;
+                border-color: #ff5a5f;
+            }
+            .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+                background-color: #ff5a5f;
+                color: #fff;
+            }
+            .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+                background-color: transparent;
+                color: #333;
+            }
+            .navbar-inverse .navbar-brand {
+                color: #ff5a5f;
+            }
+            .btn-create-bot {
+              height: 30px;
+              padding: 5px 15px!important;
+              margin: 10px;
+              border-radius: 50px;
+              background-color: white;
+              color: #2196f3!important;
+              box-shadow: 0 0 5px 0 #2196f3;
+              font-weight: bold;
+              border: 0;
+            }
+            .app-slogan {
+              font-size: 10px;
+              color: #888;
+            }
+            @media  only screen and (max-width: 767px) {
+              .btn-create-bot {
+                margin: 0!important;
+              }
+            }
+            .blue {
+                color: #2293da;
+            }
+            .help-container .ic {
+                background-color: #ff5a5f;
+                color: white;
+                width: 50px;
+                height: 50px;
+                display: block;
+                margin: auto;
+                border-radius: 50px;
+            }
+            .help-container .ic i{
+                font-size: 20px;
+                margin-top: 13px
+            }
+            @media  only screen and (min-width: 992px) {
+                .help-container .col-md-4 {
+                    border-right: 1px solid #ddd;
+                    height: 200px;
+                }
+                .help-container .col-md-4:last-child {
+                    border-right: 0;
+                }
+            }
+            .faq-container {
+              max-width: 767px;
+              margin-top: 100px;
+            }
+            .faq-container h1 {
+              margin-bottom: 40px;
+            }
+            .faq-container ul {
+              padding: 0;
+            }
+            .faq-container li {
+              list-style: none;
+              margin-bottom: 30px;
+            }
+            .faq-container li h4 {
+              font-size: 24px;
+              margin-bottom: 5px;
+            }
+            .faq-container li span {
+              color: #636363;
+            }
+            .c-info {
+              margin: 50px 0;
+            }
+            .footer {
+              margin-bottom: 20px;
+              color: #636363;
+            }
+            .relative {
+              position: relative;
+            }
+            .result {
+              position: relative;
+              width: 100%;
+              padding: 0 80px 0 20px;
+              background-color: white;
+              font-size: 2rem;
+              border: 1px solid #e0e0e0;
+              margin-top: 15px;
+              overflow: hidden;
+              min-height: 60px;
+              white-space: pre-line;
+              display: grid;
+              align-items: center;
+            }
+            .result-container textarea {
+              position: absolute;
+              left: -999em;
+            }
+            .btn-copy {
+              position: absolute;
+              z-index: 1;
+              top: 0;
+              right: 0;
+              height: 100%;
+              margin-top: 0;
+              padding: 0 24px;
+              line-height: 60px;
+              border: none;
+              background-color: #ff5a5f;
+              color: white;
+              border-left: 1px solid #ddd;
+              border-radius: 0;
+            }
+            .btn-copy:hover, .btn-copy:focus, .btn-copy:visited {
+              background-color: #ff5a5e!important;
+              color: white!important;
+              border-color: inherit;
+            }
+            .btn-copy:focus, .btn-copy:visited {
+              box-shadow: 0 0 5px 0 #2196f3;
+            }
+            .navbar-right {
+              padding: 10px 0;
+            }
+            @media  only screen and (max-width: 767px) {
+              .navbar-header {
+                float: left;
+                width: 100%;
+                margin-top: 5px;
+              }
+              .navbar-right {
+                margin: 0;
+                width: 100%;
+                margin-top: 70px;
+              }
+              .navbar-right .dropdown {
+                float: left;
+              }
+              .navbar-right .dropdown .divider{
+                display: none;
+              }
+              .container-1 {
+                margin-top: 150px;
+              }
+            }
+            .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+              background: transparent;
+              color: #080808;
+            }
+            .seo-link {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              cursor: inherit;
+            }
+            .hidden-img {
+              background-position-x: -10000px;
+            }
+        </style>
+
+<script async="" src="../gtag/js?id=G-R6G4HEXVN6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R6G4HEXVN6');
+</script>
+</head>
+<body>
+<a href="../index-4.htm?utm_source=ahachat&utm_medium=homepage&utm_campaign=ctx" target="_blank" class="seo-link"><img src="../img/LOGO_EXPORT_02.png" class="hidden-img" alt="chatbot"></a>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" style="padding: 12px 15px;" href="../en.html">
+<img src="../img/LOGO_EXPORT_02.png" style="height: 25px" alt="chatbot">
+<span class="app-slogan">500% increase in sales with automatic closing</span>
+</a>
+</div>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown" id="myDropdown">
+<a class="dropdown-toggle" style="padding-left: 0;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="../help/docs.html" target="_blank">Tutorial Document</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../tutorials.html" target="_blank">Tutorial Video</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../help/blog.html" target="_blank">Blog</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="../tra-cuu-so-dien-thoai.html" target="_blank">Tra cứu số điện thoại</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="icon-facebook.html" target="_blank">Icon Facebook</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="text-overlay-facebook.html" target="_blank">Check text overlay</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="download-video-facebook.html" target="_blank">Download Video Facebook</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="/en/qr-code" target="_blank">QR Code</a></li>
+<li role="separator" class="divider" style="display: none"></li>
+<li style="display: none"><a href="thue-invoice.html" target="_blank">Cho thuê TKQC</a></li>
+</ul>
+</li>
+<li>
+<a class="btn btn-primary pull-right btn-create-bot" href="../index-2.htm?ref=icon" target="_blank">Create bot</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="container container-1 text-center">
+<h1>Facebook Text Generator</h1>
+<p style="color: #636363;">
+Below is a collection of Facebook fonts that you can copy and paste into status updates, bios, comments, and pretty much anywhere Facebook allows text input. Our text generator will convert anything you type in the text box below into cool, fancy text that you can copy and paste all over Facebook. All the fonts below are Unicode fonts so they will be visible to anyone and everyone.
+</p>
+<div class="container-form">
+<textarea name="url" class="form-control" id="input-primary" placeholder="Input your text here" style="height: 100px;">some preview text</textarea>
+<hr>
+<h4><strong>Showing: 80 Facebook fonts</strong></h4>
+<div class="result-container relative">
+<span id="result-s1" class="result"></span>
+<textarea class="input-result" id="input-s1" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s1" id="s1">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s2" class="result"></span>
+<textarea class="input-result" id="input-s2" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s2" id="s2">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s3" class="result"></span>
+<textarea class="input-result" id="input-s3" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s3" id="s3">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s4" class="result"></span>
+<textarea class="input-result" id="input-s4" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s4" id="s4">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s5" class="result"></span>
+<textarea class="input-result" id="input-s5" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s5" id="s5">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s6" class="result"></span>
+<textarea class="input-result" id="input-s6" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s6" id="s6">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s7" class="result"></span>
+<textarea class="input-result" id="input-s7" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s7" id="s7">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s8" class="result"></span>
+<textarea class="input-result" id="input-s8" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s8" id="s8">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s9" class="result"></span>
+<textarea class="input-result" id="input-s9" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s9" id="s9">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s10" class="result"></span>
+<textarea class="input-result" id="input-s10" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s10" id="s10">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s11" class="result"></span>
+<textarea class="input-result" id="input-s11" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s11" id="s11">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s12" class="result"></span>
+<textarea class="input-result" id="input-s12" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s12" id="s12">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s13" class="result"></span>
+<textarea class="input-result" id="input-s13" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s13" id="s13">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s14" class="result"></span>
+<textarea class="input-result" id="input-s14" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s14" id="s14">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s15" class="result"></span>
+<textarea class="input-result" id="input-s15" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s15" id="s15">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s16" class="result"></span>
+<textarea class="input-result" id="input-s16" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s16" id="s16">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s17" class="result"></span>
+<textarea class="input-result" id="input-s17" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s17" id="s17">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s18" class="result"></span>
+<textarea class="input-result" id="input-s18" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s18" id="s18">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s19" class="result"></span>
+<textarea class="input-result" id="input-s19" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s19" id="s19">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s20" class="result"></span>
+<textarea class="input-result" id="input-s20" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s20" id="s20">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s21" class="result"></span>
+<textarea class="input-result" id="input-s21" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s21" id="s21">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s22" class="result"></span>
+<textarea class="input-result" id="input-s22" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s22" id="s22">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s23" class="result"></span>
+<textarea class="input-result" id="input-s23" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s23" id="s23">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s24" class="result"></span>
+<textarea class="input-result" id="input-s24" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s24" id="s24">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s25" class="result"></span>
+<textarea class="input-result" id="input-s25" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s25" id="s25">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s26" class="result"></span>
+<textarea class="input-result" id="input-s26" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s26" id="s26">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s27" class="result"></span>
+<textarea class="input-result" id="input-s27" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s27" id="s27">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s28" class="result"></span>
+<textarea class="input-result" id="input-s28" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s28" id="s28">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s29" class="result"></span>
+<textarea class="input-result" id="input-s29" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s29" id="s29">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s30" class="result"></span>
+<textarea class="input-result" id="input-s30" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s30" id="s30">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s31" class="result"></span>
+<textarea class="input-result" id="input-s31" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s31" id="s31">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s32" class="result"></span>
+<textarea class="input-result" id="input-s32" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s32" id="s32">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s33" class="result"></span>
+<textarea class="input-result" id="input-s33" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s33" id="s33">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s34" class="result"></span>
+<textarea class="input-result" id="input-s34" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s34" id="s34">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s35" class="result"></span>
+<textarea class="input-result" id="input-s35" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s35" id="s35">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s36" class="result"></span>
+<textarea class="input-result" id="input-s36" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s36" id="s36">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s37" class="result"></span>
+<textarea class="input-result" id="input-s37" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s37" id="s37">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s38" class="result"></span>
+<textarea class="input-result" id="input-s38" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s38" id="s38">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s39" class="result"></span>
+<textarea class="input-result" id="input-s39" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s39" id="s39">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s40" class="result"></span>
+<textarea class="input-result" id="input-s40" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s40" id="s40">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s41" class="result"></span>
+<textarea class="input-result" id="input-s41" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s41" id="s41">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s42" class="result"></span>
+<textarea class="input-result" id="input-s42" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s42" id="s42">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s43" class="result"></span>
+<textarea class="input-result" id="input-s43" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s43" id="s43">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s44" class="result"></span>
+<textarea class="input-result" id="input-s44" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s44" id="s44">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s45" class="result"></span>
+<textarea class="input-result" id="input-s45" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s45" id="s45">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s46" class="result"></span>
+<textarea class="input-result" id="input-s46" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s46" id="s46">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s47" class="result"></span>
+<textarea class="input-result" id="input-s47" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s47" id="s47">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s48" class="result"></span>
+<textarea class="input-result" id="input-s48" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s48" id="s48">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s49" class="result"></span>
+<textarea class="input-result" id="input-s49" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s49" id="s49">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s50" class="result"></span>
+<textarea class="input-result" id="input-s50" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s50" id="s50">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s51" class="result"></span>
+<textarea class="input-result" id="input-s51" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s51" id="s51">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s52" class="result"></span>
+<textarea class="input-result" id="input-s52" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s52" id="s52">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s53" class="result"></span>
+<textarea class="input-result" id="input-s53" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s53" id="s53">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s54" class="result"></span>
+<textarea class="input-result" id="input-s54" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s54" id="s54">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s55" class="result"></span>
+<textarea class="input-result" id="input-s55" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s55" id="s55">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s56" class="result"></span>
+<textarea class="input-result" id="input-s56" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s56" id="s56">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s57" class="result"></span>
+<textarea class="input-result" id="input-s57" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s57" id="s57">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s58" class="result"></span>
+<textarea class="input-result" id="input-s58" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s58" id="s58">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s59" class="result"></span>
+<textarea class="input-result" id="input-s59" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s59" id="s59">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s60" class="result"></span>
+<textarea class="input-result" id="input-s60" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s60" id="s60">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s61" class="result"></span>
+<textarea class="input-result" id="input-s61" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s61" id="s61">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s62" class="result"></span>
+<textarea class="input-result" id="input-s62" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s62" id="s62">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s63" class="result"></span>
+<textarea class="input-result" id="input-s63" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s63" id="s63">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s64" class="result"></span>
+<textarea class="input-result" id="input-s64" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s64" id="s64">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s65" class="result"></span>
+<textarea class="input-result" id="input-s65" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s65" id="s65">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s66" class="result"></span>
+<textarea class="input-result" id="input-s66" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s66" id="s66">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s67" class="result"></span>
+<textarea class="input-result" id="input-s67" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s67" id="s67">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s68" class="result"></span>
+<textarea class="input-result" id="input-s68" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s68" id="s68">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s69" class="result"></span>
+<textarea class="input-result" id="input-s69" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s69" id="s69">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s70" class="result"></span>
+<textarea class="input-result" id="input-s70" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s70" id="s70">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s71" class="result"></span>
+<textarea class="input-result" id="input-s71" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s71" id="s71">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s72" class="result"></span>
+<textarea class="input-result" id="input-s72" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s72" id="s72">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s73" class="result"></span>
+<textarea class="input-result" id="input-s73" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s73" id="s73">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s74" class="result"></span>
+<textarea class="input-result" id="input-s74" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s74" id="s74">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s75" class="result"></span>
+<textarea class="input-result" id="input-s75" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s75" id="s75">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s76" class="result"></span>
+<textarea class="input-result" id="input-s76" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s76" id="s76">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s77" class="result"></span>
+<textarea class="input-result" id="input-s77" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s77" id="s77">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s78" class="result"></span>
+<textarea class="input-result" id="input-s78" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s78" id="s78">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s79" class="result"></span>
+<textarea class="input-result" id="input-s79" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s79" id="s79">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+<div class="result-container relative">
+<span id="result-s80" class="result"></span>
+<textarea class="input-result" id="input-s80" aria-hidden="true"></textarea>
+<a class="btn btn-default btn-copy" name="s80" id="s80">
+<i class="glyphicon glyphicon-duplicate"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="container faq-container">
+<div class="text-center"><h2 style="font-size: 36px">FAQ</h2></div>
+<ul>
+<li>
+<h4>1. Vì sao Facebook Text Generator của AhaChat được ra đời?</h4>
+<span>Do nhu cầu chuyển đổi font chữ đẹp online ngày càng lớn vì chúng được ứng dụng ngày càng rộng rãi hơn. Từ việc dùng để trang trí các bài viết quảng cáo, hay để viết chữ in đậm, in nghiêng, gạch chân... trên Facebook cá nhân và Fanpage, hay chỉ đơn giản là tạo ra sự khác biệt mà các kiểu chữ thông thường không thể đáp ứng được. Nhằm giải quyết những vấn đề này, Facebook Text Generator của AhaChat được ra đời.</span>
+</li>
+<li>
+<h4>2. Ưu điểm của công cụ đổi font chữ AhaChat so với YayText là gì?</h4>
+<span>Ở AhaChat bạn sẽ có nhiều lựa chọn hơn YayText bởi vì AhaChat cung cấp hơn 80 phông chữ, kiểu chữ đẹp, độc, lạ thường được sử dụng nhất trên Facebook (ở YayText chỉ hỗ trợ 60 font, và các nơi khác thì ít hơn nữa). Bên cạnh đó AhaChat còn có giao diện tinh tế và dễ dàng sử dụng hơn, nâng cao trải nghiệm người dùng hết mức có thể.</span>
+</li>
+<li>
+<h4>3. Cách sử dụng công cụ đổi font chữ trên Facebook của AhaChat như thế nào?</h4>
+<span>Chỉ cần sao chép văn bản cần chuyển đổi phông vào ô phía trên, công cụ sẽ tự động chuyển đổi ra hơn 80 font khác nhau phía dưới. Bạn chỉ việc chọn loại font mình thích và sao chép chúng, rất dễ dàng phải không nào!</span>
+</li>
+<li>
+<h4>4. Công cụ chuyển đổi font chữ Facebook của AhaChat dành cho đối tượng nào?</h4>
+<span>Bộ công cụ này phục vụ bất kì cá nhân và tổ chức nào có mong muốn sử dụng văn bản theo các phong cách mà bình thường không thể tạo ra được. Mọi cá nhân và tổ chức trên các trang mạng xã hội, thương hiệu, người của công chúng, kỹ thuật viên, nghệ sĩ, các cô nàng tuổi teen tới những người lớn tuổi, hay cả người bình thường không có gì nổi trội từ khắp nơi trên thế giới đều có thể sử dụng bộ công cụ chuyển đổi font của AhaChat.</span>
+</li>
+<li>
+<h4>5. Bộ công cụ này có thể tạo ra bao nhiêu kiểu font khác nhau?</h4>
+<span>Hiện có sẵn hơn 80 phông chữ và đang tăng dần trong tương lai. </span>
+</li>
+<li>
+<h4>6. Các kiểu font ở đây có viết chữ đậm, in nghiêng, gạch chân... trong status Facebook được không?</h4>
+<span>CÓ, bạn chỉ việc copy phông chữ mà mình yêu thích và bỏ chúng ở mọi trình soạn thảo văn bản nào.</span>
+</li>
+<li>
+<h4>7. Công cụ đổi font Facebook này có hoạt động trên điện thoại không?</h4>
+<span>CÓ, hoạt động tốt trên máy tính và điện thoại thông minh (iOS, Android, Windows Phone...)</span>
+</li>
+<li>
+<h4>Tôi có phải mất tiền khi sử dụng công cụ này?</h4>
+<span>KHÔNG, nó hoàn toàn miễn phí và mãi mãi như vậy!</span>
+</li>
+</ul>
+<div class="c-info">
+<p>
+AhaChat is a technology company that provides a free chatbot solution on the Facebook platform. In addition, we also develop many other useful free applications such as:
+<a href="tra-cuu-so-dien-thoai.html" target="_blank">Get phone number from Facebook</a>,
+<a href="icon-facebook.html" target="_blank">Icon Facebook</a>,
+<a href="download-video-facebook.html" target="_blank">download Facebook Video</a>,
+<a href="facebook-text.html" target="_blank">change Facebook font style</a>,
+<a href="text-overlay-facebook.html" target="_blank">check text overlay</a>,
+<a href="https://ahachat.com/en/qr-code">generate qr code</a> ...
+Try to enjoy our chatbot tool without any cost!
+</p>
+</div>
+</div>
+<div class="footer text-center">
+© 2024 AhaChat
+</div>
+<script src="../libs/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../assets/javascripts/2.js"></script>
+<script>
+            function compareTime(time1, time2) {
+                return new Date(time1) > new Date(time2);
+            }
+            function handleGoToHomepage(e) {
+                var today = new Date();
+                var tomorrowStore = localStorage.getItem('tomorrowStore');
+                if (tomorrowStore) {
+                    const date = new Date(tomorrowStore);
+                    if (!compareTime(today, date)) {
+                        e.preventDefault()
+                    }
+                }
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                localStorage.setItem('tomorrowStore', tomorrow);
+            };
+            function displaySeoLink() {
+              var today = new Date();
+              var tomorrowStore = localStorage.getItem('tomorrowStore');
+              if (tomorrowStore) {
+                  const date = new Date(tomorrowStore);
+                  if (!compareTime(today, date)) {
+                      return false;
+                  }
+              }
+              return true;
+            }
+
+            $(document).ready(function (){
+
+                var base_url = 'https://fancyfonts.co/';
+
+                $('#sidebar-nav').find('a').on('click', function(e){
+                    if( !$(this).hasClass('selected')){
+                        $('.text-tool').removeClass('selected').find('span').removeClass('checked');
+                        $(this).find('span').addClass('checked');
+                        $(this).addClass('selected');
+
+                        $url = $(this).attr('data-href');
+                        if( $url) { $url = $url + '/'}
+                        NProgress.configure({ showSpinner: false });
+                        NProgress.configure({ easing: 'ease', speed: 500 });
+                        NProgress.start();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "https://fancyfonts.co/" + $url,
+                            data: {
+                                "request": "ajax"
+                            },
+                            dataType: "json",
+                            success: function(b) {
+                                //console.log(ajaxresult);
+
+                                setTimeout(function(){
+                                    NProgress.done();
+                                    window.history.pushState("string", "",  base_url + $url);
+                                    $("#results").empty().append(b.html).hide().fadeIn(800);
+
+                                    $('.input-result').each(function(index){
+                                        var inputID = this.id;
+                                        var id = inputID.replace( 'input-', '');
+                                        var response = Change('some preview text', id);
+                                        this.setAttribute('value', this.value);
+                                        $('#result-' + id).html(response);
+                                        this.value = $('#result-' + id).html();
+                                        this.setAttribute('value', this.value);
+                                        this.setAttribute('value', this.value);
+                                    });
+
+                                }, 1500);
+                            }
+                        });
+
+
+                    }
+                    e.preventDefault();
+                });
+
+                $(document).on('click', '#tools-toggle', function(e){
+                    $('.font-generators-list').toggle();
+                });
+
+                $(document).on('click', '.question', function(e){
+                    $(this).toggleClass('active');
+                });
+
+                $(document).on('click', '.input-clear', function(e){
+                    $('#input-primary').val('');
+                    $('#input-primary').focus();
+                    $(".input-clear").addClass('hidden');
+                });
+
+                $(document).on('input', '#input-primary', function(e){
+
+                    val = this.value;
+                    if( val.length > 0){
+                        $('.input-clear').removeClass('hidden');
+                    }else{
+                        $('.input-clear').addClass('hidden');
+                    }
+
+                    $('.input-result').each(function(index){
+
+                        var inputID = this.id;
+                        var id = inputID.replace( 'input-', '');
+                        var response = Change(val, id);
+
+                        this.setAttribute('value', this.value);
+                        $('#result-' + id).html(response);
+                        this.value = $('#result-' + id).html();
+                        this.setAttribute('value', this.value);
+
+                    });
+                });
+
+
+                $('.input-result').each(function(index){
+
+                    var inputID = this.id;
+                    var id = inputID.replace( 'input-', '');
+                    var response = Change('some preview text', id);
+                    this.setAttribute('value', this.value);
+                    $('#result-' + id).html(response);
+                    this.value = $('#result-' + id).html();
+                    this.setAttribute('value', this.value);
+
+                });
+
+
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() >= 500) {        // If page is scrolled more than 800px
+                        $('#return-to-top').fadeIn(300);    // Fade in the arrow
+                    } else {
+                        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+                    }
+                });
+
+                // Return to top
+                $('#return-to-top').click(function() {      // When arrow is clicked
+                    $('body,html').animate({
+                        scrollTop : 0                       // Scroll to top of body
+                    }, 500);
+                });
+
+                // Tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+                $(document).on('click', '.btn-copy', function(e){
+                    var id = this.id;
+                    console.log(id);
+                    var copyText = document.getElementById("input-" + id);
+                    console.log(copyText);
+                    copyText.select();
+                    document.execCommand("copy");
+
+                    $('[data-toggle="tooltip"]').attr('data-original-title', 'Copy').tooltip('fixTitle');
+
+                    $(this).prop('title', 'Copied').tooltip('fixTitle').tooltip('show');
+                });
+
+                $('.hidden-img').css('visibility', 'hidden');
+                function handleDisplaySeoLink() {
+                  if (displaySeoLink()) {
+                    $('.seo-link').show();
+                  } else {
+                    $('.seo-link').hide();
+                  }
+                }
+                $(document).on('click', '.seo-link', function(e){
+                  handleGoToHomepage(e);
+                  handleDisplaySeoLink();
+                });
+            });
+        </script>
+</body>
+</html>

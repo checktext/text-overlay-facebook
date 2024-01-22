@@ -1,0 +1,2747 @@
+﻿ <!doctype html>
+<html lang="vi" class="js-no-scroll">
+<head>
+<meta charset="utf-8">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="alternate" hreflang="id" href="id.html">
+<link rel="alternate" hreflang="vi" href="index.htm">
+<link rel="alternate" hreflang="x-default" href="index.htm">
+<meta name="revisit-after" content="1 days">
+<meta http-equiv="content-language" content="vi">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="csrf-token" content="uQaxpeQEGmeLlShEDjaEPyNOW7LuGrsIPqLR4ag2">
+<title>AhaChat - Tạo Chatbot Facebook Messenger & Zalo - Miễn Phí</title>
+<meta name="description" content="Phần mềm bán hàng tự động với Chatbot 24/7. Tạo minigame thu hút khách. Gửi tin nhắn hàng loạt an toàn. Chi phí 1/2 sản phẩm khác. Tư vấn miễn phí, X3 doanh số.">
+<meta name="Keywords" content="chatbot, chatbot messenger, facebook chatbot, facebook bot">
+<meta property="og:image" content="https://ahachat.com/img/og_image.png">
+<meta name="web1s" content="eOHY9Es3Vgj7GloabPvQ">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="shortcut icon" type="image/png" href="img/favicon-v2.ico" class="shortcut-icon">
+<link rel="apple-touch-icon" sizes="57x57" href="img/chatbot-icon-57x57-v2.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/chatbot-icon-72x72-v2.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/chatbot-icon-114x114-v2.png">
+<link rel="apple-touch-icon" sizes="144x144" href="img/chatbot-icon-144x144-v2.png">
+<link rel="stylesheet" href="libs/bower_components/jquery-ui/jquery.min.css.html">
+<script src="js/apiclient.js"></script>
+<link rel="stylesheet" href="libs/plugins/animate.min.css">
+<link rel="stylesheet" href="assets/css/homepage.css?v=8">
+
+<link rel="stylesheet" href="css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+<link rel="stylesheet" href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="libs/bower_components/font-awesome/css/font-awesome.min.css">
+
+<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="libs/plugins/moment/moment.min.js"></script>
+<script src="libs/plugins/moment/locale/vi.js"></script>
+
+<script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1460909830860048');
+            fbq('track', 'PageView');
+        </script>
+<noscript><img height="1" width="1" style="display:none" src="tr?id=1460909830860048&amp;ev=PageView&amp;noscript=1"></noscript>
+
+
+<script async="" src="gtag/js?id=G-R6G4HEXVN6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R6G4HEXVN6');
+</script>
+<script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('3P1w24dxWzl4mY5n'); </script>
+<script>
+var LoginHelper = function() {
+
+    this.findGetParameter = (parameterName) => {
+        var result = null,
+            tmp = [];
+        var items = location.search.substr(1).split("&");
+        for (var index = 0; index < items.length; index++) {
+            tmp = items[index].split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        }
+        return result;
+    }
+
+    this.getUtmParams = (getBy) => {
+        let utm = {
+            'utm_campaign': this.findGetParameter('utm_campaign'),
+            'utm_medium': this.findGetParameter('utm_medium'),
+            'utm_source': this.findGetParameter('utm_source'),
+        }
+
+        if (Object.values(utm).filter(function(el) { return el;}).length !== 3) {
+            return '';
+        }
+
+        if (getBy === 'obj') {
+            return utm
+        }
+
+        return '?' + (new URLSearchParams(utm).toString());
+    }
+
+  this.loginFacebookUrl =
+    "https://www.facebook.com/v3.0/dialog/oauth?client_id=" +
+    "170005996917513" +
+    "&redirect_uri=" + encodeURIComponent("https://ahachat.com" + "/social/auth/facebook") +
+    "&scope=email,public_profile,pages_manage_ads,pages_manage_metadata,pages_read_engagement,pages_read_user_content,pages_manage_posts,pages_manage_engagement,pages_messaging,page_events,instagram_basic,instagram_manage_messages,instagram_manage_comments,ads_management,ads_read&response_type=code&auth_type=rerequest"
+
+  this.loginForBusinessUrl = "https://www.facebook.com/v15.0/dialog/oauth?app_id=170005996917513&auth_type=rerequest&client_id=170005996917513&config_id=297887983248163&override_default_response_type=true&response_type=code&redirect_uri=" + encodeURIComponent("https://ahachat.com" + "/social/auth/facebook");
+
+  this.state = {
+    locale: 'vn',
+  };
+
+  this.init = () => {
+    // Save ref
+          let ref = null;
+        if (ref) {
+      this.setCookie('ref_code', ref, 30);
+    }
+
+    // Append ref to login url
+    let savedRef = this.getCookie('ref_code');
+    if (savedRef) {
+      this.state.ref_code = savedRef;
+    }
+  }
+
+  this.setCookie = (name, value, days) => {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  this.getCookie = (name) => {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  this.checkLoginStatus = () => {
+    if (this.getCookie('token')) {
+      window.location.replace('/bots' + this.getUtmParams());
+      return;
+    }
+
+    // FB.getLoginStatus((response) => {
+    //   if (response.status === "connected") {
+    //     this.checkRequiredPermissions(response.authResponse.accessToken);
+    //   } else {
+    //     this.loginByFacebook();
+    //   }
+    // });  bug fb
+    this.loginByFacebook();
+  }
+
+  this.checkRequiredPermissions = (token) => {
+    FB.api("/me/permissions", (response) => {
+      let key, result;
+      let check = true;
+      for (key in response.data) {
+        result = response.data[key];
+        if (
+          result.status != "granted"
+        ) {
+          check = false;
+          break;
+        }
+      }
+
+      if (check) {
+        this.login(token);
+      } else {
+        this.loginByFacebook();
+      }
+    });
+  }
+
+  this.loginByFacebook = () => {
+    window.localStorage.setItem("loginByFacebook", true);
+
+          var redirect = null
+    
+    if (
+      redirect
+    ) {
+        this.state.redirect_url = redirect;
+    }
+
+    var utm = this.getUtmParams('obj')
+
+    if (utm) {
+        this.state.utm = utm;
+    }
+
+    // Append ybai to login url
+    const ybai = this.getCookie('ybai');
+    if (ybai) {
+      this.state.ybai = ybai;
+    }
+
+    window.location.replace(this.loginFacebookUrl + "&state=" + encodeURIComponent(JSON.stringify(this.state)));
+  }
+
+  this.login = (token) => {
+    let data = { access_token: token };
+    this.loadingButton(true);
+    $.post("/api/login-facebook", data, (response) => {
+      this.loadingButton(false);
+        window.localStorage.setItem("loginByFacebook", true);
+        this.saveCookie(response.data);
+        window.location.href = '/bots' + this.getUtmParams()
+      })
+      .fail((errors) => {
+        this.loadingButton(false);
+        this.showNotification();
+      });
+  },
+
+  this.loadingButton = (isLoading) => {
+    if (isLoading) {
+      $('.btn-login-ahachat').attr('disabled', 'disabled')
+      $('#login-processing').show()
+    } else {
+      $('.btn-login-ahachat').removeAttr('disabled', 'disabled')
+      $('#login-processing').hide()
+    }
+  }
+
+  this.saveCookie = (data) => {
+    this.setCookie("token", data.token);
+    this.setCookie("user_info", JSON.stringify(data.user_info));
+    setTimeout(() => {
+      if (window.Echo && window.Echo.connector) {
+        window.Echo.connector.options.auth.headers['Authorization'] = 'Bearer ' + data.token;
+      }
+    }, 100);
+  },
+
+  this.showNotification = () => {
+    $.toast({
+      heading: 'homepage.login.fail',
+      text: 'homepage.login.fail_text',
+      showHideTransition: 'fade',
+      icon: 'error',
+      position: 'top-right'
+    })
+  }
+};
+var loginHelper = new LoginHelper()
+loginHelper.init()
+</script>
+<style>
+            body {
+                font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+                font-weight: 400;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            .banner-free {
+              background: #665fee;
+              background: -moz-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+              background: -webkit-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+              background: -o-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+              background: linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+              filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#665fee',endColorstr='#27c2de',GradientType=1 );
+              padding: 20px 20px 40px;
+              border-radius: 20px;
+              color: white;
+              text-align: center;
+              max-width: 870px;
+              margin: auto;
+            }
+            .banner-free p {
+              font-size: 16px;
+            }
+            .banner-free .btn {
+              background-color: transparent;
+              border: 1px solid white;
+              border-radius: 30px;
+              font-weight: bold;
+              padding: 10px 30px;
+              margin-top: 16px;
+              transition: all .4s ease;
+              font-size: 16px;
+              color: white;
+            }
+            .banner-free .btn:hover {
+              background-color: white;
+              color: #3ca1e3;
+            }
+            .mt100 {
+                margin-top: 100px;
+            }
+            .mb100 {
+                margin-bottom: 100px;
+            }
+            .mt-5 {
+                margin-top: 5px;
+            }
+            .mb20 {
+                margin-bottom: 20px;
+            }
+            .mt-20 {
+                margin-top: 20px;
+            }
+            .label-danger {
+                background-color: #dd4b39 !important;
+            }
+            /*               .homepage-primary {
+                padding-top: 70px;
+              }
+             */
+            .event-header-fixed {
+              position: fixed;
+              width: 100%;
+              background-color: #263b6c;
+              color: #f9f7a3;
+              z-index: 111;
+            }
+            .event-header-content {
+              display: flex;
+              max-width: 1000px;
+              padding: 14px 0px 14px 10px;
+              margin: auto;
+              align-items: center;
+            }
+            .event-header-left {
+              flex: 1;
+            }
+            .event-header-name {
+              font-size: 20px;
+              font-weight: bold;
+              line-height: 22px;
+            }
+            .event-header-detail {
+              font-weight: 100;
+            }
+            .event-header-right a {
+              color: #f9f7a3;
+              padding: 10px 20px;
+              border: 1px solid white;
+              border-radius: 33px;
+              display: block;
+              text-decoration: none;
+            }
+            .event-header-right a:hover {
+              background-color: #304880;
+            }
+            @media  only screen and (min-width: 560px) {
+              .homepage-primary .panel .homepage-logo-right.homepage-logo-en {
+                width: 512px;
+              }
+            }
+            /* .homepage-primary .event-content span.text::after {
+              content: "";
+            	animation: change_text 6s linear infinite;
+            }
+            @keyframes  change_text {
+              0% { content: "Gửi tin nhắn hàng loạt an toàn"; }
+              50% { content: "Tặng thêm 50% thời gian sử dụng"; }
+              100% { content: "Gửi tin nhắn hàng loạt an toàn"; }
+            } */
+        </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini sidebar-fixed">
+<script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId            : 170005996917513,
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v3.0',
+                    cookie           : true,
+                    status           : true
+                });
+
+              FB.AppEvents.logPageView();
+            };
+
+            (function(d, s, id){
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) {return;}
+              js = d.createElement(s); js.id = id;
+              js.src = "https://connect.facebook.net/en_US/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+<div class="event-header-fixed hide">
+<div class="event-header-content">
+<div class="event-header-left">
+<div class="event-header-name">Chương trình hợp tác AhaChat x Meta</div>
+<div class="event-header-detail">Khách hàng được tặng 14 ngày Chatbot Pro và được tư vấn 1:1 lên cam quảng cáo</div>
+<div class="event-header-note">Điều kiện: Có ngân sách quảng cáo tối thiểu 20 triệu/tháng</div>
+</div>
+<div class="event-header-right">
+<a href="https://messenger.com/t/ahachatter?ref=meta" target="_blank">Đăng ký chương trình ngay</a>
+</div>
+</div>
+</div>
+<div class="homepage-primary">
+<div class="event-content event-content-pc"><span class="text"><i class="fa fa-magic"></i> Giới thiệu <strong>AhaMake</strong>!</span><a href="https://ahamake.com/?ref=ahachat" target="_blank"><strong>Mảnh ghép tự động hóa hoàn hảo</strong></a></div>
+<div class="event-content event-content-mb hide"><span class="text">Webinar miễn phí tháng 12</span><a href="https://wbn.ahachat.com" target="_blank"><i class="fa fa-hand-o-right"></i> THAM GIA</a></div>
+<div class="bg-grd">
+<header class="header">
+<div class="main-site-header site-inner-content cf">
+<a href="index.htm" class="cursor-pointer">
+<img alt="chatbot" class="logo" src="img/LOGO_EXPORT.png">
+<img alt="chatbot" class="logo logo-color" src="img/LOGO_EXPORT_02.png">
+</a>
+<div class="main-site-nav">
+<a class="signin-link cursor-pointer" onclick="loginHelper.checkLoginStatus()">Đăng nhập</a>
+<a href="pricing.html">
+<span>Bảng giá</span>
+</a>
+<a target="_blank" href="templates.html" class="header-templates">Bot mẫu</a>
+<a target="_blank" href="tutorials.html">Hướng dẫn</a>
+
+<div class="dropdown">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+Sản phẩm
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownProduct">
+<li>
+<a target="_blank" href="help/docs.html">Tài Liệu Hướng Dẫn</a>
+</li>
+<li>
+<a target="_blank" href="tutorials.html">Video Hướng Dẫn</a>
+</li>
+<li>
+<a target="_blank" href="help/blog.html">Blog kiến thức</a>
+</li>
+<li>
+<a target="_blank" href="icon-facebook.html">Icon Facebook</a>
+</li>
+<li>
+<a target="_blank" href="download-video-facebook.html">Tải video từ Facebook</a>
+</li>
+<li>
+<a target="_blank" href="text-overlay-facebook.html">Check text overlay</a>
+</li>
+<li>
+<a target="_blank" href="facebook-text.html">Đổi font Facebook</a>
+</li>
+<li>
+<a target="_blank" href="/qr-code">Tạo mã QR</a>
+</li>
+<li>
+<a target="_blank" href="minigame.html">Tạo Minigame</a>
+</li>
+<li style="display: none">
+<a target="_blank" href="thue-invoice.html">Cho thuê TKQC</a>
+</li>
+</ul>
+</div>
+<a target="_blank" href="affiliate.html">Affiliate</a>
+<div class="dropdown dropdown-language show-sm">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;VI
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+<li onclick="headerComponent.setLanguage('en')">
+<img src="img/en_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;English
+</li>
+<li onclick="headerComponent.setLanguage('id')">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Indonesia
+</li>
+<li onclick="headerComponent.setLanguage('vi')">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Vietnamese
+</li>
+</ul>
+</div>
+</div>
+<div class="app-sign-in-2">
+<div class="dropdown dropdown-language">
+<button class="btn btn-default dropdown-toggle" type="button" id="dropdownLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;VI
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+<li onclick="headerComponent.setLanguage('en')">
+<img src="img/en_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;English
+</li>
+<li onclick="headerComponent.setLanguage('id')">
+<img src="img/id_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Indonesia
+</li>
+<li onclick="headerComponent.setLanguage('vi')">
+<img src="img/vi_flag_48x48.png" alt="chatbot" class="icon-flag">&nbsp;&nbsp;Vietnamese
+</li>
+</ul>
+</div>
+<a type="button" class="btn btn-info btn-flat btn-login-ahachat" onclick="loginHelper.checkLoginStatus()"><i class="fa fa-facebook-square"></i>&nbsp;&nbsp;Đăng nhập</a>
+</div>
+<div class="mobile-menu js-main-site-nav" onclick="headerComponent.toggleMenuHeader()">
+<div class="hamburger"></div>
+</div>
+</div>
+</header>
+<script>
+var HeaderComponent = function() {
+  this.language = window.localStorage.getItem('ahachat-locale')
+
+  this.toggleMenuHeader = () => {
+    $('body').toggleClass('js-main-menu-open');
+  }
+
+  this.setLanguage = (language) => {
+    this.language = language;
+    window.localStorage.setItem('ahachat-locale', this.language);
+
+    // redirect
+    if (this.language === 'en') {
+      window.location.href = '/en'
+    } else if (this.language === 'id') {
+      window.location.href = '/id'
+    } else {
+      window.location.href = '/'
+    }
+  }
+}
+$(document).ready(function() {
+  window.headerComponent = new HeaderComponent()
+})
+</script>
+<style>
+.pricing-component header.header .main-site-header .logo-text,
+.ladi-wraper header.header .main-site-header .logo-text,
+.about-component header.header .main-site-header .logo-text,
+.carees-social-component header.header .main-site-header .logo-text,
+.video-tutorials-component header.header .main-site-header .logo-text,
+.bot-templates-component header.header .main-site-header .logo-text,
+.affiliate header.header .main-site-header .logo-text,
+.invoice-component header.header .main-site-header .logo-text {
+	 color: #333;
+}
+
+ .pricing-component header.header .main-site-header .app-sign-in a,
+ .ladi-wraper header.header .main-site-header .app-sign-in a,
+ .about-component header.header .main-site-header .app-sign-in a,
+ .carees-social-component header.header .main-site-header .app-sign-in a,
+ .video-tutorials-component header.header .main-site-header .app-sign-in a,
+ .bot-templates-component header.header .main-site-header .app-sign-in a,
+ .affiliate header.header .main-site-header .app-sign-in a,
+ .invoice-component header.header .main-site-header .app-sign-in a,
+
+ .pricing-component header.header .main-site-nav a,
+ .ladi-wraper header.header .main-site-nav a,
+ .about-component header.header .main-site-nav a,
+ .carees-social-component header.header .main-site-nav a,
+ .video-tutorials-component header.header .main-site-nav a,
+ .bot-templates-component header.header .main-site-nav a,
+ .affiliate header.header .main-site-nav a,
+ .invoice-component header.header .main-site-nav a,
+
+ .pricing-component header.header .main-site-nav .dropdown .btn,
+ .ladi-wraper header.header .main-site-nav .dropdown .btn,
+ .about-component header.header .main-site-nav .dropdown .btn,
+ .carees-social-component header.header .main-site-nav .dropdown .btn,
+ .video-tutorials-component header.header .main-site-nav .dropdown .btn,
+ .bot-templates-component header.header .main-site-nav .dropdown .btn,
+ .affiliate header.header .main-site-nav .dropdown .btn,
+ .invoice-component header.header .main-site-nav .dropdown .btn {
+	 color: #337ab7;
+}
+ header.header {
+	 margin-bottom: 50px;
+}
+ header.header .font-new {
+	 text-indent: 5px;
+	 font-size: 12px;
+}
+.show-sm {
+  display: none !important;
+}
+ .carees-social-component header.header, .video-tutorials-component header.header {
+	 margin-bottom: 0;
+}
+ .main-site-header {
+	 text-align: center;
+	 position: relative;
+	 max-width: 1340px;
+	 margin: 0 auto;
+}
+ .main-site-header .dropdown {
+	 display: inline-block;
+}
+ .main-site-header .dropdown .btn {
+	 background: transparent;
+	 color: white;
+	 border: none;
+	 padding: 0px 25px 3px;
+}
+ .main-site-header .dropdown .btn:focus {
+	 border: 0;
+	 outline: none;
+	 box-shadow: none;
+   background-color: transparent;
+   color: white;
+}
+ .main-site-header .dropdown .dropdown-menu {
+	 margin-top: -20px;
+}
+ .main-site-header .dropdown .dropdown-menu li a {
+	 padding: 10px;
+	 color: #337ab7;
+	 display: block;
+}
+ .main-site-header .logo {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 left: 60px;
+	 width: 150px;
+}
+ .main-site-header .logo-color {
+	 display: none;
+}
+ .main-site-header .logo img {
+	 width: 120px;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header {
+		 height: 100px;
+	}
+	 .main-site-header .dropdown {
+		 display: block;
+		 line-height: 0;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	}
+	 .main-site-header .dropdown .btn {
+		 padding: 20px 0;
+		 color: white !important;
+	}
+	 .main-site-header .dropdown .dropdown-menu {
+		 margin-top: -2px;
+		 width: 100%;
+	}
+	 .main-site-header .dropdown .dropdown-menu li a {
+		 color: #337ab7 !important;
+	}
+  .show-sm {
+    display: block !important;
+  }
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .logo {
+		 left: 15px;
+		 top: 45px;
+	}
+}
+ @media  screen and (max-width: 600px) {
+	 .main-site-header .logo {
+		 left: 20px;
+	}
+}
+ .main-site-header .hamburger, .main-site-header .hamburger:before, .main-site-header .hamburger:after {
+	 width: 17px;
+	 height: 3px;
+	 background: rgba(41, 70, 97, 0.6);
+	 border-radius: 1px;
+	 -webkit-transition: all 0.3s ease;
+	 transition: all 0.3s ease;
+}
+ .main-site-header .hamburger {
+	 margin: 4px 9px;
+	 position: relative;
+	 display: inline-block;
+}
+ .main-site-header .hamburger:before, .main-site-header .hamburger:after {
+	 content: '';
+	 display: block;
+	 right: 0;
+	 position: absolute;
+}
+ .main-site-header .hamburger:before {
+	 top: -6px;
+}
+ .main-site-header .hamburger:after {
+	 top: 6px;
+}
+ .main-site-header .mobile-menu {
+	 display: none;
+	 color: #fff;
+	 padding: 9px 0;
+	 height: 30px;
+	 cursor: pointer;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+	 z-index: 401;
+	 position: absolute;
+	 top: 30px;
+	 right: 60px;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .mobile-menu {
+		 display: block;
+		 right: 45px;
+	}
+	 .main-site-header .logo-text {
+		 left: 75px;
+	}
+}
+ @media  screen and (max-width: 768px) {
+	 .main-site-header .mobile-menu {
+		 right: 20px;
+		 top: 24px;
+	}
+	 .main-site-header .logo-text {
+		 top: 43px;
+		 left: 75px;
+	}
+}
+ .main-site-header .mobile-menu:hover {
+	 color: #fff;
+}
+ .main-site-header .mobile-menu:hover .hamburger, .main-site-header .mobile-menu:hover .hamburger:before, .main-site-header .mobile-menu:hover .hamburger:after {
+	 background: #294661;
+}
+ .main-site-header .main-site-nav {
+	 display: inline-block;
+	 line-height: 90px;
+}
+ .main-site-header .main-site-nav .main-site-nav-extended {
+	 display: none;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .main-site-nav {
+		 height: 100%;
+		 overflow-y: auto;
+		 -webkit-overflow-scrolling: touch;
+		 z-index: 400;
+		 background: #e6692f;
+		 padding: 45px;
+		 padding-top: 90px;
+		 width: 350px;
+		 text-align: left;
+		 -webkit-transform: translateX(350px);
+		 transform: translateX(350px);
+		 opacity: 0;
+		 visibility: hidden;
+		 position: fixed;
+		 top: 0;
+		 right: 0;
+	}
+	 .main-site-header .main-site-nav .main-site-nav-extended {
+		 display: block;
+	}
+}
+ @media  screen and (max-width: 768px) {
+	 .main-site-header .main-site-nav {
+		 padding: 90px 20px 0 20px;
+	}
+}
+ @media  screen and (max-width: 600px) {
+	 .main-site-header .main-site-nav {
+		 width: 250px;
+		 -webkit-transform: translateX(250px);
+		 transform: translateX(250px);
+	}
+}
+ .main-site-header .main-site-nav.main-site-nav-closing {
+	 -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+ .main-site-nav a {
+	 display: inline-block;
+	 padding: 0 25px;
+	 color: white;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+}
+ .main-site-nav a:hover {
+	 color: #fff;
+}
+ .app-sign-in-2 {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 right: 50px;
+   z-index: 1;
+}
+.dropdown-language img {
+  width: 30px;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu {
+  padding: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu li {
+  cursor: pointer;
+  padding: 4px 12px;
+}
+.app-sign-in-2 .dropdown-language .dropdown-menu li:hover {
+  background-color: #eee;
+}
+ .app-sign-in-2 .btn-login-ahachat {
+	 border-radius: 30px;
+	 background-color: #208ef0;
+   color: white;
+}
+.app-sign-in-2 .btn-login-ahachat:hover {
+  color: white;
+}
+ .pricing-component .main-site-header .logo-color,
+ .ladi-wraper .main-site-header .logo-color,
+ .about-component .main-site-header .logo-color,
+ .carees-social-component .main-site-header .logo-color,
+ .video-tutorials-component .main-site-header .logo-color,
+ .bot-templates-component .main-site-header .logo-color,
+ .affiliate .main-site-header .logo-color,
+ .invoice-component .main-site-header .logo-color {
+	 display: inline;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-nav a {
+		 color: #fff !important;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		 padding: 20px 0;
+		 display: block;
+		 line-height: normal;
+	}
+	 .main-site-nav a:hover {
+		 color: #fff;
+	}
+	 .main-site-header .app-sign-in-2 {
+		 display: none;
+	}
+}
+ .main-site-header .main-site-nav-link-outside {
+	 color: #fff;
+	 -webkit-transition: color 0.3s ease;
+	 transition: color 0.3s ease;
+}
+ .main-site-header .main-site-nav-link-outside:hover {
+	 color: #fff;
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .main-site-nav-link-outside {
+		 color: #fff;
+		 border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+		 padding: 20px 0;
+		 display: block;
+		 line-height: normal;
+	}
+	 .main-site-header .main-site-nav-link-outside:hover {
+		 color: #fff;
+	}
+}
+ .main-site-header .app-sign-in {
+	 -webkit-transform: translateY(-50%);
+	 transform: translateY(-50%);
+	 position: absolute;
+	 top: 50%;
+	 right: 180px;
+}
+ .main-site-header .app-sign-in .icon-flag {
+	 width: 22px;
+}
+ @media  screen and (min-width: 1024px) {
+	 .main-site-nav a.signin-link {
+		 display: none;
+	}
+}
+ @media  screen and (max-width: 1024px) {
+	 .main-site-header .app-sign-in {
+		 display: none;
+	}
+}
+ .main-site-header .app-sign-in a {
+	 color: #fff;
+}
+ .js-main-menu-open .mobile-menu {
+	 color: #fff;
+	 position: fixed;
+	 border-radius: 2px;
+}
+ .js-main-menu-open .mobile-menu .hamburger {
+	 background: none;
+}
+ .js-main-menu-open .mobile-menu .hamburger:before, .js-main-menu-open .mobile-menu .hamburger:after {
+	 top: 0;
+	 background: #fff;
+	 -webkit-transform: rotate(-45deg);
+	 transform: rotate(-45deg);
+}
+ .js-main-menu-open .mobile-menu .hamburger:after {
+	 -webkit-transform: rotate(45deg);
+	 transform: rotate(45deg);
+}
+ .js-main-menu-open .mobile-menu:hover {
+	 color: #fff;
+}
+ .js-main-menu-open .mobile-menu:hover .hamburger {
+	 background: none;
+}
+ .js-main-menu-open .mobile-menu:hover .hamburger:before, .js-main-menu-open .mobile-menu:hover .hamburger:after {
+	 background: #fff;
+}
+ .js-main-menu-open .main-site-nav {
+	 -webkit-transform: translateX(0);
+	 transform: translateX(0);
+	 opacity: 1;
+	 visibility: visible;
+	 -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
+<div class="row">
+<div class="col-xs-12 col-md-12 col-lg-8 col-lg-offset-2 panel">
+<div class="col-xs-12 col-md-6">
+<div class="homepage-logo-left">
+<h1 class="title-strong">
+Chatbot Marketing
+<span class="slide-text">
+<span class="slide-text-item">Facebook</span>
+<span class="slide-text-item">Messenger</span>
+<span class="slide-text-item">Instagram</span>
+<span class="slide-text-item">Zalo</span>
+</span>
+</h1>
+<div class="subtitle">Tự động thu hút khách hàng bằng viral, tự động trả lời comment và báo giá inbox, tự động gửi tin nhắn tiếp thị hàng loạt.</div>
+<div class="login">
+<a type="button" class="btn btn-info btn-flat btn-login-ahachat" :disabled="isLoginProcessing" onclick="loginHelper.checkLoginStatus()">
+<i class="fa fa-spinner fa-spin" id="login-processing" style="display: none"></i>
+Bắt đầu sử dụng miễn phí
+</a>
+<a type="button" class="btn btn-info btn-flat btn-login-ahachat" href="https://ahamake.com/?ref=ahachat" target="_blank" style="background-color: #3bbfa6;border-color: #3ed86e;">
+Giải Pháp Full Automation <span class="badge label-danger" style="color: white">NEW</span>
+</a>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-6">
+<div class="homepage-logo-right">
+<div class="yt-video-container">
+<video poster="PmB3CAb.jpg" preload="auto" autoplay="autoplay" muted="muted" loop="loop" webkit-playsinline="" style="width: 100%;">
+<source src="https://thumbs.gfycat.com/SkeletalWelloffIchidna-mobile.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="hide">
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">👨‍💻 Đáp ứng mọi nhu cầu tự động hoá kinh doanh của bạn!</h2>
+<div class="feature-description">AhaChat VIP là gói tự động hoá doanh nghiệp toàn diện đáp ứng mọi nhu cầu bán hàng và tiếp thị của bạn, giúp bạn tránh khỏi rắc rối khi sử dụng nhiều ứng dụng.<br>Với AhaChat Plus, bạn có thể giải quyết mọi nhu cầu kinh doanh của mình ở một nơi.</div>
+</div>
+<div class="col-xs-12 col-lg-8 col-lg-offset-2">
+<div class="homepage-feature-list" style="width: 720px;">
+<div class="item-f item-f-2">
+<i class="fa fa-commenting-o"></i>
+<div class="feature-item-name">AhaChat Bot</div>
+<div class="feature-item-description">Giải pháp quản lý bán hàng và chăm sóc khách hàng tự động trên các nền tảng nhắn tin.</div>
+<a class="feature-item-action" onclick="homepageComponent.scrollToIntro()">Tìm hiểu thêm</a>
+</div>
+<div class="item-f item-f-2">
+<i class="fa fa-sitemap"></i>
+<div class="feature-item-name">AhaChat Make</div>
+<div class="feature-item-description">Tự động hoá công việc bán hàng trên KiotViet, Nhanh, Haravan, Sapo, WooCommerce, Shopify, Keap, Lark Suite...</div>
+<a class="feature-item-action" href="https://ahamake.com/?ref=ahachat" target="_blank">Tìm hiểu thêm</a>
+</div>
+<div class="item-f item-f-2">
+<i class="fa fa-qrcode"></i>
+<div class="feature-item-name">AhaChat QR</div>
+<div class="feature-item-description">Tạo mã qr marketing đẹp đo lường được giúp tăng nhận diện thương hiệu và thu hút khách hàng tiềm năng.</div>
+<a class="feature-item-action" href="https://ahaqr.com/?ref=ahachat" target="_blank">Tìm hiểu thêm</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt100" id="ahachat_intro">
+<div class="row homepage-feature" style="padding-bottom: 0">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title"><span>Bạn không cần phải trả tiền để sử dụng chatbot</span> <i class="img-fb-like"></i></h2>
+<div class="feature-description">
+<span>Khác với các nền tảng khác, AhaChat <span class="text-danger">không giới hạn tính năng và khách hàng</span> ở phiên bản miễn phí.<br>Chúng tôi chỉ cho hiển thị branding lên các bot đó nhằm mục đích quảng cáo.</span>
+</div>
+</div>
+<div class="col-xs-12 col-md-6 col-md-offset-3 feature-de">
+<div class="table-responsive">
+<table class="table table-compare-ahachat">
+<thead>
+<tr>
+<td></td>
+<td><span class="other-bot-icon"><span class="bot-title">Chatbot khác</span></span></td>
+<td><span class="ahachat-bot-icon"><span class="bot-title">AhaChat Chatbot</span></span></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Miễn phí không giới hạn tính năng và khách hàng</td>
+<td><span class="cant-do"><i class="fa fa-minus"></i></span></td>
+<td><span class="can-do"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<td>Tạo kịch bản trả lời tự động bằng bản đồ mindmap</td>
+<td><span class="cant-do"><i class="fa fa-minus"></i></span></td>
+<td><span class="can-do"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<td>Tự động quét số điện thoại và email của khách hàng</td>
+<td><span class="cant-do"><i class="fa fa-minus"></i></span></td>
+<td><span class="can-do"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<td>Tự động đồng bộ nhãn hội thoại Facebook và AhaChat</td>
+<td><span class="cant-do"><i class="fa fa-minus"></i></span></td>
+<td><span class="can-do"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<td>Gửi broadcast tất cả những người từng inbox page</td>
+<td><span class="cant-do"><i class="fa fa-minus"></i></span></td>
+<td><span class="can-do"><i class="fa fa-plus"></i></span></td>
+</tr>
+<tr>
+<td>Cài đặt thời gian bật/tắt bot trong ngày tùy ý</td>
+<td><span class="cant-do"><i class="fa fa-minus"></i></span></td>
+<td><span class="can-do"><i class="fa fa-plus"></i></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="">
+<div class="row homepage-feature" style="padding-top: 0">
+<div class="col-xs-12 col-md-6 col-md-offset-3 feature-de">
+<div class="col-xs-12 col-sm-7">
+<h3>Có một số câu hỏi?</h3>
+<div class="homepage-questions">
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question0')" id="question0">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Vì sao AhaChat cung cấp dịch vụ miễn phí?</span>
+</h5>
+<div class="answer-about">Mô hình kinh doanh của chúng tôi không dựa trên số lượng khách hàng hay tính năng. Doanh thu của chúng tôi đến từ những doanh nghiệp muốn xóa branding ahachat(300k/tháng)... Vì vậy, bạn có thể sử dụng AhaChat hoàn toàn miễn phí.</div>
+</div>
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question1')" id="question1">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">AhaChat cho phép tạo bao nhiêu bot?</span>
+</h5>
+<div class="answer-about">Không giới hạn. Bạn có thể tạo bao nhiêu bot/page tuỳ thích, từ page chính đến các page vệ tinh.</div>
+</div>
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question2')" id="question2">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Miễn phí thì có giới hạn tính năng?</span>
+</h5>
+<div class="answer-about">Hoàn toàn không. Nếu so sánh với các nền tảng bot khác bạn sẽ thấy AhaChat không những đầy đủ tính năng mà còn rất dễ sử dụng.</div>
+</div>
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question3')" id="question3">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Chuyển sang AhaChat có bị mất khách hàng cũ?</span>
+</h5>
+<div class="answer-about">Hoàn toàn không. Và không chỉ khách hàng đăng ký bot cũ mà cả những người từng inbox page trước kia cũng sẽ được tự động chuyển sang AhaChat.</div>
+</div>
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question4')" id="question4">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Có thể hẹn giờ hoạt động cho bot?</span>
+</h5>
+<div class="answer-about">Được, bạn có thể hẹn giờ bot hoạt động khi không có nhân viên để trả lời khách hàng mọi lúc. Khi bật/tắt bot cũng không ảnh hưởng đến việc tự động thu thập khách hàng cho chiến dịch remarketing sau này.</div>
+</div>
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question5')" id="question5">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Có thể tích hợp bot vào Facebook Ads?</span>
+</h5>
+<div class="answer-about">Chắc chắn, bạn có thể dùng quảng cáo <a href="ads/index.htm?utm_source=ahachat&utm_medium=homepage&utm_campaign=ctx" target="_blank">Click to Messenger và Sponsored Messages</a> ngay trong AhaChat nhé.</div>
+</div>
+<div class="question-about" onclick="homepageComponent.toggleAnswer('#question6')" id="question6">
+<h5 class="question-about-title">
+<span class="icon"><i class="fa fa-question-circle fa-2x"></i></span>
+<span class="question-about-content">Miễn phí thì có được hỗ trợ?</span>
+</h5>
+<div class="answer-about">Tất nhiên là có. Bạn sẽ được livechat 1:1 để được hỗ trợ bất cứ vấn đề nào liên quan đến sản phẩm.</div>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-5">
+<h3>Áp dụng trong thực tế?</h3>
+<ul class="list-bot-demo">
+<li><a href="https://messenger.com/t/ahachatter?ref=welcome" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Viral Marketing</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_HMI6Zl" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Bán Hàng V1</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=shopv2" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Bán Hàng V2</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_ltRwSI" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Đặt Bánh Pizza</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_nhGhWV" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Đặt Bàn Nhà Hàng</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_cfQBII" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Đặt Chỗ Spa</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_M4UZy7" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Đăng Ký Khóa Học</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_85dndt" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Hỗ Trợ Khách Hàng</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_rjdEvi" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Hỏi Đáp Nhận Quà</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_0JvxIE" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Tuyển Dụng Nhân Viên</span></a></li>
+<li><a href="https://messenger.com/t/ahachatter?ref=m_me_link_H2lDfV" target="_blank"><i class="fa fa-angle-right"></i><span>Chatbot Tích Hợp Google Sheet</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-grd bg-grd-2">
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">Hướng dẫn tạo chatbot viral từ cơ bản đến nâng cao</h2>
+<div class="feature-description">Hãy theo dõi video để giúp bạn làm chủ công cụ AhaChat.</div>
+</div>
+<div class="col-xs-12 col-md-8 col-md-offset-2 mb-30" style="margin-bottom: 50px;">
+<div class="embedso-widget" data-code="1ec5ce83-4f18-66ac-89ea-42010a940002"></div>
+<script src="video_preview/sdk.js" type="application/javascript" async=""></script>
+</div>
+</div>
+</div>
+<div>
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">Được sử dụng hàng ngày bởi hơn 50,000 khách hàng</h2>
+</div>
+<div class="col-xs-12 customers-special-list">
+<div class="customers-special-list-container">
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/1.jpg">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/2.jpg">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/3.jpg">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/4.jpg">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/5.jpg">
+</div>
+<div class="col-xs-6 customer-s-container">
+<img src="img/customers_special/6.jpg">
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-6 col-md-offset-3 customers-list mb100">
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1514785085462238.jpg" alt="Đầm Bầu Thời Trang Mami" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1514785085462238" target="_blank">
+<span>Đầm Bầu Thời Trang Mami</span>
+<span class="customer-sub">530k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/186399198151669.jpg" alt="Đỗ Cao An Nhiên" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/186399198151669" target="_blank">
+<span>Đỗ Cao An Nhiên</span>
+<span class="customer-sub">500k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/548875771868117.jpg" alt="KAVY SHOES" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/548875771868117" target="_blank">
+<span>KAVY SHOES</span>
+<span class="customer-sub">380k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/171941206821492.jpg" alt="KT Store - Chuyên quần áo nhập khẩu" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/171941206821492" target="_blank">
+<span>KT Store - Chuyên quần áo nhập khẩu</span>
+<span class="customer-sub">360k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1506940309348607.jpg" alt="Rosmake Việt Nam" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1506940309348607" target="_blank">
+<span>Rosmake Việt Nam</span>
+<span class="customer-sub">350k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/825120117522040.jpg" alt="168 MEM" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/825120117522040" target="_blank">
+<span>168 MEM</span>
+<span class="customer-sub">340k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1434339023470742.jpg" alt="Giian" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1434339023470742" target="_blank">
+<span>Giian</span>
+<span class="customer-sub">330k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/217168144966609.jpg" alt="Rẻ Mỗi Ngày" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/217168144966609" target="_blank">
+<span>Rẻ Mỗi Ngày</span>
+<span class="customer-sub">310k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/215458365559808.jpg" alt="Giày 99K" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/215458365559808" target="_blank">
+<span>Giày 99K</span>
+<span class="customer-sub">300k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/271346056619412.jpg" alt="Làm đẹp cùng MAI ANH" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/271346056619412" target="_blank">
+<span>Làm đẹp cùng MAI ANH</span>
+<span class="customer-sub">280k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/289630251087245.jpg" alt="H2T" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/289630251087245" target="_blank">
+<span>H2T</span>
+<span class="customer-sub">260k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1713497772130284.jpg" alt="UHA Matte Lipstick" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1713497772130284" target="_blank">
+<span>UHA Matte Lipstick</span>
+<span class="customer-sub">250k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1512548632137967.jpg" alt="Black Heart" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1512548632137967" target="_blank">
+<span>Black Heart</span>
+<span class="customer-sub">220k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/226351657789408.jpg" alt="Leo Vatino" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/226351657789408" target="_blank">
+<span>Leo Vatino</span>
+<span class="customer-sub">220k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/2090061744549242.jpg" alt="Hương Fashion" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/2090061744549242" target="_blank">
+<span>Hương Fashion</span>
+<span class="customer-sub">220k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/168172033705355.jpg" alt="Mya Store - Giày Thể Thao" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/168172033705355" target="_blank">
+<span>Mya Store - Giày Thể Thao</span>
+<span class="customer-sub">200k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/242025532656458.jpg" alt="August Store" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/242025532656458" target="_blank">
+<span>August Store</span>
+<span class="customer-sub">170k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/705943776173867.jpg" alt="Circle Store" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/705943776173867" target="_blank">
+<span>Circle Store</span>
+<span class="customer-sub">170k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/135929566597936.jpg" alt="Routine" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/135929566597936" target="_blank">
+<span>Routine</span>
+<span class="customer-sub">120k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/636512649799214.jpg" alt="Tiếng Anh rất dễ dàng" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/636512649799214" target="_blank">
+<span>Tiếng Anh rất dễ dàng</span>
+<span class="customer-sub">150k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/289037724914398.jpg" alt="Suza House - Váy Đẹp Dáng Xinh" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/289037724914398" target="_blank">
+<span>Suza House - Váy Đẹp Dáng Xinh</span>
+<span class="customer-sub">150k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/400202166812077.jpg" alt="Đọc báo thay bạn" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/400202166812077" target="_blank">
+<span>Đọc báo thay bạn</span>
+<span class="customer-sub">150k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/457432107651009.jpg" alt="MYAN" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/457432107651009" target="_blank">
+<span>MYAN</span>
+<span class="customer-sub">120k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/468084606624808.jpg" alt="Tony4men Shop" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/468084606624808" target="_blank">
+<span>Tony4men Shop</span>
+<span class="customer-sub">150k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/528055814042582.jpg" alt="Dạy Con Đúng Cách" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/528055814042582" target="_blank">
+<span>Dạy Con Đúng Cách</span>
+<span class="customer-sub">150k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/245469575953969.jpg" alt="Đéu Thích Thả Thính" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/245469575953969" target="_blank">
+<span>Đéu Thích Thả Thính</span>
+<span class="customer-sub">130k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1401076136824807.jpg" alt="Tôi Yêu Hóa Học" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1401076136824807" target="_blank">
+<span>Tôi Yêu Hóa Học</span>
+<span class="customer-sub">130k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/557872814278737.jpg" alt="Việc làm Đà Nẵng" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/557872814278737" target="_blank">
+<span>Việc làm Đà Nẵng</span>
+<span class="customer-sub">120k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/153133694743186.jpg" alt="Saigon smile Spa" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/153133694743186" target="_blank">
+<span>Saigon smile Spa</span>
+<span class="customer-sub">120k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/129658057062693.jpg" alt="KICHI HOT POT BAR" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/129658057062693" target="_blank">
+<span>KICHI HOT POT BAR</span>
+<span class="customer-sub">120k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/103549953310338.jpg" alt="Coco Bikini" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/103549953310338" target="_blank">
+<span>Coco Bikini</span>
+<span class="customer-sub">110k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/958480680883748.jpg" alt="Bình Boutique" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/958480680883748" target="_blank">
+<span>Bình Boutique</span>
+<span class="customer-sub">110k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/154872111535615.jpg" alt="Kho Tài Liệu Y Dược" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/154872111535615" target="_blank">
+<span>Kho Tài Liệu Y Dược</span>
+<span class="customer-sub">110k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/356056647882948.jpg" alt="Shop Độc" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/356056647882948" target="_blank">
+<span>Shop Độc</span>
+<span class="customer-sub">110k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/1067643886682981.jpg" alt="Đồ bầu rẻ" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/1067643886682981" target="_blank">
+<span>Đồ bầu rẻ</span>
+<span class="customer-sub">100k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/638779952931647.jpg" alt="Cao thủ đàn hát" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/638779952931647" target="_blank">
+<span>Cao thủ đàn hát</span>
+<span class="customer-sub">100k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/745438308841551.jpg" alt="ĐẦM BẦU BONNA" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/745438308841551" target="_blank">
+<span>ĐẦM BẦU BONNA</span>
+<span class="customer-sub">100k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/251182495292599.jpg" alt="Bí Quyết Giảm Cân An Toàn" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/251182495292599" target="_blank">
+<span>Bí Quyết Giảm Cân An Toàn</span>
+<span class="customer-sub">100k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/367144550808405.jpg" alt="Gift Watch - Đồng Hồ Đẹp" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/367144550808405" target="_blank">
+<span>Gift Watch - Đồng Hồ Đẹp</span>
+<span class="customer-sub">100k</span>
+</a>
+</div>
+<div class="col-sm-6 col-md-3 customer-container">
+<img src="img/page_logos/116769505628318.jpg" alt="Lê Nhung" onerror="this.src='/img/page_error.png'">
+<a href="https://facebook.com/116769505628318" target="_blank">
+<span>Lê Nhung</span>
+<span class="customer-sub">100k</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-grd bg-grd-2">
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">Và đồng hành cùng 100,000+ chiến dịch thành công</h2>
+</div>
+<div class="col-xs-10 col-xs-offset-1 text-center">
+<a href="img/reviews.jpg" target="_blank">
+<img src="img/reviews-1.jpg?v=1" class="col-xs-12" alt="chatbot">
+</a>
+</div>
+</div>
+</div>
+<div>
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">Chỉ mất 30s để bắt đầu tạo bot với rất nhiều tính năng</h2>
+<div class="feature-description">Hãy xem tất cả những gì bạn có thể làm trong AhaChat.</div>
+</div>
+<div class="col-xs-12 col-lg-8 col-lg-offset-2">
+<div class="homepage-feature-list">
+<a class="item-f" href="help/docs.html" target="_blank">
+<i class="fa fa-sitemap"></i>
+<div class="feature-item-title">Tạo kịch bản trả lời tự động rất dễ bằng Mind Map</div>
+</a>
+<a class="item-f" href="help/docs/luu-google-sheet.html" target="_blank">
+<i class="fa fa-google"></i>
+<div class="feature-item-title">Lưu và lấy dữ liệu từ Google Sheet khỏi lo sót đơn</div>
+</a>
+<a class="item-f" href="help/docs/live-chat.html" target="_blank">
+<i class="fa fa-wechat"></i>
+<div class="feature-item-title">Nhân viên có thể chat trực tiếp với khách thông qua Live chat</div>
+</a>
+<a class="item-f" href="help/docs/broadcast.html" target="_blank">
+<i class="fa fa-send-o"></i>
+<div class="feature-item-title">Phân loại và gửi broadcast hàng loạt để Remarketing</div>
+</a>
+<a class="item-f" href="help/docs/cham-soc.html" target="_blank">
+<i class="fa fa-calendar"></i>
+<div class="feature-item-title">Đưa khách hàng vào phễu bằng chiến dịch Chăm sóc</div>
+</a>
+<a class="item-f" href="help/docs/auto-inbox.html" target="_blank">
+<i class="fa fa-inbox"></i>
+<div class="feature-item-title">Auto inbox để trả lời hàng ngàn comment cùng một lúc</div>
+</a>
+<a class="item-f" href="help/docs/index.htm" target="_blank">
+<i class="fa fa fa-dollar"></i>
+<div class="feature-item-title">Dễ dàng bùng nổ đơn hàng bằng Chatbot Viral</div>
+</a>
+<a class="item-f" href="help/docs/tong-quan.html" target="_blank">
+<i class="fa fa-bar-chart-o"></i>
+<div class="feature-item-title">Xem thống kê khách hàng và tin nhắn theo thời gian thực</div>
+</a>
+<a class="item-f" href="help/docs/tang-truong.html" target="_blank">
+<i class="fa fa-magnet"></i>
+<div class="feature-item-title">Có nhiều công cụ triển khai để tiếp cận khách hàng</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-grd bg-grd-2">
+<div class="row homepage-feature">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title">Là đối tác chính thức của Facebook và Google</h2>
+<div class="feature-description">Chúng tôi tự hào khi được đồng hành cùng sự thành công của hàng trăm ngàn khách hàng</div>
+</div>
+<div class="container">
+<div class="col-md-6 partner">
+<div class="text-center">
+<a href="https://www.facebook.com/business/partner-directory/search?solution_type=messaging&ref=fmp_nav_bar&id=4405847059459330&section=overview" target="_blank">
+<img src="img/facebook_partner.png" class="img-responsive" alt="chatbot">
+</a>
+<div class="title">Đối tác nhắn tin của Meta (formerly Facebook)</div>
+<hr>
+<div class="feature-description">Vượt qua những tiêu chuẩn khắt khe nhất, AhaChat đã chính thức trở thành đối tác của Facebook tại Châu Á. Chúng tôi tin tưởng rằng, bằng kinh nghiệm của mình, AhaChat sẽ đồng hành cùng khách hàng khẳng định uy tín và là cầu nối quảng bá sản phẩm vững chắc nhất trên hơn 1 tỉ người dùng Facebook</div>
+</div>
+</div>
+<div class="col-md-6 partner">
+<div class="text-center">
+<a href="https://businessmessages.google/partners/" target="_blank">
+<img src="img/google-partner-01.png" class="img-responsive" style="padding: 10px" alt="chatbot">
+</a>
+<div class="title">Đối tác công nghệ của Google Business Message</div>
+<hr>
+<div class="feature-description">Trở thành "một trong những đối tác đầu tiên" của Google Business Message tại Châu Á, AhaChat hỗ trợ doanh nghiệp và người kinh doanh triển khai các chiến dịch marketing & quảng cáo trên nền tảng Google Ads và Maps kết hợp Chatbot một cách nhanh chóng, hiệu quả, tối ưu ngân sách, giúp tăng nhận diện thương hiệu và tiếp cận hàng triệu khách hàng tiềm năng mỗi ngày</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+.feature-de {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.partner {
+    margin-bottom: 50px;
+}
+.partner .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #505050;
+    margin-top: 25px;
+}
+.partner img {
+    height: 80px;
+    display: inline;
+}
+.feature-title {
+    color: rgba(0,0,0,.75);
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 600;
+    margin: 0 0 10px
+}
+.feature-description {
+    color: rgba(0,0,0,.55);
+    font-size: 17px;
+    line-height: 24px;
+    margin: 0 0 10px
+}
+</style>
+</div>
+<div>
+<div>
+<div class="row homepage-feature support-team">
+<div class="col-xs-12 text-center feature-de">
+<h2 class="feature-title" style="margin-bottom: 20px;">Cùng đội ngũ hỗ trợ tuyệt vời luôn ở đây để giúp bạn</h2>
+<div class="col-xs-12" style="height: 80px;">
+<div class="support-team-list">
+<img src="img/peoples/ty_nguyen.jpg" style="right: 280px; z-index: 100 - 0">
+<img src="img/peoples/duc_nguyen.jpg" style="right: 245px; z-index: 100 - 1">
+<img src="img/peoples/linh_truong.jpg" style="right: 210px; z-index: 100 - 2">
+<img src="img/peoples/tuan_vu.jpg" style="right: 175px; z-index: 100 - 3">
+<img src="img/peoples/phuong_nguyen.jpg" style="right: 140px; z-index: 100 - 4">
+<img src="img/peoples/long_vo.jpg" style="right: 105px; z-index: 100 - 5">
+<img src="img/peoples/trang_dang.jpg" style="right: 70px; z-index: 100 - 6">
+<img src="img/peoples/yen_tran.jpg" style="right: 35px; z-index: 100 - 7">
+<img src="img/peoples/supportor_1.jpg" style="right: 0px; z-index: 100 - 8">
+</div>
+</div>
+<div class="feature-description">Nhóm hỗ trợ của chúng tôi làm việc suốt ngày đêm để hỗ trợ bạn bất cứ khi nào bạn có câu hỏi.<br>Hãy gửi cho chúng tôi một tin nhắn và chúng tôi sẽ liên hệ lại ngay.</div>
+<a class="btn btn-info btn-flat btn-chat-me" href="https://messenger.com/t/ahachatter?ref=hotro" target="_blank">
+Chat Với Chúng Tôi
+</a>
+</div>
+<div class="col-xs-12 col-lg-8 col-lg-offset-2">
+<div class="team-overview row">
+<div class="col-md-4 text-center">
+<h1>24/7</h1>
+<h4>luôn luôn sẵn sàng</h4>
+</div>
+<div class="col-md-4 text-center">
+<h1>5 minute</h1>
+<h4>thời gian phản hồi</h4>
+</div>
+<div class="col-md-4 text-center">
+<h1>97%</h1>
+<h4>tỷ lệ hài lòng</h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+.support-team .feature-de {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.support-team .feature-title {
+  color: rgba(0,0,0,0.75);
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.support-team .feature-description {
+  color: rgba(0,0,0,0.55);
+  font-size: 17px;
+  line-height: 24px;
+  margin: 0 0 10px;
+}
+.support-team .support-team-list {
+  position: relative;
+  width: 330px;
+  margin: auto;
+  height: 50px;
+  margin-bottom: -20px;
+}
+.support-team .support-team-list img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: #fff;
+}
+.btn-chat-me {
+  background-color: #ee4e35;
+  border: 0;
+  border-radius: 50px;
+  padding: 12px 30px;
+  margin-top: 10px;
+}
+.btn-chat-me:hover {
+  background-color: #f3573f;
+}
+.support-team .team-overview > div:nth-child(2), .team-overview > div:nth-child(3) {
+  border-left: 1px solid #ddd;
+}
+.support-team .team-overview h1 {
+  color: #ee4e35;
+  margin-top: 0;
+  font-weight: bold;
+}
+</style>
+</div>
+<div class="mb100">
+<div class="row homepage-feature">
+<div class="col-xs-12 news-list">
+<div class="news-container">
+<ul class="list-inline text-center">
+<li class="news-i-container">
+<figure>
+<a href="https://vnexpress.net/loi-ich-cua-chatbot-trong-kinh-doanh-online-4372105.html"><img src="img/news/1.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://www.24h.com.vn/kham-pha-cong-nghe/chatbot-tro-thu-dac-luc-trong-ban-hang-online-cho-cac-doanh-nghiep-c675a1297826.html"><img src="img/news/2.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://vtc.vn/chatbot-vu-khi-loi-hai-cho-cac-doanh-nghiep-kinh-doanh-online-ar641924.html"><img src="img/news/3.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://dantri.com.vn/suc-manh-so/chatbot-cong-cu-ho-tro-dac-luc-cho-cac-doanh-nghiep-kinh-doanh-online-tai-viet-nam-20211015132412083.htm"><img src="img/news/4.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://cafef.vn/chatbot-giai-phap-va-cong-cu-trong-kinh-doanh-online-thoi-dai-40-20211015170243833.chn"><img src="img/news/5.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://kenh14.vn/cai-thien-viec-cham-soc-khach-hang-chuyen-nghiep-trong-thoi-dai-40-bang-cong-cu-chatbot-2021101517283179.chn"><img src="img/news/6.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://zingnews.vn/su-dung-chatbot-de-thuc-day-kinh-doanh-online-post1271916.html"><img src="img/news/7.png" alt="chatbot"></a>
+</figure>
+</li>
+<li class="news-i-container">
+<figure>
+<a href="https://tuoitre.vn/ung-dung-chatbot-trong-kinh-doanh-online-tro-thanh-xu-huong-moi-cua-cac-doanh-nghiep-viet-20211115103444145.htm"><img src="img/news/8.png" alt="chatbot"></a>
+</figure>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-xs-12">
+<style>
+.banner-free {
+  background: #665fee;
+  background: -moz-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  background: -webkit-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  background: -o-linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  background: linear-gradient(45deg,#665fee 0%,#27c2de 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#665fee',endColorstr='#27c2de',GradientType=1 );
+  padding: 20px 20px 40px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  margin: 15px auto;
+}
+.banner-free p {
+  font-size: 16px;
+}
+.banner-free .btn {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 10px 30px;
+  margin-top: 16px;
+  transition: all .4s ease;
+  font-size: 16px;
+  color: white;
+}
+.banner-free .btn:hover {
+  background-color: white;
+  color: #3ca1e3;
+}
+</style>
+<div class="banner-free">
+<h1>Chỉ mất 5 phút để tạo chatbot đầu tiên</h1>
+<p>Không giới hạn số lượng khách hàng lưu trữ</p>
+<a class="btn" onclick="loginHelper.checkLoginStatus()">Bắt đầu sử dụng miễn phí</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="page-footer font-small unique-color-dark">
+<div class="footer-container">
+<div class="container text-center text-md-left mt-5">
+<div class="row mt-3">
+<div class="col-md-5 col-lg-5 col-lg-offset-1 mx-auto">
+<img src="img/LOGO_EXPORT_02.png" class="logo">
+<h4 class="color-darkgrey" style="color: white"><b>Công Ty TNHH AhaChat</b></h4>
+<div id="dirrect-countdown-1s"></div>
+<div id="dirrect-code-1s"></div>
+<script data-no-optimize="1">
+                      //nowprocket
+                      var dirrectSiteCode = "q6cgaNwH5c"
+                    </script>
+<script src="site.js"></script>
+<p class="color-darkgrey">
+Email: <a href="cdn-cgi/l/email-protection.html#37434e5950424e525977565f56545f56431954585a" style="text-decoration: underline;"><span class="__cf_email__" data-cfemail="2e5a5740495b574b406e4f464f4d464f5a004d4143">[email&#160;protected]</span></a>&nbsp;&nbsp; - &nbsp;&nbsp;Website: <a href="index.htm" style="text-decoration: underline;">https://ahachat.com</a><br>
+Hotline: 0912543223 - 0917543223<br>
+Số giấy chứng nhận đăng ký kinh doanh: 0401907490<br>
+Ngày cấp: 21/06/2018. Nơi cấp: Sở kế hoạch và đầu tư thành phố Đà Nẵng<br>
+Địa chỉ: Tòa nhà PVcomBank, số 02 đường 30/4, quận Hải Châu, Tp. Đà Nẵng
+</p>
+<p class="color-darkgrey no-break"><b>Chi nhánh (hiện tại tất cả nhân viên đang làm việc remote)</b> <br>
+<i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Tầng 2, Rạp 12/9, 22 Quang Trung, TP. Vinh, Nghệ An - 09125 43223
+<br> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;Tầng 8, Toà nhà Liên hiệp, 224 Điện Biên Phủ, Phường 7, Quận 3, TP.HCM - 08357 08333
+<br> <i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;CT1-2 Khu đô thị Mễ Trì Hạ, Nam Từ Liêm, Hà Nội - 03866 31778
+</p>
+<div class="social-links"><a href="https://www.facebook.com/ahachatter" target="_blank" class="social-link facebook-link"><i class="fa fa-facebook"></i></a> <a href="https://www.youtube.com/playlist?list=PLPPV8v125zxQkue8hpGi2V_zBEs-HkzZP" target="_blank" class="social-link youtube-link"><i class="fa fa-youtube-play"></i></a></div>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">CÔNG TY</h4>
+<p><a href="about.html" target="_blank">Về chúng tôi</a></p>
+<p><a href="pricing.html" target="_blank">Giá cả</a></p>
+<p><a href="careers/social-media-manager.html" target="_blank">Tuyển dụng</a></p>
+<p><a href="https://drive.google.com/open?id=1QN-gLQvHE5fb8d60PjuzgLyuCbxTJYOs" target="_blank">Thương hiệu</a></p>
+<div class="mobile-apps">
+<a href="https://apps.apple.com/sa/app/ahachat-chatbot-marketing/id1560826927" target="_blank">
+<img src="img/app-store.png" alt="chatbot">
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.ahachat" target="_blank">
+<img src="img/play-store.png" alt="chatbot">
+</a>
+</div>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">SẢN PHẨM</h4>
+<p><a href="https://help.ahachat.com/" target="_blank">Hướng dẫn</a></p>
+<p><a class="cursor-pointer" data-toggle="modal" data-target="#modal-compare">So sánh</a></p>
+<p><a href="https://messenger.com/t/ahachatter?ref=ask" target="_blank">Liên hệ</a></p>
+<p><a href="https://fb.com/groups/ahachat" target="_blank">Cộng đồng</a></p>
+</div>
+<div class="col-md-2 col-lg-2 mx-auto">
+<h4 class="text-uppercase font-weight-bold">PHÁP LÝ</h4>
+<p><a href="terms-of-service/index.htm" target="_blank">Điều khoản sử dụng</a></p>
+<p><a href="privacy-policy/index.htm" target="_blank">Chính sách bảo mật</a></p>
+<p><a href="payment-policy/index.htm" target="_blank">Chính sách thanh toán</a></p>
+<div class="fb-partner" style="margin-bottom: 10px;"><a href="http://online.gov.vn/Home/WebDetails/88008" target="_blank"><img src="img/bo-cong-thuong.png" class="img-responsive" alt="chatbot"></a></div>
+<div class="fb-partner" style="margin-bottom: 10px;"><a href="https://www.facebook.com/business/partner-directory/search?solution_type=messaging&ref=fmp_nav_bar&id=4405847059459330&section=overview" target="_blank"><img src="img/facebook_partner.png" class="img-responsive" alt="chatbot"></a></div>
+</div>
+</div>
+<div class="row color-darkgrey copyright mt20 mb20">
+<div class="col-xs-12 col-md-3 col-md-offset-1 text-left"><b><a href="https://status.ahachat.com/" target="_blank">System Status</a></b></div>
+<div class="col-xs-12 col-md-4 text-center">© 2021 AhaChat Co.,Ltd</div>
+<div class="col-xs-12 col-md-3 text-right">Made in Vietnam</div>
+</div>
+</div>
+</div>
+<div id="modal-compare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+<div role="document" class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+<h4 id="myModalLabel" class="modal-title bold">SO SÁNH NỀN TẢNG KHÁC</h4>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-xs-12">
+<h2 class="mt0 mb0">Rẻ Hơn Đến 10 Lần</h2>
+<div class="mb10"></div>
+Chatfuel và Manychat tính phí cho bạn dựa trên số lượng khách hàng của mỗi page. Nghĩa là dù bạn không gửi tin nhắn marketing đến những khách hàng này thì bạn vẫn bị tính tiền.
+<div class="mb10"></div>
+Tại AhaChat, chúng tôi làm điều ngược lại là không tính phí dựa trên số lượng khách hàng và cũng không tính phí theo từng page riêng rẽ, mà chỉ tính cho số lượng cuộc trò chuyện bot gửi đi từ tất cả các page cộng lại (nhiều tin nhắn qua lại giữa bot và khách hàng vẫn chỉ tính là 1 cuộc trò chuyện).
+<div class="mb10"></div>
+Điều đó có nghĩa là nếu bạn có 2 page sử dụng Manychat/Chatfuel, page thứ nhất có 1,000 khách hàng và page thứ 2 có 25,000 khách hàng thì số tiền bạn phải trả lên đến $15 + $145 = $160 mỗi tháng. Còn nếu sử dụng AhaChat (giả sử 1 tháng bạn có 4 cuộc trò chuyện với khách hàng thì 100,000 cuộc trò chuyện tương ứng 25,000 khách hàng) thì số tiền bạn chỉ phải trả là $15 mỗi tháng.
+<h2 class="mb0">Free Không Giới Hạn Tính Năng</h2>
+<div class="mb10"></div>
+Ở Chatfuel, nếu số lượng khách hàng của bạn vượt quá 1,000 hay 5,000 thì bot sẽ ngừng hoạt động. Thêm vào đó, phiên bản Free sẽ không thể quản lý danh sách khách hàng.
+<div class="mb10"></div>
+Ở Manychat, bạn sẽ bị giới hạn số lượng Thẻ, Chăm Sóc và Công Cụ Tăng Trưởng khi sử dụng phiên bản Free.
+<div class="mb10"></div>
+Ở AhaChat, bạn không bị giới hạn số lượng tính năng sử dụng ở phiên bản Free. Thêm vào đó, chúng tôi còn hỗ trợ những tính năng độc quyền là Chatbot Viral, Coupon, Lucky Spin, Web Form, Vip Card để giúp tăng trưởng khách hàng tiềm năng nhanh chóng.
+</div>
+<div class="row">
+<div class="col-xs-12">
+<div class="col-xs-12">
+<div class="table-responsive">
+<table class="pricing-table bold">
+<tbody>
+<tr>
+<td>
+<div style="margin-top: 20px;"></div>
+Giá &amp; Tính Năng
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td>
+<div class="logo-compare-modal"><img src="img/chatbot-icon-57x57-v2.png" alt="Ahachat"></div>
+AhaChat
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td>
+<div class="logo-compare-modal"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEUgjvD///9cks4ajvIAhe8AiO8Ahu8okvAQivAAg+8Hie/0+v7c6/zC3Pr4/P5aktBRofJ+t/VsrfTv9v51lLigx/fn8v3P4/tysPSIu/Vep/OlyffX6PyWw/dJnvLY6fy01Pk0lvG92Pmtz/iGuvZjqfORwPZvr/Sx0vj2no24AAAF8UlEQVR4nO2d20LqOhBAg0nayEUKiCCVSwWB///CTUE8eiTQZma0E2c9+WKbRZqkmSRT9di/i5n+o+o7HTOur+60ihl9J4bcEUP+iCF/xJA/YsgfMeSPGPJHDPkjhvwRQ/6IIX/EkD9iyB8x5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjyRwz589OGWjvnbPuAPfyhNf29f8zwoGaNcWk2HGzn4zwfj7eb3azQibGO1PNHDEs5nT2vXkatb3S6r9uZSg6aVDcnN9TOuLd197vbZ55WU2UsSUGoDZ1Rm8l1uzPdeWEIapLUUFs7raj3Lvms0SuS0FAnaf5Qx+/I68I43GJQGWqzeK2td2Qyu8csEZGhtmkvzK9kmRm8MtEYOrcO9yvppRarLBSG2gzqt7//M0+QikVg2Fa1+k8fTwucasQ3NFMMv5IxSo+DbaiTwB70Ei8KYeBANnTpE55gq/WQwZ9UXEObwbuYrwwMtEyohnaH7HdgDFXENEwG+IKt1hqoiGiYbCgEW63VfUMMLUkNlqxBimiG7SGVILAtYhm6BZ3goUcFDBpIhjrFHia+Mgsf+pEME9SB/gIquJA4hmZFLNjqtn/V0FV+2R5N1ptdtijStCiy4SDvVa37URFaSgxDraoVcj1MTWLdRxoO59rWqFl+I9JYMgkPUGEYmgrzwYd8YS5GfbVum2J+oyrHgKgGgmGFZ/RpejXce5CcXfuV3hJA8RAMbeeW3/B2gNCZ7MX37ylolgg3tPkNwW1SqYTaDC/+VD1gjBhsqNPrfsvqUTNnL8QHttDAItjwRtQirxVr+RbjQZjkQw1vVOGuZh9hiy9PahfWBE8lBBraq28z9WvAqU9rjK8YMVOg4fXBfhFQA1p/KD7Dpr7nC8IM22PUGjyWKD09qB2EONvxejBDc2Hd+kzopO401exixEpLYIbuzS+4D56Yl/GQPdrqE8ww8S+hPQEiD+Z1Aw6TfgAztP4qXIB6aMRlYJDhlXfuPeRlGRWQofU+pA80O0dCABkm3vDTPDjogA7EUGf+KkQtJAiIoZ37DPNIDBPvvDxtTCsE1qGvGb7gjWZwAIa68FXhAHdXEwyAoX80DA9QEwAw9M4ruk16SCGG3vG+ST0pyND4YtW7JjVDiGHii5MGLzGQAOlpPIJNeqFREEPvYNGsjgZi6FvX7kVThzOP4T4WQ+fbADVuzsypBGDo2z+zbdRgQWH4HL3hJnrD+OswnnYYfV/qHQ/XsYyHf+CdpvAYRvNe6p1bdGKpQ/8+mibFEmnm+MNGDRckcZpGDRcSa7tC/PFSf8x72qSGCFq38HWmjWqIJGtPvcYscSui9cNlk7oakjVgyE4TdEjW8UdwQ4fWlEn2YnTAhqY7x9oURbKfBlyHZfwAuvv5DMmeKKihduU4BNzB/nExin1t0Nc2835Z0CmEMyR7Eyewkv13VhNykuQMyf7SFWgO/PkoI+A00BmSPcJziOF5j/B7ky6gwwbJPm/IFPjTPu/3i/3yWe6Le/UBy9xf9uqfqHdk4xsU5y064R2NXVyYr8AaI8WZmfCu1JMXBdQYKc49hS5cXDz3dGIa3hgpzq6FNUNtdleO+eXBIyPB+cOguZM2C9/5wxOT0GR1BGdIt7VHQ23vr54hPdIJ3P1PcA64ZiZL3TbptsKR7lFg68Y/yz22uirOWeOycYWz3AeyXzT88pwuXVqV4u15v6xkdyAPHYLY5FQIHi6Y5MV4CE9TK7lNqhJ9fpo/kGPoD+SJosv1BROUfG31oMi5N29Szr0/kDcRPfclxpn8RucvXerm5S9VmDlo543MQav+QB5hFX8uaBV/Pu/ysrHnZFcq+rz6x0tH/m2E48Uj/77Fkci/UXK6Q+TfmTnd5Oa3gi5njcS5uXzvCft+H9/sasf2za5fQwz5I4b8EUP+iCF/xJA/YsgfMeSPGPJHDPkjhvwRQ/6IIX/EkD9iyB8x5I8Y8kcM+SOG/BFD/oghf8SQP2LIHzHkjxjy52DYd5UTWXDE9dVj/y5m+o//AH9RWvsTjMLmAAAAAElFTkSuQmCC" alt="Ahachat"></div>
+Chatfuel
+<div style="margin-bottom: 15px;"></div>
+</td>
+<td></td>
+<td>
+<div class="logo-compare-modal"><img src="assets/img/logo.png" alt="Ahachat"></div>
+Manychat
+<div style="margin-bottom: 15px;"></div>
+</td>
+</tr>
+<tr>
+<td>
+25,000 subscribes x 1 page
+</td>
+<td>$15/tháng</td>
+<td>$180/tháng</td>
+<td></td>
+<td>$145/tháng</td>
+</tr>
+<tr>
+<td>
+5,000 subscribes x 5 pages
+</td>
+<td>$15/tháng</td>
+<td>$220/tháng</td>
+<td></td>
+<td>$180/tháng</td>
+</tr>
+<tr>
+<td>
+Chatbot Viral
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Lucky Spin
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Coupons
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Web Form
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+<tr>
+<td>
+Vip Card
+</td>
+<td><i class="fa fa-check"></i></td>
+<td>-</td>
+<td></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<style>
+footer > .footer-container img.logo {
+  width: 130px;
+  margin-bottom: 25px;
+}
+footer > .footer-container {
+  color: white;
+  z-index: 1;
+  background-color: #1c2331 !important;
+  position: relative;
+}
+footer .cursor-pointer {
+  cursor: pointer;
+}
+footer.page-footer > .footer-container {
+  padding-top: 40px;
+}
+footer > .footer-container .unique-color-dark {
+  background-color: #1c2331 !important;
+}
+footer > .footer-container .font-weight-bold {
+  font-weight: 700 !important;
+}
+footer > .footer-container .text-uppercase {
+  text-transform: uppercase !important;
+}
+footer > .footer-container .color-darkgrey.no-break {
+  word-break: normal;
+  white-space: nowrap;
+}
+footer > .footer-container .mx-auto {
+  text-align: left;
+  margin-bottom: 40px;
+}
+footer > .footer-container a {
+  color: darkgrey;
+}
+footer > .footer-container .social-links .social-link {
+  display: inline-block;
+  color: rgba(41, 70, 97, .2);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  margin-right: 20px;
+  background-color: #3d4b63;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-top: 6px;
+  color: #fff;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+footer > .footer-container .social-links .social-link.facebook-link:hover {
+  background-color: #1e67e2;
+}
+footer > .footer-container .social-links .social-link.youtube-link:hover {
+  background-color: #f62b00;
+}
+footer > .footer-container .color-darkgrey {
+  color: darkgrey;
+}
+ footer > .footer-container .fb-partner img {
+  width: 100%;
+  max-width: 200px;
+}
+footer > .footer-container .mobile-apps {
+  display: flex;
+  margin-top: 15px;
+}
+footer .mobile-apps img {
+  width: 100px;
+  margin-right: 10px;
+}
+footer #modal-compare .bold {
+  font-weight: bold;
+}
+footer #modal-compare .logo-compare-modal img {
+  width: 25px;
+}
+footer #modal-compare {
+	color: #333;
+}
+footer #modal-compare .pricing-table {
+	min-width: 800px;
+	margin: 50px auto;
+	margin-bottom: 0;
+	background: 0 0;
+	border: none;
+	text-align: left;
+	width: 100%;
+	border-collapse: initial;
+	color: #495259;
+	border-spacing: 0;
+}
+footer  #modal-compare .pricing-table tr:last-child td {
+	border-bottom: none;
+}
+footer  #modal-compare .pricing-table td {
+	height: 50px;
+	border-bottom: 1px solid #e9eef2;
+	font-size: 14px;
+	color: #495259;
+	padding: 0;
+}
+footer  #modal-compare .pricing-table td:nth-child(n+2) {
+	text-align: center;
+}
+footer  #modal-compare .pricing-table td:nth-child(3) {
+	background-color: #e9f9f1;
+}
+footer  #modal-compare .pricing-table p:last-child {
+	margin-bottom: 20px;
+}
+@media  all and (max-width: 992px) {
+  footer > .footer-container .copyright div {
+    text-align: left !important;
+  }
+  footer > .footer-container .color-darkgrey.no-break {
+    white-space: inherit;
+  }
+}
+</style>
+</div>
+<div class="cookie-noti-container" style="display: none">
+<div class="cookie-noti-content">
+<span>We use cookies. <a href="privacy-policy/index.htm">What does it mean?</a></span>
+<button class="btn btn-default btn-flat btn-radius pull-right" onclick="hideCookieNotify()">OK</button>
+</div>
+</div>
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+var showCookieNotify = window.localStorage.getItem('showCookieNotify');
+if (!showCookieNotify) {
+  $('.cookie-noti-container').show()
+}
+
+window.hideCookieNotify = () => {
+  window.localStorage.setItem('showCookieNotify', true);
+  $('.cookie-noti-container').hide()
+}
+</script>
+<style>
+.cookie-noti-container {
+	 display: inline;
+}
+ .cookie-noti-container a {
+	 color: white;
+	 text-decoration: underline;
+}
+ .cookie-noti-container .cookie-noti-content {
+	 position: fixed;
+	 bottom: 15px;
+	 width: 300px;
+	 left: 15px;
+	 background-color: rgba(51, 51, 51, 0.64);
+	 color: white;
+	 border-radius: 10px;
+	 padding: 10px 15px;
+	 z-index: 11111;
+}
+ .cookie-noti-container .cookie-noti-content span {
+	 display: inline-block;
+	 float: left;
+	 margin-top: 5px;
+}
+ .cookie-noti-container .btn {
+	 border-radius: 5px;
+}
+</style>
+<div class="fomo-component hide" style="display: none">
+<div class="fomo-image">
+<img alt="Avatar" class="fomo-avatar" onerror="this.src='/img/page_error.png'">
+</div>
+<div class="fomo-content">
+<p class="content-detail">
+</p>
+<h6 class="timestamp fomo-time">
+</h6>
+</div>
+<div class="fomo-close">
+<span onclick="fomoController.stopAll()"><i class="fa fa-times"></i></span>
+</div>
+</div>
+<script>
+var FomoController = function() {
+  this.locale = 'vi'
+  this.lang_texts = {
+    'vi': {
+      "user_sign_in": "user_name vừa tham gia tạo bot trên AhaChat",
+      "user_integrate_fanpage": "user_name vừa được tích hợp vào bot trên AhaChat"
+    },
+    'en': {
+      "user_sign_in": "user_name has just joined in creating bot on AhaChat",
+      "user_integrate_fanpage": "user_name has just been integrated into the bot on AhaChat"
+    }
+  }
+  this.show = null
+  this.fomoNotifications = null
+  this.currentIndex = 0
+  this.interval = null
+
+  this.getContentFormat = (data) => {
+    if (!data) {
+      return;
+    }
+
+    if (data.type === 'user_sign_in') {
+      let name = this.getNameByLocation(data.first_name.replace('+', ' '), data.last_name.replace('+', ' '), this.locale);
+      return this.getTextWithLang('user_sign_in', {user_name: name});
+    }
+
+    if (data.type === 'user_integrate_fanpage') {
+      return this.getTextWithLang('user_integrate_fanpage', {user_name: data.first_name});
+    }
+  }
+
+  this.getNameByLocation = (firstName, lastName, location) => {
+    if (typeof location !== 'string') {
+      location = 'vi';
+    }
+    if (location && (location === 'vi' || location === 'vn')) {
+      return firstName + ' ' + lastName;
+    }
+    return lastName + ' ' + firstName;
+  },
+
+
+  this.getTextWithLang = (key, params) => {
+    var text = this.lang_texts[this.locale][key]
+
+    if (!params) {
+      return text
+    }
+
+    for (var k in params) {
+        text = text.replace(new RegExp(k, "ig"), params[k]);
+    }
+
+    return text
+  }
+
+  this.setAvatar = (data) => {
+    $('.fomo-avatar').attr('src', data.avatar)
+  }
+
+  this.setCurrentContent = (data) => {
+    $('.content-detail').html(this.getContentFormat(data))
+  }
+
+  this.setCurrentTime = (data) => {
+    $('.fomo-time').html(moment(data.created_at).locale(this.locale).fromNow())
+  }
+
+  this.getFomoNotifications = (first) => {
+    if (first === false) {
+      clearInterval(this.interval);
+    }
+    $.get('/api/fomo-notifications', (response) => {
+      if (response.data && response.data.length == 0) {
+        return;
+      }
+      this.fomoNotifications = response.data;
+      if (first === true) {
+        this.start(-1);
+      } else {
+        this.start(0);
+      }
+    });
+  }
+
+  this.setCurrentNotification = (index) => {
+    if (!this.fomoNotifications) return
+    if (index === this.fomoNotifications.length) {
+      this.getFomoNotifications(false);
+    } else {
+      this.setAvatar(this.fomoNotifications[index]);
+      this.setCurrentContent(this.fomoNotifications[index]);
+      this.setCurrentTime(this.fomoNotifications[index]);
+      this.showNotify();
+    }
+    this.currentIndex += 1;
+  }
+
+  this.start = (currentInterval) => {
+    this.currentIndex = 0;
+    this.interval = setInterval(() => {
+      currentInterval += 1;
+      if (currentInterval === 0) {
+        this.setCurrentNotification(this.currentIndex);
+      }
+
+      if (currentInterval - 5 === 0) {
+        this.hideNotify();
+      }
+
+      if (currentInterval === 10) {
+        currentInterval = -1;
+      }
+    }, 1000);
+  }
+
+
+  this.showNotify = () => {
+    $('.fomo-component').removeClass('fadeOutLeft').addClass('animated fadeInLeft').show()
+  }
+
+  this.hideNotify = () => {
+    $('.fomo-component').removeClass('fadeInLeft').addClass('animated fadeOutLeft').hide()
+  }
+
+  this.stopAll = () => {
+    try {
+      clearInterval(this.interval);
+      $('.fomo-component').remove()
+    } catch (e) {
+      console.log(e);
+    }
+  }
+};
+
+$(document).ready(function() {
+  window.fomoController = new FomoController()
+  window.fomoController.getFomoNotifications(true)
+})
+
+</script>
+<style>
+.fomo-component {
+	 position: fixed;
+	 top: auto;
+	 right: auto;
+	 bottom: 15px;
+	 left: 15px;
+	 z-index: 1111;
+	 padding: 15px;
+	 border-radius: 50px;
+	 -webkit-box-shadow: 0 0 10px 0;
+	 box-shadow: 0 0 10px 0;
+	 background-color: white;
+	 width: 350px;
+	 display: table;
+   font-size: 14px;
+}
+ .fomo-component .fomo-image {
+	 display: table-cell;
+	 overflow: hidden;
+	 margin-right: 10px;
+	 vertical-align: middle;
+}
+ .fomo-component .fomo-image img {
+	 width: 50px;
+	 height: 50px;
+	 border-radius: 50%;
+}
+ .fomo-component .fomo-content {
+	 display: table-cell;
+	 vertical-align: middle;
+	 padding-left: 10px;
+}
+ .fomo-component .fomo-content h6 {
+	 color: #888;
+}
+ .fomo-component .fomo-close {
+	 display: table-cell;
+	 vertical-align: middle;
+	 padding-left: 10px;
+}
+ .fomo-component .fomo-close span {
+	 padding: 5px;
+	 cursor: pointer;
+}
+ .fomo-component .fomo-close span i.fa {
+	 color: #888;
+}
+ .fomo-component .fomo-close span:hover i.fa {
+	 color: #333;
+}
+ @media  all and (max-width: 767px) {
+	 .fomo-component {
+		 width: 90%;
+		 padding: 10px;
+	}
+}
+
+</style>
+<div class="gift-2 hide">
+<i class="fa fa-remove" onclick="hideGift()"></i>
+<div class="gift-2-container">
+<h3>CẬP NHẬP MỚI NHẤT TỪ ĐẠI DIỆN CỦA META</h3>
+<h1>TỐI ƯU 200% HIỆU QUẢ KINH DOANH VỚI PHỄU CHATBOT</h1>
+<div class="countdown-picker row">
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time0"></div>
+<div class="countdown-label">Ngày</div>
+</div>
+</div>
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time1"></div>
+<div class="countdown-label">Giờ</div>
+</div>
+</div>
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time2"></div>
+<div class="countdown-label">Phút</div>
+</div>
+</div>
+<div class="col-xs-3 countdown-item">
+<div class="countdown-inner">
+<div class="countdown-time" id="time3"></div>
+<div class="countdown-label">Giây</div>
+</div>
+</div>
+</div>
+<script src="ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+<div id="countdown"></div>
+<script>
+var CountDown = function(time, repeatDate) {
+  this.time = time
+  this.repeatDate = repeatDate
+
+  this.start = () => {
+    $('#countdown').countdown(this.getMainEndTime(), (event) => {
+      let time = event.strftime('%D:%H:%M:%S');
+      time = time.split(':')
+      $('#time0').html(time[0])
+      $('#time1').html(time[1])
+      $('#time2').html(time[2])
+      $('#time3').html(time[3])
+    }).on('finish.countdown', () => {
+      if (this.repeatDate > 0) {
+        this.start();
+      } else {
+        // finish
+      }
+    });
+  },
+
+  this.getMainEndTime = () => {
+    if (this.repeatDate > 0 && moment(new Date()).isAfter(moment(this.time))) {
+      let endTimeToNow = moment(new Date()).diff(moment(this.time), 'days');
+      let add = Math.floor(endTimeToNow/this.repeatDate)*parseInt(this.repeatDate) + parseInt(this.repeatDate);
+      return moment(this.time).add(add, 'days').format('YYYY-MM-DD HH:mm');
+    }
+    return this.time;
+  }
+}
+
+$(document).ready(function() {
+  var countDown = new CountDown('2023-11-21 14:00:00', 3)
+  countDown.start()
+})
+</script>
+<a class="btn-get-gift" href="https://wbn.ahachat.com/meta" target="_blank">
+Webinar Miễn Phí
+</a>
+<a class="view-demo-link hide" href="https://m.me/ahachatdemo?ref=ahagpt" target="_blank">Xem demo</a>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+  window.hideGift = function() {
+    $('.gift-2').remove()
+  }
+})
+</script>
+<style lang="css">
+.gift-2 {
+  position: fixed;
+  z-index: 111;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 346px;
+  display: flex;
+  align-items: center;
+  background-color: #0f0f1dc9;
+  margin: 15px;
+  justify-content: center;
+  background: url(img/gift-banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color: #333;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.gift-2 .fa-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 11111;
+}
+.gift-2 h2,.gift-2 h1 {
+  margin-top: 0;
+  color: black;
+}
+.gift-2 h1 {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+.gift-2 .countdown-time {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+.gift-2 .gift-2-container {
+  position: relative;
+  text-align: center;
+  padding: 16px;
+}
+.gift-2 .gift-2-container h3 {
+  font-size: 16px;
+}
+.gift-2 .btn-get-gift {
+  display: block;
+  margin: 10px auto;
+  width: 280px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  background: #2969b9;
+}
+.gift-2 .btn-get-gift:hover {
+  background-image: linear-gradient(90deg, #528fdc 0%, #88b7ef 60%);
+}
+.gift-2 .view-demo-link {
+  color: #3867a2;
+  text-align: center;
+}
+</style>
+<div class="call-btn">
+<div class="call-phone" style="top: 6px">
+<a href="tel:0912543223" target="_blank">
+0917.54.3223
+</a>
+</div>
+<div class="call-phone" style="top: 45px">
+<a href="tel:0917543223" target="_blank">
+0912.54.3223
+</a>
+</div>
+<div class="call-btn-fill"></div>
+<div class="call-btn-fill2"></div>
+<a href="tel:0917543223" target="_blank" class="call-phone-icon">
+<i class="fa fa-phone"></i>
+</a>
+</div>
+<style>
+.call-btn {
+	 position: fixed;
+	 bottom: 20px;
+	 left: 20px;
+	 font-size: 30px;
+	 color: #fff;
+	 width: 80px;
+	 height: 80px;
+	 border-radius: 50%;
+	 text-align: center;
+	 padding: 10px;
+	 z-index: 11;
+}
+ .call-btn .call-btn-fill {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 80px;
+	 height: 80px;
+	 border-radius: 50%;
+	 background-color: #e26161;
+	 -webkit-animuiion: phoneringfill 1.3s infinite;
+	 animation: phoneringfill 1.3s infinite;
+}
+ .call-btn .call-btn-fill2 {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 80px;
+	 height: 80px;
+	 border-radius: 50%;
+	 background-color: #e26161;
+	 -webkit-animuiion: phoneringfill2 1s infinite ease;
+	 animation: phoneringfill2 1s infinite ease;
+}
+ .call-btn a {
+	 color: white;
+	 text-decoration: none;
+}
+ .call-btn a.call-phone-icon {
+	 display: block;
+	 width: 60px;
+	 height: 60px;
+	 border-radius: 50%;
+	 background-color: #e83032;
+	 -webkit-animation: phonering 2s infinite ease-in-out;
+	 animation: phonering 2s infinite ease-in-out;
+	 line-height: 60px;
+}
+ .call-btn a.call-phone-icon i {
+	 color: white;
+}
+ .call-btn .call-phone {
+	 position: absolute;
+	 top: 14px;
+	 left: 25px;
+	 padding: 5px 10px;
+	 background: #e83032;
+	 font-size: 14px;
+	 border-radius: 20px;
+	 padding-left: 62px;
+}
+ @keyframes  phoneringfill {
+	 0% {
+		 transform: scale(0);
+		 opacity: 1;
+	}
+	 70% {
+		 transform: scale(1.5);
+	}
+	 100% {
+		 transform: scale(0.9);
+		 opacity: 0;
+	}
+}
+ @keyframes  phoneringfill2 {
+	 0% {
+		 transform: scale(1);
+	}
+	 50% {
+		 transform: scale(1.1);
+	}
+	 100% {
+		 transform: scale(1);
+	}
+}
+ @-webkit-keyframes phonering {
+	 0% {
+		 -webkit-transform: rotate(0);
+	}
+	 10% {
+		 -webkit-transform: rotate(-25deg);
+	}
+	 20% {
+		 -webkit-transform: rotate(25deg);
+	}
+	 30% {
+		 -webkit-transform: rotate(-25deg);
+	}
+	 40% {
+		 -webkit-transform: rotate(25deg);
+	}
+	 50% {
+		 -webkit-transform: rotate(0);
+	}
+	 100% {
+		 -webkit-transform: rotate(0);
+	}
+}
+ @media  only screen and (max-width: 992px) {
+	 .call-btn {
+		 display: none;
+	}
+}
+
+</style>
+<div class="chat-support">
+<a href="https://messenger.com/t/ahachatter?ref=hotro" target="_blank">
+<img src="img/girl-helper.png" alt="chatbot">
+</a>
+</div>
+<style>
+  .chat-support {
+    position: fixed;
+    bottom: 97px;
+    right: 24px;
+    z-index: 11;
+    display: none;
+  }
+  @media  only screen and (max-width: 992px) {
+    .chat-support {
+      display: none;
+    }
+  }
+</style>
+<script>
+            function setCookie(cname, cvalue, exdays) {
+                const d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                let expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            if (params.ybai) {
+                setCookie('ybai', params.ybai, 30);
+            }
+        </script>
+<script>
+        $(document).ready(function() {
+          window.isMobile = document.body.clientWidth <= 767
+          if (isMobile) {
+            $('.event-content-mb').show()
+            $('.event-content-pc').hide()
+          }
+
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://ahachat.com/customer-chats/customer_chat_j1ccBTxD7w5b0f583b72af2.js';
+          script.id = 'ahachat-customer-chat';
+          document.getElementsByTagName('head')[0].appendChild(script);
+
+          var HomepageComponent = function() {
+            this.lang = "vi"
+            this.isMobile = document.body.clientWidth <= 767
+            this.urlLadibot = 'https://ladibot.com'
+            this.referUser = null
+            this.youtubeVideos = []
+            this.showGift = false
+            this.referFormGG = false
+
+            this.getYtVideo = (currentVideoId) => {
+              return 'https://www.youtube.com/embed/' + currentVideoId
+            }
+
+            this.handleReferrer = () => {
+              const refers = ['google.com', 'coccoc.com']
+              refers.forEach((item) => {
+                if (document.referrer.indexOf(item) > -1) {
+                  this.referFormGG = true
+                  window.localStorage.setItem('refer-gg', true);
+                }
+              })
+            }
+
+            this.goScanPhone = () => {
+              location.href = '/tra-cuu-so-dien-thoai'
+            }
+
+            this.toggleAnswer = (target) => {
+              console.log(target)
+              $('.question-about').not(target).removeClass('show-answer');
+              $('.question-about').not(target).children('.answer-about').css('height', 0);
+              $(target).toggleClass('show-answer');
+              if ($(target).hasClass('show-answer')) {
+                $($(target).find('.answer-about')[0]).show().css('height', ($(target).find('.answer-about')[0].scrollHeight));
+              } else {
+                $($(target).find('.answer-about')[0]).css('height', 0);
+              }
+            }
+
+            this.getCustomers = () => {
+              $.get('api/facebook-pages/total-subcribers?total=500&limit=60', (response) => {
+                this.customers = response.data;
+              });
+            }
+
+            this.handleShowGift = () => {
+              const showGift = window.localStorage.getItem('showGift')
+              if (!showGift) {
+                setTimeout(() => {
+                  $('.gift').show()
+                  window.localStorage.setItem('showGift', 1)
+                }, 10000)
+              }
+            }
+
+            this.handleShowGift2 = () => {
+              window.onscroll = (ev) => {
+                if (window.scrollY > 500) {
+                  $('.gift-2').show()
+                } else {
+                  $('.gift-2').hide()
+                }
+              };
+            }
+
+            this.playVideo = (id) => {
+              this.currentVideoId = id;
+              $('div[data-id="'+id+'"]').addClass('active-video')
+              $('#main-preview-video').attr('src', this.getYtVideo(id))
+            }
+
+            this.scrollListVideos = (data) => {
+              data = $('#yt-player-list-container').scrollLeft() + data;
+              $('#yt-player-list-container').animate({scrollLeft: data}, 200);
+            }
+            this.scrollToIntro = () => {
+              const top = $('#ahachat_intro').offset().top;
+              $('html').animate({scrollTop: top}, 200);
+            }
+          }
+
+          window.homepageComponent = new HomepageComponent()
+          window.homepageComponent.handleShowGift2()
+        })
+        </script>
+</body>
+</html>
